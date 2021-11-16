@@ -1,30 +1,10 @@
 # offcenter_common
 
-The offcenter_common project is a set of C++ libraries of support classes and routines for other offcenter application and libraries.
+The offcenter_common project is a set of C++ libraries of support classes and routines for other offcenter applications and libraries.
 
-## Libraries
+## Documentation
 
-### amqp
-
-### amqp_server
-
-### common
-
-### distributed_system
-
-### framework
-
-### program_options
-
-### rest_server
-
-### schedule
-
-### soci
-
-### threading
-
-The offcenter_oanda project is a C++ library that provides access to the [OANDA v20 REST API](https://developer.oanda.com/rest-live-v20/introduction/).
+[API Reference]()
 
 ## Installation
 This project is hosted on github under user [CodeRancher](https://github.com/CodeRancher).
@@ -32,12 +12,12 @@ This project is hosted on github under user [CodeRancher](https://github.com/Cod
 ### Clone
 To clone this repository use the git command:
 ```shell
-git clone https://github.com/CodeRancher/offcenter_oanda.git
+git clone https://github.com/CodeRancher/offcenter_common.git
 ```
 ### Build
 The most simple build, if dependencies are installed globally.
 ```shell
-cd offcenter_oanda
+cd offcenter_common
 mkdir build
 cd build
 cmake ..
@@ -46,7 +26,7 @@ make
 
 A more complicated build if the libraries are in non-standard locations.
 ```shell
-cd offcenter_oanda
+cd offcenter_common
 mkdir build
 cd build
 cmake \
@@ -56,6 +36,7 @@ cmake \
     -DBOOST_ROOT=<boost root> \
     -DEASYLOGGINGPP_ROOT=<easyloggingpp root> \
     -DEASYLOGGINGPP_USE_STATIC_LIBS=<ON|OFF> \
+    -DAPR_ALTLOCATION=<alt location for apr> \
     -DGTEST_ROOT=<googletest root> \
     ..
 make install
@@ -77,10 +58,10 @@ Important cmake build variables.
 | [CMAKE_INSTALL_PREFIX](https://cmake.org/cmake/help/latest/variable/CMAKE_INSTALL_PREFIX.html) | Install directory for `make install`. | e.g. ${HOME}/libs |
 | [CMAKE_PREFIX_PATH](https://cmake.org/cmake/help/latest/variable/CMAKE_PREFIX_PATH.html) | Directories to search during `make`. | ${HOME}/libs/cmake/nlohmann_json;${HOME}/libs/cmake/cpprestsdk |
 | BUILD_DOC | Build Doxygen documentation during `make doc_doxygen`. Can be 'ON' or 'OFF'. | ON |
-| LOG_V20_ACCESS | Build with logging to EasyLogging++. Can be 'ON' or 'OFF'. | ON |
 | [BOOST_ROOT](https://cmake.org/cmake/help/latest/module/FindBoost.html) | Boost library location. | e.g. ${HOME}/libs |
 | [EASYLOGGINGPP_ROOT](https://github.com/amrayn/easyloggingpp/blob/master/cmake/FindEASYLOGGINGPP.cmake) | Easylogging++ library location. | e.g. ${HOME}/libs |
 | [EASYLOGGINGPP_USE_STATIC_LIBS](https://github.com/amrayn/easyloggingpp/blob/master/cmake/FindEASYLOGGINGPP.cmake) | If ${EASYLOGGINGPP_USE_STATIC_LIBS} is ON then static libs are searched. | ON |
+| [APR_ALTLOCATION](https://github.com/CodeRancher/offcenter_common/blob/main/cmake/FindAPR.cmake) | Alternate location to search for libraries/executables | e.g. ${HOME}/libs |
 | [GTEST_ROOT](https://cmake.org/cmake/help/latest/module/FindGTest.html) | The root directory of the Google Test installation. | e.g. ${HOME}/libs |
 
 ## Dependencies
@@ -91,6 +72,7 @@ Important cmake build variables.
 | [C++ REST SDK](https://github.com/microsoft/cpprestsdk) | 2.10.16 | [MIT](https://github.com/microsoft/cpprestsdk/blob/master/license.txt) |
 | [Boost](https://www.boost.org/) | 1.74 | [Boost Software License 1.0](https://www.boost.org/users/license.html) |
 | [Easylogging++](https://github.com/amrayn/easyloggingpp) | 9.97.0 | [MIT](https://github.com/amrayn/easyloggingpp/blob/master/LICENSE) |
+| [SOCI](https://github.com/SOCI) | v4.0.1 | [GNU LGPL version 2.1](https://github.com/mariadb-corporation/mariadb-connector-cpp/blob/master/COPYING) |
 | [GoogleTest](https://github.com/google/googletest) | 1.10.0 | [BSD 3-Clause "New" or "Revised" License (modified)](https://github.com/google/googletest/blob/master/LICENSE) |
 | [OpenSSL](https://www.openssl.org) | 1.1.1 | [](https://www.openssl.org/source/license-openssl-ssleay.txt) |
 
@@ -98,186 +80,62 @@ Important cmake build variables.
 | ----- |
 | [Doxygen](https://www.doxygen.nl) |
 
-## Usage
-The offcenter_oanda C++ library has been designed to mimic the [OANDA v20 REST API](https://developer.oanda.com/rest-live-v20/introduction/) as much as possible. 
+## Libraries
 
-Accessing the [OANDA v20 REST API](https://developer.oanda.com/rest-live-v20/introduction/) will follow a simple pattern of:
-1. Connect to Oanda endpoint
-2. Initialize the Request data needed by the endpoint
-3. Initialize the Parameter data needed by the endpoint
-4. Call the endpoint (Synchronous or Asynchronous) with the Request and Parameter data and callback lambda
-5. The callback lambda will have the Response data returned from the [OANDA v20 REST API](https://developer.oanda.com/rest-live-v20/introduction/).
+### amqp
 
-### Example Application
-Here is a simple application that will retrieve the last 1000 Daily Mid candlesticks for the EUR/USD and print them out in a csv format.
+Simplifies connecting to and using an ActiveMQ server. This is a framework to create producers and consumers, automatically receive messages, and simplify configuration of connections to the server.
 
-<strong>Command Line</strong>
+### amqp_server
 
-The Oanda Access Token and User Acount number are needed for this example.
-```shell
-Expected command line:
+Simplified application framework that will create a connection to the ActiveMQ server, accept configuration options from the command line or file, and process messages. The general idea is to create a class inherited from IAmqpServerApp, then override several methods where processing of messages can occur.
 
-	eur_usd_to_csv <access_token> <account>
+### common
 
-access_token: Oanda supplied access token
-account:      User Account
-```
+Common classes used across other libraries.
 
-<strong>Header Files</strong>
+### distributed_system
 
-The `iostream` and `OandaEndpints.hpp` header files are required for this example. Typically the `OandaEndpints.hpp` header is all you will need to access this library.
-```{.cpp}
-#include <iostream>
-#include "oanda/v20/endpoint/OandaEndpoints.hpp"
-using namespace oanda::v20;
-```
-<strong>Validate Command Line</strong>
+Not implemented
 
-This is a simple way to validate the expected command line.
-```{.cpp}
-    if(argc != 3) {
-        std::cerr << "Incorrect Number Of Arguments: " << argc << std::endl;
-        std::cerr << "Expected command line:" << std::endl << std::endl;
-        std::cerr << "	eur_usd_to_csv <access_token> <account>" << std::endl << std::endl;
-        std::cerr << "access_token: Oanda supplied access token" << std::endl;
-        std::cerr << "account:      User Account" << std::endl;
-        return 1;
-    }
-```
-<strong>Connect to the Oanda Server</strong>
+This will be a management system for microservices. It will allow remote nodes to be started, stopped, paused, and resumed. 
 
-Connecting to the Oanda server requires the type of server to connect to (practice or trade) and the Oanda Access Token.
+### framework
 
-```{.cpp}
-    endpoint::OandaPracticeServer server;
-    endpoint::OandaAuthorization authorization(argv[1]);
-    endpoint::OandaEndpoints oandaEndpoints(server, authorization);
-```
-<strong>Request and Parameters</strong>
+A group of frameworks that simplifies creation of applications. Integrates handling of command line options and config files. 
 
-Each call to the [OANDA v20 REST API](https://developer.oanda.com/rest-live-v20/introduction/) may have a set of parameters (header, path, or query) or a request body (in json). These are set by using the Request and Parameters classes required by each endpoint call.
+Pending Development: Remote logging and monitoring of applications.
 
-```{.cpp}
-    endpoint::pricing::candles::Request request;
-    endpoint::pricing::candles::Parameters parameters;
-    parameters.accountID = argv[2];
-    parameters.instrument = "EUR_USD";
-    parameters.granularity = "D";
-    parameters.price = "M";
-    parameters.smooth = "True";
-    parameters.count = "1000";
-```
-<strong>Call Endpoint</strong>
+### program_options
 
-Call the endpoint with the request and parameters values. The endpoint can be called synchronously (sync) or asynchronously (async). The callback lambda will receive the data returned from the call.
+Support for simplifying command line options and config files within applications. Used extensively in the framework.
 
-The `to_string(candles.granularity, granularity)` helper will convert the granularity enum into a string.
+### rest_server
 
-```{.cpp}
-    oandaEndpoints.pricing.candles(request, parameters)->sync([](endpoint::pricing::candles::Response candles) -> void {
-        std::string granularity;
-        to_string(candles.granularity, granularity);
+Simplifies creating a REST server. Has pregenerated command line/config file options for initializing the server.
 
-        // Output headers
-        std::cout <<
-            candles.instrument << " - " << granularity << "," <<
-            "Open," << "Low," << "High," << "Close" << std::endl;
+### schedule
 
-        // Output candlestick values
-        for (oanda::v20::instrument::Candlestick& candlestick : candles.candles) {
-			std::cout <<
-            candlestick.time << "," << candlestick.mid.o << "," << candlestick.mid.l << "," <<
-            candlestick.mid.h << "," << candlestick.mid.c << std::endl;
-        }
-    });
-```
-<strong>Complete Example</strong>
+Not implemented
 
-Here is the complete example (with logging).
+This library will support creation of recurring tasks at intervals. This will be used with heartbeats between different microservices nodes.
 
-```{.cpp}
-#include <iostream>
+### soci
 
-#include "easylogging++.h"
+Support for creating SOCI connections to databases.
 
-INITIALIZE_EASYLOGGINGPP
+### threading
 
-#include "oanda/v20/endpoint/OandaEndpoints.hpp"
-using namespace oanda::v20;
-
-/**
- * Query Oanda for a 1000 daily mid candles for EUR/USD that are smoothed.
- */
-int main(int argc, char* argv[])
-{
-    START_EASYLOGGINGPP(argc, argv);
-
-    // Move logging to a file so stdout is not flooded
-    el::Loggers::reconfigureAllLoggers(el::ConfigurationType::ToFile, "true");
-    el::Loggers::reconfigureAllLoggers(el::ConfigurationType::ToStandardOutput, "false");
-    el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Format, "%datetime:%thread [%level] %msg");
-    el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Filename, "eur_usd_to_csv.log");
-
-    // Verify correct number of command line arguments
-    if(argc != 3) {
-        std::cerr << "Incorrect Number Of Arguments: " << argc << std::endl;
-        std::cerr << "Expected command line:" << std::endl << std::endl;
-        std::cerr << "    eur_usd_to_csv <access_token> <account>" << std::endl << std::endl;
-        std::cerr << "access_token: Oanda supplied access token" << std::endl;
-        std::cerr << "account:      User Account" << std::endl;
-        return 1;
-    }
-
-    // Connect to the Oanda server
-    endpoint::OandaPracticeServer server;
-    endpoint::OandaAuthorization authorization(argv[1]);
-    std::string accountID = argv[2];
-    endpoint::OandaEndpoints oandaEndpoints(server, authorization);
-
-    // Initialize Request and Parameter values
-    endpoint::pricing::candles::Request request;
-    endpoint::pricing::candles::Parameters parameters;
-    parameters.accountID = accountID;
-    parameters.instrument = "EUR_USD";
-    parameters.granularity = "D";
-    parameters.price = "M";
-    parameters.smooth = "True";
-    parameters.count = "1000";
-
-    // Synchronously retrieve the candle values
-    oandaEndpoints.pricing.candles(request, parameters)->sync([](endpoint::pricing::candles::Response candles) -> void {
-        std::string granularity;
-        to_string(candles.granularity, granularity);
-
-        // Output headers
-        std::cout <<
-                candles.instrument << " - " << granularity << "," <<
-                "Open," <<
-                "Low," <<
-                "High," <<
-                "Close" << std::endl;
-
-        // Output candlestick values
-        for (oanda::v20::instrument::Candlestick& candlestick : candles.candles) {
-            std::cout <<
-                    candlestick.time << "," <<
-                    candlestick.mid.o << "," <<
-                    candlestick.mid.l << "," <<
-                    candlestick.mid.h << "," <<
-                    candlestick.mid.c << std::endl;
-        }
-    });
-
-    return 0;
-}
-```
+Support for application threads, thread pools, and manipulating threads.
 
 ## Roadmap
+<strong>Missing Functionality</strong>
+
+Add missing functionality.
+
 <strong>Testing</strong>
 
 The library needs testing from end-to-end. There are basic tests and examples for some of the most used calls but the rest of the system needs validation.
-
-One problem with testing much of the system is that the repeated calls to Oanda can trigger a violation of their policies and get the account cancelled. Testing needs to be performed carefully.
 
 <strong>Documentation</strong>
 1. Create the missing documenation.

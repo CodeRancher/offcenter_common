@@ -31,20 +31,18 @@ add_compile_definitions(ELPP_THREAD_SAFE)
 add_compile_definitions(ELPP_FRESH_LOG_FILE)
 add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
 
-add_executable(
-	amqp_example_simple_consumer 
+add_executable(offcenter_amqp_example_simple_consumer 
 	src/amqp_example_simple_consumer.cpp
 )
 
-target_link_libraries(
-	amqp_example_simple_consumer
+target_link_libraries(offcenter_amqp_example_simple_consumer
 	${EASYLOGGINGPP_LIBRARY}
 	${ACTIVEMQCPP_LIBRARIES}
 	${APR_LIBRARIES}
 	Threads::Threads
 )
 
-target_include_directories(amqp_example_simple_consumer
+target_include_directories(offcenter_amqp_example_simple_consumer
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 		${CMAKE_CURRENT_LIST_DIR}/../include
@@ -54,20 +52,18 @@ target_include_directories(amqp_example_simple_consumer
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
-add_executable(
-	amqp_example_simple_producer 
+add_executable(offcenter_amqp_example_simple_producer
 	src/amqp_example_simple_producer.cpp
 )
 
-target_link_libraries(
-	amqp_example_simple_producer
+target_link_libraries(offcenter_amqp_example_simple_producer
 	${EASYLOGGINGPP_LIBRARY}
 	${ACTIVEMQCPP_LIBRARIES}
 	${APR_LIBRARIES}
 	Threads::Threads
 )
 
-target_include_directories(amqp_example_simple_producer
+target_include_directories(offcenter_amqp_example_simple_producer
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 		${CMAKE_CURRENT_LIST_DIR}/../include
@@ -77,11 +73,11 @@ target_include_directories(amqp_example_simple_producer
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
-add_executable(offcenter_amqp_process_message_example 
+add_executable(offcenter_amqp_example_process_message 
 	src/process_amqp_message_example.cpp
 )
 
-target_link_libraries(offcenter_amqp_process_message_example
+target_link_libraries(offcenter_amqp_example_process_message
 	offcenter_common_amqp
 	offcenter_common_threading
 	${EASYLOGGINGPP_LIBRARY}
@@ -91,7 +87,7 @@ target_link_libraries(offcenter_amqp_process_message_example
 	OpenSSL::SSL
 )
 
-target_include_directories(offcenter_amqp_process_message_example
+target_include_directories(offcenter_amqp_example_process_message
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 		${CMAKE_CURRENT_LIST_DIR}/../include
