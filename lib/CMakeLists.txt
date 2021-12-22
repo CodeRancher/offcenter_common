@@ -65,6 +65,7 @@ add_subdirectory(framework)
 add_subdirectory(rest_server)
 add_subdirectory(amqp_server)
 #add_subdirectory(schedule)
+add_subdirectory(imgui)
 
 install(TARGETS
 			offcenter_common_amqp
