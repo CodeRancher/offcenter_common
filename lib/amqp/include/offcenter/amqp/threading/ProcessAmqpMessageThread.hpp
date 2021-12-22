@@ -43,6 +43,9 @@ class ProcessAmqpMessageThread:
 		public offcenter::common::threading::RunningThreadBlockable
 {
 public:
+	using Data_Ptr = std::shared_ptr<Data>;
+
+public:
 	explicit ProcessAmqpMessageThread(offcenter::amqp::SessionPtr session, const std::string& topic):
 		m_destination(session->createQueue(topic)),
 		m_consumer(offcenter::amqp::helper::messageConsumerFactory(session->createConsumer(m_destination.get()))),
@@ -76,6 +79,10 @@ protected:
 	const Data data() {
 		std::lock_guard<std::mutex> l(m_protectData);
 		return m_data;
+	}
+
+	const Data_Ptr dataPtr() {
+		return std::make_shared<Data>(data());
 	}
 
 	void stopping() override {
