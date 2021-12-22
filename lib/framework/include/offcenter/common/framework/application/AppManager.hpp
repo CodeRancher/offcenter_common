@@ -23,7 +23,7 @@
 #ifndef OFFCENTER_COMMON_FRAMEWORK_APPLICATION_APPMANAGER_HPP_
 #define OFFCENTER_COMMON_FRAMEWORK_APPLICATION_APPMANAGER_HPP_
 
-#include "IManagedApp.hpp"
+//#include "IManagedApp.hpp"
 #include "offcenter/common/program_options/ProgramOptionsManager.hpp"
 #include "offcenter/common/framework/application/BasicAppConfig.hpp"
 #include "offcenter/common/framework/program_options/ManagedAppProgramOptions.hpp"
@@ -91,15 +91,22 @@ public:
 private:
 	void processCommandLine(int argc, char** argv)
 	{
-		m_optionsManager.processCommandLine(argc, argv);
+		try {
+			m_optionsManager.processCommandLine(argc, argv);
 
-		if (m_configPtr->help()) {
+			if (m_configPtr->help()) {
+				onHelp(m_optionsManager.help());
+				m_helpDisplayed = true;
+			}
+
+			if (m_configPtr->version()) {
+				onVersion();
+			}
+		} catch(const boost::program_options::error& e) {
+			std::cerr << "Error:" << std::endl << "\t" << e.what() << std::endl << std::endl;
 			onHelp(m_optionsManager.help());
 			m_helpDisplayed = true;
-		}
-
-		if (m_configPtr->version()) {
-			onVersion();
+			std::cerr << "Exiting" << std::endl;
 		}
 	}
 
