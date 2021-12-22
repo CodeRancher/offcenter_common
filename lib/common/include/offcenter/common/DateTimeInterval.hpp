@@ -31,26 +31,32 @@ namespace common {
 /**
  *
  */
-class DateTimeIntervalConfig
-{
-public:
-	DateTimeIntervalConfig();
-	virtual ~DateTimeIntervalConfig();
-};
-
-/**
- *
- */
-template<typename DateTime>
+template<typename IntervalDuration>
 class DateTimeInterval
 {
 public:
-	DateTimeInterval();
-	virtual ~DateTimeInterval();
+	DateTimeInterval() = delete;
+	explicit DateTimeInterval(int startDuration, int widthDuration):
+		m_startDuration(startDuration),
+		m_widthDuration(widthDuration)
+	{}
+
+	virtual ~DateTimeInterval() = default;
+
+	const UTCDateTime rangeStart(const UTCDateTime& timeTime) const {
+	    offcenter::common::UTCDateTime timeRangeDiff = timeTime - m_startDuration;
+	    offcenter::common::UTCDateTime timeDiffFloor = std::chrono::floor<std::chrono::minutes>(timeRangeDiff);
+	    offcenter::common::UTCDateTime::duration timeDiff = timeRangeDiff - timeDiffFloor;
+        int durCnt = timeDiff / m_widthDuration;
+        return std::chrono::time_point_cast<offcenter::common::UTCDateTime::duration>(timeDiffFloor + m_startDuration + (durCnt * m_widthDuration));
+	};
+
+	IntervalDuration startDuration() const { return m_startDuration; }
+	IntervalDuration widthDuration() const { return m_widthDuration; }
 
 private:
-	DateTime m_dateTime;
-
+	const IntervalDuration m_startDuration;
+	const IntervalDuration m_widthDuration;
 };
 
 /**

@@ -51,6 +51,12 @@ target_sources(offcenter_common
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/Utility.hpp>
 		$<INSTALL_INTERFACE:include/offcenter/common/Utility.hpp>
 	
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/DateTime.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/DateTime.hpp>
+	
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/DateTimeInterval.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/DateTimeInterval.hpp>
+	
 )
 
 target_include_directories(offcenter_common
