@@ -72,6 +72,8 @@ find_package(Soci REQUIRED)
 find_package(MariaDBClient REQUIRED)
 find_package(nlohmann_json REQUIRED)
 find_package(cpprestsdk REQUIRED)
+find_package(TBB REQUIRED)
+
 
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 find_package(OpenSSL REQUIRED)
