@@ -29,15 +29,23 @@ namespace offcenter {
 namespace amqp {
 
 /**
+ * RAII based initialization and shutdown of ActiveMQ library.
  *
+ * @example amqp_example_activemqcpp.cpp
  */
 class ActiveMQCPP
 {
 public:
+	/**
+	 * Automatically initialize ActiveMQ library.
+	 */
 	explicit ActiveMQCPP() {
 		activemq::library::ActiveMQCPP::initializeLibrary();
 	}
 
+	/**
+	 * Automatically shutdown ActiveMQ library.
+	 */
 	virtual ~ActiveMQCPP() {
 		activemq::library::ActiveMQCPP::shutdownLibrary();
 	}
