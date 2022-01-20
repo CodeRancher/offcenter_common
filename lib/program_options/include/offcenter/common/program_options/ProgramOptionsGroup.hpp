@@ -32,40 +32,37 @@ namespace offcenter {
 namespace common {
 namespace program_options {
 
+/**
+ * A group of command line/config file options for an application.
+ *
+ * @tparam OptionConfig The related configuration options that will be filled
+ *		   with the parsed values from the command line/config file.
+ */
 template<typename OptionConfig>
 class ProgramOptionsGroup: public IProgramOptionsGroup
 {
 public:
 	using ConfigPtr = std::shared_ptr<OptionConfig>;
 
-private:
-	po::options_description m_optionsDescription;
-
-	bool m_isCommandLineOption;
-	bool m_isConfigFileOption;
-	bool m_isVisibleInHelpOption;
-	OptionConfig m_optionConfig;
-
-protected:
-	ConfigPtr m_optionConfigPtr;
-
 public:
-	/*
-	ProgramOptionsGroup(std::string groupName, OptionConfig& optionConfig, bool isCommandLineOption = true,
-			bool isConfigFileOption = true, bool isVisibleInHelpOption = true):
-		m_optionsDescription(groupName),
-		m_optionConfig(optionConfig),
-		m_isCommandLineOption(isCommandLineOption),
-		m_isConfigFileOption(isConfigFileOption),
-		m_isVisibleInHelpOption(isVisibleInHelpOption),
-		m_optionConfig2() {}
-	*/
+	/**
+	 * Create a \c ProgramOptionsGroup
+	 *
+	 * The \c ProgramOptionsGroup is a set of options that can be set via the command line
+	 * and/or a configuration file.
+	 *
+	 * @param groupName				A name describing this group. Displayed in help.
+	 * @param isCommandLineOption	Are the elements of this group command line options? Default = true
+	 * @param isConfigFileOption	Are the elements of this group config file options? Default = true
+	 * @param isVisibleInHelpOption	Should the group be displayed in the help? Default = true
+	 */
 	ProgramOptionsGroup(
 			std::string groupName,
 			bool isCommandLineOption = true,
 			bool isConfigFileOption = true,
 			bool isVisibleInHelpOption = true):
 		m_optionsDescription(groupName),
+		m_positionalOptionsDescription(),
 		m_isCommandLineOption(isCommandLineOption),
 		m_isConfigFileOption(isConfigFileOption),
 		m_isVisibleInHelpOption(isVisibleInHelpOption),
@@ -75,22 +72,43 @@ public:
 
 	virtual ~ProgramOptionsGroup() = default;
 
-	bool isCommandLineOption() override { return m_isCommandLineOption; }
-	bool isConfigFileOption() override { return m_isConfigFileOption; }
-	bool isVisibleInHelpOption() override { return m_isVisibleInHelpOption; }
-
-	bool hasConfigFileName() override { return false; }
-	std::string getConfigFileName() override { return ""; }
-	void updateSharedData() { *m_optionConfigPtr = m_optionConfig; }
-
+	/// @copydoc IProgramOptionsGroup::processOptions(po::variables_map& vm)
 	virtual void processOptions(po::variables_map& vm) {}
+	/// @copydoc IProgramOptionsGroup::validateOptions(po::variables_map& vm)
 	virtual void validateOptions(po::variables_map& vm) {}
 
+	/// @copydoc IProgramOptionsGroup::isCommandLineOption()
+	bool isCommandLineOption() override { return m_isCommandLineOption; }
+	/// @copydoc IProgramOptionsGroup::isConfigFileOption()
+	bool isConfigFileOption() override { return m_isConfigFileOption; }
+	/// @copydoc IProgramOptionsGroup::isVisibleInHelpOption()
+	bool isVisibleInHelpOption() override { return m_isVisibleInHelpOption; }
+
+	/// @copydoc IProgramOptionsGroup::hasConfigFileName()
+	bool hasConfigFileName() override { return false; }
+	/// @copydoc IProgramOptionsGroup::getConfigFileName()
+	std::string getConfigFileName() override { return ""; }
+	/// @copydoc IProgramOptionsGroup::updateSharedData()
+	void updateSharedData() { *m_optionConfigPtr = m_optionConfig; }
+
+	/// @copydoc IProgramOptionsGroup::optionsDescription()
 	po::options_description& optionsDescription() override { return m_optionsDescription; }
+	/// @copydoc IProgramOptionsGroup::positionalOptionsDescription()
+	po::positional_options_description& positionalOptionsDescription() override { return m_positionalOptionsDescription; }
 
 	ConfigPtr optionConfigPtr() { return m_optionConfigPtr; }
 
+private:
+	po::options_description m_optionsDescription;
+	po::positional_options_description m_positionalOptionsDescription;
+
+	bool m_isCommandLineOption;
+	bool m_isConfigFileOption;
+	bool m_isVisibleInHelpOption;
+	OptionConfig m_optionConfig;
+
 protected:
+	ConfigPtr m_optionConfigPtr;
 	OptionConfig& optionConfig() { return m_optionConfig; }
 	OptionConfig* optionConfigPointer() { return &m_optionConfig; }
 };

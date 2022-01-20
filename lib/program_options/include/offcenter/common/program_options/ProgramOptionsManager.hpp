@@ -32,6 +32,7 @@ namespace po = boost::program_options;
 
 #include "IProgramOptionsGroup.hpp"
 #include "offcenter/common/FileException.hpp"
+#include "offcenter/common/RuntimeException.hpp"
 
 namespace offcenter {
 namespace common {
@@ -46,6 +47,7 @@ private:
 	std::vector<IProgramOptionsGroup::Ptr> m_programOptionsGroups;
 
 	po::options_description m_cmdlineOptions;
+	po::positional_options_description m_cmdlinePositionalOptions;
 	po::options_description m_configFileOptions;
 	po::options_description m_visibleInHelpOptions;
 	po::variables_map m_vm;
@@ -68,6 +70,12 @@ public:
 		for (IProgramOptionsGroup::Ptr group: m_programOptionsGroups) {
 			if (group->isCommandLineOption()) {
 				m_cmdlineOptions.add(group->optionsDescription());
+				if (group->positionalOptionsDescription().max_total_count() > 0) {
+					if (m_cmdlinePositionalOptions.max_total_count() > 0) {
+						throw offcenter::common::RuntimeException("Multiple command line groups contain positional options. Only one allowed.");
+					}
+					m_cmdlinePositionalOptions = group->positionalOptionsDescription();
+				}
 			}
 
 			if (group->isConfigFileOption()) {
@@ -79,7 +87,7 @@ public:
 			}
 		}
 
-		store(po::command_line_parser(argc, argv).options(m_cmdlineOptions).run(), m_vm);
+		store(po::command_line_parser(argc, argv).options(m_cmdlineOptions).positional(m_cmdlinePositionalOptions).run(), m_vm);
 		notify(m_vm);
 
 		for (IProgramOptionsGroup::Ptr group: m_programOptionsGroups) {

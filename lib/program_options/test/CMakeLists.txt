@@ -25,25 +25,33 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_compile_definitions(ELPP_THREAD_SAFE)
+add_compile_definitions(ELPP_FRESH_LOG_FILE)
+add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
 
-add_executable(offcenter_common_program_options_tests
+add_executable(${TEST_PREFIX}.${PROJECT_NAME}.program_options
 	main.cpp
 	#test_single_program_option.cpp
 	#test_double_program_option.cpp
 	test_double_program_option_group.cpp
+	test_positional_option_group.cpp
 )
 
-target_link_libraries(offcenter_common_program_options_tests
+set_target_properties(${TEST_PREFIX}.${PROJECT_NAME}.program_options
+	PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_TEST_DIR}
+)
+
+target_link_libraries(${TEST_PREFIX}.${PROJECT_NAME}.program_options
 	GTest::gtest
 	Boost::program_options
 )
 
-target_include_directories(offcenter_common_program_options_tests
+target_include_directories(${TEST_PREFIX}.${PROJECT_NAME}.program_options
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/../include
 		${CMAKE_CURRENT_LIST_DIR}/../../common/include
 )
 
-gtest_discover_tests(offcenter_common_program_options_tests)
+gtest_discover_tests(${TEST_PREFIX}.${PROJECT_NAME}.program_options)
 
-add_test(NAME monolithic COMMAND offcenter_common_program_options_tests)
+add_test(NAME monolithic COMMAND ${TEST_PREFIX}.${PROJECT_NAME}.program_options)
