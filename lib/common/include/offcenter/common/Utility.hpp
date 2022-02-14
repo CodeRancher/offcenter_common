@@ -82,6 +82,14 @@ std::string toLower(const std::string& str);
  */
 bool stringToBool(const std::string& str);
 
+/**
+ * Convert a defined constant to a string
+ *
+ * @param s Defined value
+ */
+#define DefToString(s) Stringize(s)
+#define Stringize(s) #s
+
 } /* namespace common */
 } /* namespace offcenter */
 
