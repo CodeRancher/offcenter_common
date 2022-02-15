@@ -40,7 +40,7 @@ void imgui_main(int argc, char **argv, const std::string& appName, const std::st
 		el::Loggers::reconfigureAllLoggers(el::ConfigurationType::ToFile, "true");
 		el::Loggers::reconfigureAllLoggers(el::ConfigurationType::ToStandardOutput, "false");
 		el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Format, "%datetime:%thread [%level] %msg");
-		el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Filename, "./" + logFileName + ".log");
+		el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Filename, "./log/" + logFileName + ".log");
 
 		LOG(INFO) << appName << " App!";
 
