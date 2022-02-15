@@ -113,6 +113,7 @@ target_include_directories(offcenter_common_framework
 #	FILES_MATCHING PATTERN "*.h*"
 #)
 
+add_subdirectory(example)
 if(ENABLE_UNIT_TESTS)
 	add_subdirectory(test)
 endif()

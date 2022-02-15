@@ -73,7 +73,7 @@ set(Boost_USE_MULTITHREADED      ON)
 set(Boost_USE_STATIC_RUNTIME    OFF)
 find_package(Boost
 	1.74
-	COMPONENTS program_options atomic thread system regex filesystem random chrono serialization
+	COMPONENTS program_options atomic thread system regex filesystem random chrono serialization iostreams
 )
 
 find_package(Soci REQUIRED)
@@ -81,7 +81,7 @@ find_package(MariaDBClient REQUIRED)
 find_package(nlohmann_json REQUIRED)
 find_package(cpprestsdk REQUIRED)
 find_package(TBB REQUIRED)
-
+find_package(BZip2 REQUIRED)
 
 set(OPENSSL_USE_STATIC_LIBS TRUE)
 find_package(OpenSSL REQUIRED)
