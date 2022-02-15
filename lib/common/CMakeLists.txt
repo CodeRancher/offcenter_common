@@ -38,6 +38,7 @@ target_sources(offcenter_common
 	PRIVATE
 		${CMAKE_CURRENT_LIST_DIR}/src/DateTime.cpp
 		${CMAKE_CURRENT_LIST_DIR}/src/Utility.cpp
+		${CMAKE_CURRENT_LIST_DIR}/src/Processes.cpp
 	PUBLIC
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/ScopeGuard.hpp>
 		$<INSTALL_INTERFACE:include/offcenter/common/ScopeGuard.hpp>
@@ -73,6 +74,8 @@ target_include_directories(offcenter_common
 )
 
 target_link_libraries(offcenter_common
+	Boost::iostreams
+	${BZIP2_LIBRARIES}
 	${EASYLOGGINGPP_LIBRARY}
 )
 
@@ -86,3 +89,4 @@ target_link_libraries(offcenter_common
 if(ENABLE_UNIT_TESTS)
 	add_subdirectory(test)
 endif()
+add_subdirectory(sandbox)
