@@ -20,4 +20,5 @@
 # @date   03-27-2020
 #
 
-#add_subdirectory(distributed_system)
+add_subdirectory(waitfor_sigint)
+add_subdirectory(app_manager)
