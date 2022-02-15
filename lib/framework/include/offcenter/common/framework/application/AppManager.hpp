@@ -42,7 +42,7 @@ public:
 		m_app(),
 		m_optionsManager(),
 		m_configPtr(),
-		m_helpDisplayed(false)
+		m_skipExecution(false)
 	{}
 
 	virtual ~AppManager() = default;
@@ -63,7 +63,7 @@ public:
 			m_configPtr = m_optionsManager.add<ManagedAppProgramOptions>();
 			onInitProgramOptions(m_optionsManager);
 			processCommandLine(argc, argv);
-			if (!m_helpDisplayed) {
+			if (!m_skipExecution) {
 				try {
 					onSetUp();
 					onExecute();
@@ -96,16 +96,17 @@ private:
 
 			if (m_configPtr->help()) {
 				onHelp(m_optionsManager.help());
-				m_helpDisplayed = true;
+				m_skipExecution = true;
 			}
 
 			if (m_configPtr->version()) {
 				onVersion();
+				m_skipExecution = true;
 			}
 		} catch(const boost::program_options::error& e) {
 			std::cerr << "Error:" << std::endl << "\t" << e.what() << std::endl << std::endl;
 			onHelp(m_optionsManager.help());
-			m_helpDisplayed = true;
+			m_skipExecution = true;
 			std::cerr << "Exiting" << std::endl;
 		}
 	}
@@ -113,7 +114,7 @@ private:
 
 protected:
 	IAPP m_app;
-	bool m_helpDisplayed;
+	bool m_skipExecution;
 
 private:
 	program_options::ProgramOptionsManager m_optionsManager;
