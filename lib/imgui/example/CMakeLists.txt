@@ -48,13 +48,18 @@ message(STATUS "IMPLOT_DIR       ${IMPLOT_DIR}")
 
 ###############################################################################
 # ImGui Example
-add_executable (offcenter_common_imgui_example
+add_executable (${EXAMPLE_PREFIX}.${PROJECT_NAME}.imgui
 	${IMGUI_DIR}/imgui_demo.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/imgui_example.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/ImGuiExampleApp.cpp
 )
 
-target_link_libraries(offcenter_common_imgui_example
+set_target_properties(${EXAMPLE_PREFIX}.${PROJECT_NAME}.imgui
+	PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_EXAMPLE_DIR}
+)
+
+target_link_libraries(${EXAMPLE_PREFIX}.${PROJECT_NAME}.imgui
 	offcenter_common_imgui
 	Boost::program_options
 	${EASYLOGGINGPP_LIBRARY}
@@ -65,7 +70,7 @@ target_link_libraries(offcenter_common_imgui_example
 	${CMAKE_DL_LIBS} 
 )
 
-target_include_directories(offcenter_common_imgui_example
+target_include_directories(${EXAMPLE_PREFIX}.${PROJECT_NAME}.imgui
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 	SYSTEM
@@ -77,14 +82,19 @@ target_include_directories(offcenter_common_imgui_example
 
 ###############################################################################
 # ImPlot Graph Example
-add_executable (offcenter_common_implot_graph_example
+add_executable (${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_graph
 	${IMPLOT_DIR}/implot_demo.cpp
 	${IMGUI_DIR}/imgui_demo.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/implot_graph_example.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/ImPlotGraphExampleApp.cpp
 )
 
-target_link_libraries(offcenter_common_implot_graph_example
+set_target_properties(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_graph
+	PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_EXAMPLE_DIR}
+)
+
+target_link_libraries(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_graph
 	offcenter_common_imgui
 	Boost::program_options
 	${EASYLOGGINGPP_LIBRARY}
@@ -95,7 +105,7 @@ target_link_libraries(offcenter_common_implot_graph_example
 	${CMAKE_DL_LIBS} 
 )
 
-target_include_directories(offcenter_common_implot_graph_example
+target_include_directories(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_graph
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 	SYSTEM
@@ -107,12 +117,17 @@ target_include_directories(offcenter_common_implot_graph_example
 
 ###############################################################################
 # ImPlot Graph Example
-add_executable (offcenter_common_implot_line_example
+add_executable (${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_line
     ${CMAKE_CURRENT_LIST_DIR}/src/implot_line_example.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/ImPlotLineExampleApp.cpp
 )
 
-target_link_libraries(offcenter_common_implot_line_example
+set_target_properties(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_line
+	PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_EXAMPLE_DIR}
+)
+
+target_link_libraries(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_line
 	offcenter_common_imgui
 	Boost::program_options
 	${EASYLOGGINGPP_LIBRARY}
@@ -123,7 +138,7 @@ target_link_libraries(offcenter_common_implot_line_example
 	${CMAKE_DL_LIBS} 
 )
 
-target_include_directories(offcenter_common_implot_line_example
+target_include_directories(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_line
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 	SYSTEM
