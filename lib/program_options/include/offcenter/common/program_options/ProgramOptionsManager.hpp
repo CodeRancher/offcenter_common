@@ -39,7 +39,7 @@ namespace common {
 namespace program_options {
 
 /**
- *
+ * Centralized manager for program option handling.
  */
 class ProgramOptionsManager
 {
@@ -56,13 +56,17 @@ private:
 public:
 	/// Default constructor
 	ProgramOptionsManager():
-		m_visibleInHelpOptions("Allowed options")
+		m_visibleInHelpOptions("Program options")
 	{}
 
+	/// Default destructor
 	virtual ~ProgramOptionsManager() = default;
 
 	/**
-	 *
+	 * Parse the command line parameters and set the related configuration options
+	 * 
+	 * @param argc Number of command line arguments
+	 * @param argv Character pointers listing all arguments
 	 */
 	void processCommandLine(int argc, char** argv)
 	{
@@ -114,15 +118,10 @@ public:
 	}
 
 	/**
-	 *
+	 * Add an option group to the program options group and return the configuration options shared pointer.
+	 * 
+	 * @return Configuration prointer for the added option group.
 	 */
-	/*
-	template<typename OptionGroup, typename OptionConfig>
-	void add(OptionConfig& optionConfig) {
-		m_programOptionsGroups.push_back(std::make_shared<OptionGroup>(optionConfig));
-	}
-	*/
-
 	template<class OptionGroup>
 	typename OptionGroup::ConfigPtr add() {
 		std::shared_ptr<OptionGroup> optGroup = std::make_shared<OptionGroup>();
@@ -130,6 +129,11 @@ public:
 		return optGroup->optionConfigPtr();
 	}
 
+	/**
+	 * Generate the help text.
+	 * 
+	 * @return String containing the help text
+	 */
 	std::string help() {
 		std::stringstream buffer;
 		buffer << m_visibleInHelpOptions;
