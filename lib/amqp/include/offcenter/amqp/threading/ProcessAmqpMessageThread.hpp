@@ -46,6 +46,7 @@ public:
 	using Data_Ptr = std::shared_ptr<Data>;
 
 public:
+	ProcessAmqpMessageThread() = delete;
 	explicit ProcessAmqpMessageThread(offcenter::amqp::SessionPtr session, const std::string& topic):
 		m_destination(session->createQueue(topic)),
 		m_consumer(offcenter::amqp::helper::messageConsumerFactory(session->createConsumer(m_destination.get()))),
