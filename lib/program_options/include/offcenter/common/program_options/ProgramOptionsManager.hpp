@@ -91,7 +91,11 @@ public:
 			}
 		}
 
-		store(po::command_line_parser(argc, argv).options(m_cmdlineOptions).positional(m_cmdlinePositionalOptions).run(), m_vm);
+		if (m_cmdlinePositionalOptions.max_total_count() > 0) {
+			store(po::command_line_parser(argc, argv).options(m_cmdlineOptions).positional(m_cmdlinePositionalOptions).run(), m_vm);
+		} else {
+			store(po::command_line_parser(argc, argv).options(m_cmdlineOptions).run(), m_vm);
+		}
 		notify(m_vm);
 
 		for (IProgramOptionsGroup::Ptr group: m_programOptionsGroups) {

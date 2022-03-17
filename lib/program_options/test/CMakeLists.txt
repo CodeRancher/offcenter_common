@@ -28,7 +28,9 @@ add_compile_definitions(ELPP_THREAD_SAFE)
 add_compile_definitions(ELPP_FRESH_LOG_FILE)
 add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
 
-add_executable(${TEST_PREFIX}.${PROJECT_NAME}.program_options
+set(EXE_NAME "${TEST_PREFIX}.${PROJECT_NAME}.program_options")
+
+add_executable(${EXE_NAME}
 	main.cpp
 	#test_single_program_option.cpp
 	#test_double_program_option.cpp
@@ -36,22 +38,22 @@ add_executable(${TEST_PREFIX}.${PROJECT_NAME}.program_options
 	test_positional_option_group.cpp
 )
 
-set_target_properties(${TEST_PREFIX}.${PROJECT_NAME}.program_options
+set_target_properties(${EXE_NAME}
 	PROPERTIES
 		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_TEST_DIR}
 )
 
-target_link_libraries(${TEST_PREFIX}.${PROJECT_NAME}.program_options
+target_link_libraries(${EXE_NAME}
 	GTest::gtest
 	Boost::program_options
 )
 
-target_include_directories(${TEST_PREFIX}.${PROJECT_NAME}.program_options
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/../include
 		${CMAKE_CURRENT_LIST_DIR}/../../common/include
 )
 
-gtest_discover_tests(${TEST_PREFIX}.${PROJECT_NAME}.program_options)
+gtest_discover_tests(${EXE_NAME})
 
-add_test(NAME monolithic COMMAND ${TEST_PREFIX}.${PROJECT_NAME}.program_options)
+add_test(NAME monolithic COMMAND ${EXE_NAME})
