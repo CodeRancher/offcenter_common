@@ -16,7 +16,7 @@ add_compile_definitions(ELPP_FRESH_LOG_FILE)
 add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
 
 #find_package(Boost
-#	1.74
+#	1.76
 #	COMPONENTS program_options atomic thread system regex filesystem random chrono serialization log
 #)
 
