@@ -72,9 +72,12 @@ set(Boost_USE_RELEASE_LIBS       ON)
 set(Boost_USE_MULTITHREADED      ON)
 set(Boost_USE_STATIC_RUNTIME    OFF)
 find_package(Boost
-	1.74
+	1.76
 	COMPONENTS program_options atomic thread system regex filesystem random chrono serialization iostreams
 )
+
+find_package(GMP REQUIRED)
+find_package(MPFR REQUIRED)
 
 find_package(Soci REQUIRED)
 find_package(MariaDBClient REQUIRED)
