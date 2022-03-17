@@ -40,6 +40,7 @@
 using namespace offcenter::common;
 
 #include "offcenter/amqp/ActiveMQCPP.hpp"
+#include "offcenter/amqp/AMQPException.hpp"
 
 namespace offcenter {
 namespace common {
@@ -71,12 +72,22 @@ public:
 		amqp::ConnectionURIOptions options;
 		framework::application::AppManager<IAMQPSERVERAPP>::m_app.onInitAMQP(options);
 
-		{
+		try {
 			// Connect to the AMQP server
 			amqp::ActiveMQConnectionFactoryPtr connectionFactory(amqp::helper::activeMQConnectionFactoryFactory(options.uri()));
 
 			// Create a Connection
-			m_connection = amqp::helper::connectionFactory(connectionFactory->createConnection());
+			cms::Connection* connection = connectionFactory->createConnection();
+			m_connection = amqp::helper::connectionFactory(connection);
+		} catch(const cms::CMSException& e) {
+			LOG(ERROR) << e.what() << ": " << options.uri();
+			throw offcenter::amqp::AMQPException("Unable to connect to server: " + options.uri() + ": " + e.what());
+		} catch (const std::exception& e) {
+			LOG(ERROR) << e.what() << ": " << options.uri();
+			throw offcenter::amqp::AMQPException("Unable to connect to server: " + options.uri() + ": " + e.what());
+		} catch (...) {
+			LOG(ERROR) << "Unknown Exception: " << ": " << options.uri();
+			throw offcenter::amqp::AMQPException("Unable to connect to server: " + options.uri());
 		}
 
 		// Create Sesstions
@@ -98,8 +109,10 @@ public:
 		framework::application::AppManager<IAMQPSERVERAPP>::m_app.onTearDown();
 
 		LOG(DEBUG) << "Closing ActiveMQCPP connection";
-		m_connection->close();
-		m_connection.reset();
+		if (m_connection) {
+			m_connection->close();
+			m_connection.reset();
+		}
 	}
 
 private:
