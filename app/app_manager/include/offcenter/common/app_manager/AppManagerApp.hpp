@@ -20,8 +20,8 @@
  * @date   01-23-2022
  */
 
-#ifndef OFFCENTER_COMMON_APPMANAGER_APPMANAGER__H_
-#define OFFCENTER_COMMON_APPMANAGER_APPMANAGER__H_
+#ifndef OFFCENTER_COMMON_APPMANAGER_APPMANAGERAPP__H_
+#define OFFCENTER_COMMON_APPMANAGER_APPMANAGERAPP__H_
 
 #include "offcenter/common/framework/application/IApp.hpp"
 
@@ -55,4 +55,4 @@ protected:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_APPMANAGER_APPMANAGER__H_ */
+#endif /* OFFCENTER_COMMON_APPMANAGER_APPMANAGERAPP__H_ */
