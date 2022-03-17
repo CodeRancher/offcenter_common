@@ -27,7 +27,7 @@
 #include "offcenter/common/DateTimeInterval.hpp"
 #include "offcenter/common/DateTimeException.hpp"
 
-TEST (DateTimeInterval, parse)
+TEST (DateTimeInterval, Parse)
 {
 	using namespace offcenter::common;
 	using namespace std::chrono;
@@ -35,9 +35,8 @@ TEST (DateTimeInterval, parse)
 	//offcenter::common::DateTimeIntervalConfig config;
 	//offcenter::common::DateTimeInterval dti;
 
-	UTCDateTime dt = make_UTCDateTimeFromTimestamp("2000-01-01T00:00:00.000000000Z");
-
-	std::cout << UTCDateTimeToISO8601(dt);
+	//UTCDateTime dt = make_UTCDateTimeFromTimestamp("1623445135.000000000");
+	//std::cout << UTCDateTimeToISO8601(dt);
 
 	/*
 	using namespace offcenter::common;
