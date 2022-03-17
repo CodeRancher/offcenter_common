@@ -28,24 +28,37 @@ add_compile_definitions(ELPP_THREAD_SAFE)
 add_compile_definitions(ELPP_FRESH_LOG_FILE)
 add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
 
-add_executable(offcenter_common_tests
+set(EXE_NAME "${TEST_PREFIX}.${PROJECT_NAME}.common")
+
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
 	${CMAKE_CURRENT_LIST_DIR}/src/test_simulated_command_line.cpp
 	${CMAKE_CURRENT_LIST_DIR}/src/date_time_test.cpp
 	${CMAKE_CURRENT_LIST_DIR}/src/date_time_interval_test.cpp
+	${CMAKE_CURRENT_LIST_DIR}/src/conversion_test.cpp
 )
 
-target_link_libraries(offcenter_common_tests
+set_target_properties(${EXE_NAME}
+	PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_TEST_DIR}
+)
+
+target_link_libraries(${EXE_NAME}
 	offcenter_common
+	Boost::iostreams
+	Boost::headers
 	GTest::gtest
+	${BZIP2_LIBRARIES}
+	${MPFR_LIBRARIES}
+	${GMP_LIBRARIES}
 	${EASYLOGGINGPP_LIBRARY}
 )
 
-target_include_directories(offcenter_common_tests
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
-gtest_discover_tests(offcenter_common_tests)
+gtest_discover_tests(${EXE_NAME})
 
-add_test(NAME monolithic COMMAND offcenter_common_tests)
+add_test(NAME monolithic COMMAND ${EXE_NAME})

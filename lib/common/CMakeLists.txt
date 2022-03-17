@@ -39,6 +39,7 @@ target_sources(offcenter_common
 		${CMAKE_CURRENT_LIST_DIR}/src/DateTime.cpp
 		${CMAKE_CURRENT_LIST_DIR}/src/Utility.cpp
 		${CMAKE_CURRENT_LIST_DIR}/src/Processes.cpp
+		${CMAKE_CURRENT_LIST_DIR}/src/Conversions.cpp
 	PUBLIC
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/ScopeGuard.hpp>
 		$<INSTALL_INTERFACE:include/offcenter/common/ScopeGuard.hpp>
@@ -58,6 +59,8 @@ target_sources(offcenter_common
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/DateTimeInterval.hpp>
 		$<INSTALL_INTERFACE:include/offcenter/common/DateTimeInterval.hpp>
 	
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/Conversions.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/Conversions.hpp>
 )
 
 target_include_directories(offcenter_common
@@ -75,7 +78,10 @@ target_include_directories(offcenter_common
 
 target_link_libraries(offcenter_common
 	Boost::iostreams
+	Boost::headers
 	${BZIP2_LIBRARIES}
+	${MPFR_LIBRARIES}
+	${GMP_LIBRARIES}
 	${EASYLOGGINGPP_LIBRARY}
 )
 
