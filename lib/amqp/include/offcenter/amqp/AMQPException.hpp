@@ -18,8 +18,8 @@
 /// \date   Nov 18, 2020
 /// \brief  AMQP Exception
 
-#ifndef LIB_COMMON_INCLUDE_OFFCENTER_AMQP_AMQPEXCEPTION_HPP_
-#define LIB_COMMON_INCLUDE_OFFCENTER_AMQP_AMQPEXCEPTION_HPP_
+#ifndef OFFCENTER_AMQP_AMQPEXCEPTION_HPP_
+#define OFFCENTER_AMQP_AMQPEXCEPTION_HPP_
 
 #include <stdexcept>
 
@@ -33,15 +33,7 @@ class AMQPException:
 	public std::runtime_error
 {
 public:
-	/// Constructs the exception object with what_arg as explanatory string that can be accessed through what().
-	/// \param[in] what_arg explanatory string
-	explicit AMQPException(const std::string& what_arg):
-		std::runtime_error(what_arg) {}
-
-	/// Constructs the exception object with what_arg as explanatory string that can be accessed through what().
-	/// \param[in] what_arg explanatory string
-	explicit AMQPException(const char* what_arg):
-		std::runtime_error(what_arg) {}
+	using runtime_error::runtime_error;
 
 	virtual ~AMQPException() = default;
 };
@@ -49,5 +41,5 @@ public:
 } /* namespace amqp */
 } /* namespace offcenter */
 
-#endif /* LIB_COMMON_INCLUDE_OFFCENTER_AMQP_AMQPEXCEPTION_HPP_ */
+#endif /* OFFCENTER_AMQP_AMQPEXCEPTION_HPP_ */
 
