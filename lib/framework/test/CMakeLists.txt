@@ -20,29 +20,25 @@
 # @date   05-02-2019
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+offcenter_cxx()
+offcenter_elpp()
+offcenter_test_constants(offcenter_common_framework_tests)
 
 add_compile_definitions(CONFIGFILE_EMPTY="${CMAKE_CURRENT_LIST_DIR}/data/config_empty.cfg")
 add_compile_definitions(CONFIGFILE_BASIC="${CMAKE_CURRENT_LIST_DIR}/data/config_basic.cfg")
 
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
-
-add_executable(offcenter_common_framework_tests
-	src/main.cpp
-	src/test_basic_app.cpp
-	src/test_basic_app_with_config.cpp
-	src/test_amqp_app.cpp
-	src/test_distributed_logging_app.cpp
-	src/test_distributed_status_app.cpp
-	src/test_admin_status.cpp
-	src/test_admin_control.cpp
+add_executable(${EXE_NAME}
+	${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
+	${CMAKE_CURRENT_LIST_DIR}/src/test_basic_app.cpp
+	${CMAKE_CURRENT_LIST_DIR}/src/test_basic_app_with_config.cpp
+	${CMAKE_CURRENT_LIST_DIR}/src/test_amqp_app.cpp
+	${CMAKE_CURRENT_LIST_DIR}/src/test_distributed_logging_app.cpp
+	${CMAKE_CURRENT_LIST_DIR}/src/test_distributed_status_app.cpp
+	${CMAKE_CURRENT_LIST_DIR}/src/test_admin_status.cpp
+	${CMAKE_CURRENT_LIST_DIR}/src/test_admin_control.cpp
 )
 
-target_link_libraries(offcenter_common_framework_tests
+target_link_libraries(${EXE_NAME}
 	GTest::gtest
 	offcenter_common_framework
 	offcenter_common_amqp
@@ -55,7 +51,7 @@ target_link_libraries(offcenter_common_framework_tests
 	OpenSSL::SSL
 )
 
-target_include_directories(offcenter_common_framework_tests
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 		${CMAKE_CURRENT_LIST_DIR}/../include
@@ -66,7 +62,4 @@ target_include_directories(offcenter_common_framework_tests
 		${APR_INCLUDE_DIR}
 )
 
-gtest_discover_tests(offcenter_common_framework_tests)
-
-add_test(NAME monolithic COMMAND offcenter_common_framework_tests)
-
+offcenter_test()

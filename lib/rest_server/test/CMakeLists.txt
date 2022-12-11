@@ -20,22 +20,20 @@
 # @date   05-02-2019
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-add_compile_definitions(ELPP_THREAD_SAFE)
+offcenter_cxx()
+offcenter_elpp()
+offcenter_test_constants(offcenter_common_restserver_tests)
 
 add_compile_definitions(CONFIGFILE_EMPTY="${CMAKE_CURRENT_LIST_DIR}/data/config_empty.cfg")
 add_compile_definitions(CONFIGFILE_BASIC="${CMAKE_CURRENT_LIST_DIR}/data/config_basic.cfg")
 
-add_executable(offcenter_common_rest_server_tests
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
 	${CMAKE_CURRENT_LIST_DIR}/src/test_auto_method_path.cpp
 	${CMAKE_CURRENT_LIST_DIR}/src/test_auto_method_handler.cpp
 )
 
-target_link_libraries(offcenter_common_rest_server_tests
+target_link_libraries(${EXE_NAME}
 	GTest::gtest
 	offcenter_common_framework
 	offcenter_common_restserver
@@ -45,7 +43,7 @@ target_link_libraries(offcenter_common_rest_server_tests
 	${Boost_LIBRARIES}
 )
 
-target_include_directories(offcenter_common_rest_server_tests
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 		${CMAKE_CURRENT_LIST_DIR}/../include
@@ -56,7 +54,4 @@ target_include_directories(offcenter_common_rest_server_tests
 		${APR_INCLUDE_DIR}
 )
 
-gtest_discover_tests(offcenter_common_rest_server_tests)
-
-add_test(NAME monolithic COMMAND offcenter_common_rest_server_tests)
-
+offcenter_test()

@@ -26,7 +26,7 @@
 #include "offcenter/common/amqpserver/IAmqpServerApp.hpp"
 using namespace offcenter::common;
 
-#include "offcenter/amqp/ProducerMessageProducer.hpp"
+#include "offcenter/common/amqp/ProducerMessageProducer.hpp"
 
 #include "AmqpExampleProgramOptions.hpp"
 

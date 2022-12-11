@@ -20,8 +20,8 @@
  * @date   04-09-2021
  */
 
-#ifndef OFFCENTER_COMMON_RESTSERVER_RESTSERVERAPPFOUNDATION_HPP_
-#define OFFCENTER_COMMON_RESTSERVER_RESTSERVERAPPFOUNDATION_HPP_
+#ifndef OffcenterCommon_RESTSERVER_RESTSERVERAPPFOUNDATION_HPP_
+#define OffcenterCommon_RESTSERVER_RESTSERVERAPPFOUNDATION_HPP_
 
 #include <cpprest/http_msg.h>
 #include <cpprest/http_listener.h>
@@ -49,4 +49,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_RESTSERVER_RESTSERVERAPPFOUNDATION_HPP_ */
+#endif /* OffcenterCommon_RESTSERVER_RESTSERVERAPPFOUNDATION_HPP_ */

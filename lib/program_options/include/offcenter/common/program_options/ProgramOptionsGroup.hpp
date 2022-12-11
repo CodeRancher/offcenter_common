@@ -20,8 +20,8 @@
  * @date   04-04-2019
  */
 
-#ifndef OFFCENTER_COMMON_PROGRAMOPTIONS_PROGRAMOPTIONSGROUP_HPP_
-#define OFFCENTER_COMMON_PROGRAMOPTIONS_PROGRAMOPTIONSGROUP_HPP_
+#ifndef OffcenterCommon_PROGRAMOPTIONS_PROGRAMOPTIONSGROUP_HPP_
+#define OffcenterCommon_PROGRAMOPTIONS_PROGRAMOPTIONSGROUP_HPP_
 
 #include <boost/program_options.hpp>
 namespace po = boost::program_options;
@@ -117,4 +117,4 @@ protected:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_PROGRAMOPTIONS_PROGRAMOPTIONSGROUP_HPP_ */
+#endif /* OffcenterCommon_PROGRAMOPTIONS_PROGRAMOPTIONSGROUP_HPP_ */

@@ -20,8 +20,8 @@
  * @date   12-01-2021
  */
 
-#ifndef OFFCENTER_COMMON_IMGUI_IMGUIAPPMANAGER_HPP_
-#define OFFCENTER_COMMON_IMGUI_IMGUIAPPMANAGER_HPP_
+#ifndef OffcenterCommon_IMGUI_IMGUIAPPMANAGER_HPP_
+#define OffcenterCommon_IMGUI_IMGUIAPPMANAGER_HPP_
 
 #include "imgui.h"
 #include "implot.h"
@@ -190,4 +190,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_IMGUI_IMGUIAPPMANAGER_HPP_ */
+#endif /* OffcenterCommon_IMGUI_IMGUIAPPMANAGER_HPP_ */

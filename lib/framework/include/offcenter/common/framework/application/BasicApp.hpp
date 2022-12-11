@@ -20,8 +20,8 @@
  * @date   04-27-2019
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_APPLICATION_BASICAPP_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_APPLICATION_BASICAPP_HPP_
+#ifndef OffcenterCommonFramework_APPLICATION_BASICAPP_HPP_
+#define OffcenterCommonFramework_APPLICATION_BASICAPP_HPP_
 
 ///#include "offcenter/common/framework/application/BasicAppFoundation.hpp"
 ///#include "offcenter/common/program_options/ProgramOptionsManager.hpp"
@@ -69,4 +69,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_APPLICATION_BASICAPP_HPP_ */
+#endif /* OffcenterCommonFramework_APPLICATION_BASICAPP_HPP_ */

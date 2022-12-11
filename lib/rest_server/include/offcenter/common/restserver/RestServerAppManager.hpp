@@ -20,8 +20,8 @@
  * @date   04-09-2021
  */
 
-#ifndef OFFCENTER_COMMON_RESTSERVER_RESTSERVERAPPMANAGER_HPP_
-#define OFFCENTER_COMMON_RESTSERVER_RESTSERVERAPPMANAGER_HPP_
+#ifndef OffcenterCommon_RESTSERVER_RESTSERVERAPPMANAGER_HPP_
+#define OffcenterCommon_RESTSERVER_RESTSERVERAPPMANAGER_HPP_
 
 #include <boost/bind/bind.hpp>
 
@@ -129,4 +129,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_RESTSERVER_RESTSERVERAPPMANAGER_HPP_ */
+#endif /* OffcenterCommon_RESTSERVER_RESTSERVERAPPMANAGER_HPP_ */

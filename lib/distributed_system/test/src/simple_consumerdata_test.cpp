@@ -23,10 +23,10 @@
 #include <memory>
 
 #include <gtest/gtest.h>
-#include "offcenter/distributedsystem/ConsumerDataListener.hpp"
-#include "offcenter/distributedsystem/ConsumerDataManager.hpp"
+#include "offcenter/common/distributedsystem/ConsumerDataListener.hpp"
+#include "offcenter/common/distributedsystem/ConsumerDataManager.hpp"
 
-#include "offcenter/amqp/Message.hpp"
+#include "offcenter/common/amqp/Message.hpp"
 
 
 /***

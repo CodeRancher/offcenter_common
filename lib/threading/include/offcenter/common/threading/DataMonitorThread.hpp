@@ -20,8 +20,8 @@
  * @date   10-17-2021
  */
 
-#ifndef OFFCENTER_COMMON_THREADING_DATAMONITORTHREAD_HPP_
-#define OFFCENTER_COMMON_THREADING_DATAMONITORTHREAD_HPP_
+#ifndef OffcenterCommon_THREADING_DATAMONITORTHREAD_HPP_
+#define OffcenterCommon_THREADING_DATAMONITORTHREAD_HPP_
 
 #include <mutex>
 
@@ -85,4 +85,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_THREADING_DATAMONITORTHREAD_HPP_ */
+#endif /* OffcenterCommon_THREADING_DATAMONITORTHREAD_HPP_ */

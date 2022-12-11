@@ -20,8 +20,8 @@
  * @date   04-27-2019
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_PROGRAMOPTIONS_MANAGEDAPPPROGRAMOPTIONS_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_PROGRAMOPTIONS_MANAGEDAPPPROGRAMOPTIONS_HPP_
+#ifndef OffcenterCommonFramework_PROGRAMOPTIONS_MANAGEDAPPPROGRAMOPTIONS_HPP_
+#define OffcenterCommonFramework_PROGRAMOPTIONS_MANAGEDAPPPROGRAMOPTIONS_HPP_
 
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
 #include "offcenter/common/framework/application/ManagedAppConfig.hpp"
@@ -65,4 +65,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_PROGRAMOPTIONS_MANAGEDAPPPROGRAMOPTIONS_HPP_ */
+#endif /* OffcenterCommonFramework_PROGRAMOPTIONS_MANAGEDAPPPROGRAMOPTIONS_HPP_ */

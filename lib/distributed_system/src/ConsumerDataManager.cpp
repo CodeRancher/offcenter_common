@@ -20,7 +20,7 @@
  * @date   03-28-2020
  */
 
-#include "offcenter/distributedsystem/ConsumerDataManager.hpp"
+#include "offcenter/common/distributedsystem/ConsumerDataManager.hpp"
 
 namespace offcenter {
 namespace distributedsystem {

@@ -20,8 +20,8 @@
  * @date   06-09-2019
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_CONFIG_AMQPAPPCONFIG_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_CONFIG_AMQPAPPCONFIG_HPP_
+#ifndef OffcenterCommonFramework_CONFIG_AMQPAPPCONFIG_HPP_
+#define OffcenterCommonFramework_CONFIG_AMQPAPPCONFIG_HPP_
 
 namespace offcenter {
 namespace common {
@@ -55,4 +55,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_CONFIG_AMQPAPPCONFIG_HPP_ */
+#endif /* OffcenterCommonFramework_CONFIG_AMQPAPPCONFIG_HPP_ */

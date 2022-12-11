@@ -22,7 +22,7 @@
 #include <gmock/gmock.h>
 using ::testing::HasSubstr;
 
-#include "offcenter/amqp/URLFailover.hpp"
+#include "offcenter/common/amqp/URLFailover.hpp"
 
 TEST (URLFailover, EmptyCreationTest)
 {

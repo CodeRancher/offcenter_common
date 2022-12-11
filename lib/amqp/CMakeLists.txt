@@ -20,23 +20,17 @@
 # @date   05-27-2019
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+include(OffcenterBuild)
 
-add_library(offcenter_common_amqp STATIC)
+offcenter_cxx()
+offcenter_elpp()
+offcenter_lib_setup(offcenter_common_amqp common_amqp)
 
 set(version 0.0.1)
-set_property(TARGET offcenter_common_amqp PROPERTY VERSION ${version})
-set_property(TARGET offcenter_common_amqp PROPERTY SOVERSION 0)
-set_property(TARGET offcenter_common_amqp PROPERTY INTERFACE_OffcenterCommonAmqp_MAJOR_VERSION 0)
-set_property(TARGET offcenter_common_amqp APPEND PROPERTY COMPATIBLE_INTERFACE_STRING OffcenterCommonAmqp_MAJOR_VERSION)
 
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
+add_library(${LIB_NAME} STATIC)
 
-target_sources(offcenter_common_amqp
+target_sources(${LIB_NAME}
 	PRIVATE
 		#${CMAKE_CURRENT_LIST_DIR}/src/Connection.cpp
 		${CMAKE_CURRENT_LIST_DIR}/src/ConnectionSettings.cpp
@@ -47,84 +41,79 @@ target_sources(offcenter_common_amqp
 		${CMAKE_CURRENT_LIST_DIR}/src/SessionProducerDynamicDestination.cpp
 
 	PUBLIC
-		#$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/Callback.hpp>
-		#$<INSTALL_INTERFACE:include/offcenter/amqp/Callback.hpp>
+		#$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/Callback.hpp>
+		#$<INSTALL_INTERFACE:include/offcenter/common/amqp/Callback.hpp>
 
-		#$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/Connection.hpp>
-		#$<INSTALL_INTERFACE:include/offcenter/amqp/Connection.hpp>
+		#$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/Connection.hpp>
+		#$<INSTALL_INTERFACE:include/offcenter/common/amqp/Connection.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/ConnectionSettings.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/ConnectionSettings.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/ConnectionSettings.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/ConnectionSettings.hpp>
 
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/ConnectionOptions.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/ConnectionOptions.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/ConnectionOptions.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/ConnectionOptions.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/ConnectionOptionElements.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/ConnectionOptionElements.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/ConnectionOptionElements.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/ConnectionOptionElements.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/Consumer.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/Consumer.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/Consumer.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/Consumer.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/SessionConsumer.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/SessionConsumer.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/SessionConsumer.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/SessionConsumer.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/Helper.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/Helper.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/Helper.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/Helper.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/Message.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/Message.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/Message.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/Message.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/MessageBase.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/MessageBase.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/MessageBase.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/MessageBase.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/Producer.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/Producer.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/Producer.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/Producer.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/SessionProducer.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/SessionProducer.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/SessionProducer.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/SessionProducer.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/SessionProducerDynamicDestination.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/SessionProducerDynamicDestination.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/SessionProducerDynamicDestination.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/SessionProducerDynamicDestination.hpp>
 
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/ProducerConsumerBase.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/ProducerConsumerBase.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/ProducerConsumerBase.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/ProducerConsumerBase.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/URLSchemeHost.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/URLSchemeHost.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/URLSchemeHost.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/URLSchemeHost.hpp>
 	
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/amqp/AMQPException.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/amqp/AMQPException.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/amqp/AMQPException.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/amqp/AMQPException.hpp>
 )
 
-#message(STATUS "ActiveMQ source dir: ${activemq-cpp_SOURCE_DIR}")
-#message(STATUS "ActiveMQ binary dir: ${activemq-cpp_BINARY_DIR}")
+target_include_directories(${LIB_NAME}
+	PUBLIC
+		${EASYLOGGINGPP_INCLUDE_DIR}
+		${ACTIVEMQCPP_INCLUDE_DIR}
+		${APR_INCLUDE_DIR}
+)
 
-target_link_libraries(offcenter_common_amqp
+target_include_directories(${LIB_NAME}
+	PUBLIC
+		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+
+	#	"$<BUILD_INTERFACE:${ACTIVEMQCPP_INCLUDE_DIR}>"
+#		"$<BUILD_INTERFACE:${APR_INCLUDE_DIR}>"
+)
+
+target_link_libraries(${LIB_NAME}
 	offcenter_common
 	${EASYLOGGINGPP_LIBRARY}
 	${APR_LIBRARIES}
 )
 
-target_include_directories(offcenter_common_amqp
-	SYSTEM PUBLIC
-		${EASYLOGGINGPP_INCLUDE_DIR}
-)
-
-target_include_directories(offcenter_common_amqp
-	PUBLIC
-		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
-		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
-
-		"$<BUILD_INTERFACE:${ACTIVEMQCPP_INCLUDE_DIR}>"
-		"$<BUILD_INTERFACE:${APR_INCLUDE_DIR}>"
-)
-
-#install(TARGETS offcenter_common_amqp EXPORT offcenter_common_amqp DESTINATION lib)
-#install (
-#	DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
-#	DESTINATION include
-#	FILES_MATCHING PATTERN "*.h*"
-#)
+include(OffcenterInstall)
+offcenter_lib_install()
 
 if(ENABLE_UNIT_TESTS)
 	add_subdirectory(test)

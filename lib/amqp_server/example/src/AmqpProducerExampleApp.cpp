@@ -26,7 +26,7 @@
 
 #include "easylogging++.h"
 
-#include "offcenter/amqp/URLSchemeHost.hpp"
+#include "offcenter/common/amqp/URLSchemeHost.hpp"
 using namespace offcenter;
 
 #include "AmqpProducerExampleApp.hpp"

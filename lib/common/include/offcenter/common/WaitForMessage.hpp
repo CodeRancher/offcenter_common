@@ -20,8 +20,8 @@
  * @date   03-25-2020
  */
 
-#ifndef OFFCENTER_COMMON_WAITFORMESSAGE_HPP_
-#define OFFCENTER_COMMON_WAITFORMESSAGE_HPP_
+#ifndef OffcenterCommon_WAITFORMESSAGE_HPP_
+#define OffcenterCommon_WAITFORMESSAGE_HPP_
 
 #include <mutex>
 #include <condition_variable>
@@ -62,4 +62,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_WAITFORMESSAGE_HPP_ */
+#endif /* OffcenterCommon_WAITFORMESSAGE_HPP_ */

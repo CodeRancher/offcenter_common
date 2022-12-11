@@ -20,64 +20,64 @@
 # @date   03-15-2021
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
+offcenter_cxx()
+offcenter_elpp()
 
 ###############################################################################
 # offcenter_amqp_example_simple_consumer
 #
-add_executable(offcenter_amqp_example_simple_consumer 
+offcenter_example_constants(offcenter_amqp_example_simple_consumer)
+add_executable(${EXE_NAME} 
 	${CMAKE_CURRENT_LIST_DIR}/src/amqp_example_simple_consumer.cpp
 )
 
-target_link_libraries(offcenter_amqp_example_simple_consumer
+target_link_libraries(${EXE_NAME}
 	${EASYLOGGINGPP_LIBRARY}
 	${ACTIVEMQCPP_LIBRARIES}
 	${APR_LIBRARIES}
 	Threads::Threads
 )
 
-target_include_directories(offcenter_amqp_example_simple_consumer
+target_include_directories(${EXE_NAME}
 	SYSTEM PUBLIC
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
+
+offcenter_example()
 
 ###############################################################################
 # offcenter_amqp_example_simple_producer
 #
-add_executable(offcenter_amqp_example_simple_producer
+offcenter_example_constants(offcenter_amqp_example_simple_producer)
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/amqp_example_simple_producer.cpp
 )
 
-target_link_libraries(offcenter_amqp_example_simple_producer
+target_link_libraries(${EXE_NAME}
 	${EASYLOGGINGPP_LIBRARY}
 	${ACTIVEMQCPP_LIBRARIES}
 	${APR_LIBRARIES}
 	Threads::Threads
 )
 
-target_include_directories(offcenter_amqp_example_simple_producer
+target_include_directories(${EXE_NAME}
 	SYSTEM PUBLIC
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
+offcenter_example()
+
 ###############################################################################
 # offcenter_amqp_example_process_message
 #
-add_executable(offcenter_amqp_example_process_message 
+offcenter_example_constants(offcenter_amqp_example_process_message)
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/process_amqp_message_example.cpp
 )
 
-target_link_libraries(offcenter_amqp_example_process_message
+target_link_libraries(${EXE_NAME}
 	offcenter_common_amqp
 	offcenter_common_threading
 	${EASYLOGGINGPP_LIBRARY}
@@ -87,21 +87,24 @@ target_link_libraries(offcenter_amqp_example_process_message
 	OpenSSL::SSL
 )
 
-target_include_directories(offcenter_amqp_example_process_message
+target_include_directories(${EXE_NAME}
 	SYSTEM PUBLIC
 		${EASYLOGGINGPP_INCLUDE_DIR}
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${APR_INCLUDE_DIR}
 )
 
+offcenter_example()
+
 ###############################################################################
 # offcenter_amqp_example_activemqcpp
 #
-add_executable(offcenter_amqp_example_activemqcpp 
+offcenter_example_constants(offcenter_amqp_example_activemqcpp)
+add_executable(${EXE_NAME} 
 	${CMAKE_CURRENT_LIST_DIR}/src/amqp_example_activemqcpp.cpp
 )
 
-target_link_libraries(offcenter_amqp_example_activemqcpp
+target_link_libraries(${EXE_NAME}
 	offcenter_common_amqp
 	${ACTIVEMQCPP_LIBRARIES}
 	${APR_LIBRARIES}
@@ -109,9 +112,10 @@ target_link_libraries(offcenter_amqp_example_activemqcpp
 	OpenSSL::SSL
 )
 
-target_include_directories(offcenter_amqp_example_activemqcpp
+target_include_directories(${EXE_NAME}
 	SYSTEM PUBLIC
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${APR_INCLUDE_DIR}
 )
 
+offcenter_example()

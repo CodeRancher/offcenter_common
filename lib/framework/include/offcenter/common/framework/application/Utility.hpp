@@ -20,8 +20,8 @@
  * @date   03-23-2021
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_APPLICATION_UTILITY_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_APPLICATION_UTILITY_HPP_
+#ifndef OffcenterCommonFramework_APPLICATION_UTILITY_HPP_
+#define OffcenterCommonFramework_APPLICATION_UTILITY_HPP_
 
 #include <thread>
 
@@ -59,4 +59,4 @@ std::thread create_basic_app_in_thread(int argc, char **argv)
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_APPLICATION_UTILITY_HPP_ */
+#endif /* OffcenterCommonFramework_APPLICATION_UTILITY_HPP_ */

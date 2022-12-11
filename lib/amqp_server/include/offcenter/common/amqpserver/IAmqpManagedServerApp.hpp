@@ -20,8 +20,8 @@
  * @date   04-27-2021
  */
 
-#ifndef OFFCENTER_COMMON_AMQPSERVER_IAMQPMANAGEDSERVERAPP_HPP_
-#define OFFCENTER_COMMON_AMQPSERVER_IAMQPMANAGEDSERVERAPP_HPP_
+#ifndef OffcenterCommon_AMQPSERVER_IAMQPMANAGEDSERVERAPP_HPP_
+#define OffcenterCommon_AMQPSERVER_IAMQPMANAGEDSERVERAPP_HPP_
 
 #include "offcenter/common/amqpserver/IAmqpServerApp.hpp"
 
@@ -47,4 +47,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_AMQPSERVER_IAMQPMANAGEDSERVERAPP_HPP_ */
+#endif /* OffcenterCommon_AMQPSERVER_IAMQPMANAGEDSERVERAPP_HPP_ */

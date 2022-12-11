@@ -20,47 +20,40 @@
 # @date   01-28-2019
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+include(OffcenterBuild)
 
-set(LIBS offcenter_common)
-
-add_compile_definitions(ELPP_THREAD_SAFE)
-
-add_library(offcenter_common_distributedsystem STATIC)
-
+offcenter_cxx()
+offcenter_elpp()
+offcenter_lib_setup(offcenter_common_distributed_system common_distributed_system)
 set(version 0.0.1)
-set_property(TARGET offcenter_common_distributedsystem PROPERTY VERSION ${version})
-set_property(TARGET offcenter_common_distributedsystem PROPERTY SOVERSION 0)
-set_property(TARGET offcenter_common_distributedsystem PROPERTY INTERFACE_OandaCommonDistributedSystem_MAJOR_VERSION 0)
-set_property(TARGET offcenter_common_distributedsystem APPEND PROPERTY COMPATIBLE_INTERFACE_STRING OandaCommonDistributedSystem_MAJOR_VERSION)
 
-target_sources(offcenter_common_distributedsystem
+add_library(${LIB_NAME} STATIC)
+
+target_sources(${LIB_NAME}
 	PRIVATE
 		${CMAKE_CURRENT_LIST_DIR}/src/ConsumerDataManager.cpp
 	PUBLIC
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/distributedsystem/ConsumerDataListener.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/distributedsystem/ConsumerDataListener.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/distributedsystem/ConsumerDataListener.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/distributedsystem/ConsumerDataListener.hpp>
 
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/distributedsystem/ConsumerDataManager.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/distributedsystem/ConsumerDataManager.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/distributedsystem/ConsumerDataManager.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/distributedsystem/ConsumerDataManager.hpp>
 		
 )
 
-target_include_directories(offcenter_common_distributedsystem
+target_link_libraries(${LIB_NAME}
+	offcenter_common
+)
+
+target_include_directories(${LIB_NAME}
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 
 )
 
-#install(TARGETS offcenter_common_distributedsystem EXPORT offcenter_common_distributedsystem DESTINATION lib)
-#install (
-#	DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
-#	DESTINATION include
-#	FILES_MATCHING PATTERN "*.h*"
-#)
+include(OffcenterInstall)
+offcenter_lib_install()
 
 if(ENABLE_UNIT_TESTS)
 	add_subdirectory(test)

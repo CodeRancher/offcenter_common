@@ -20,8 +20,8 @@
  * @date   05-04-2020
  */
 
-#ifndef OFFCENTER_COMMON_UTILITY_HPP_
-#define OFFCENTER_COMMON_UTILITY_HPP_
+#ifndef OffcenterCommon_UTILITY_HPP_
+#define OffcenterCommon_UTILITY_HPP_
 
 #include <string>
 #include <initializer_list>
@@ -95,4 +95,4 @@ bool stringToBool(const std::string& str);
 
 
 
-#endif /* OFFCENTER_COMMON_UTILITY_HPP_ */
+#endif /* OffcenterCommon_UTILITY_HPP_ */

@@ -20,8 +20,8 @@
  * @date 04-17-2019
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_APPLICATION_IMANAGEDAPP_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_APPLICATION_IMANAGEDAPP_HPP_
+#ifndef OffcenterCommonFramework_APPLICATION_IMANAGEDAPP_HPP_
+#define OffcenterCommonFramework_APPLICATION_IMANAGEDAPP_HPP_
 
 #include <string>
 
@@ -52,4 +52,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_APPLICATION_IMANAGEDAPP_HPP_ */
+#endif /* OffcenterCommonFramework_APPLICATION_IMANAGEDAPP_HPP_ */

@@ -20,8 +20,8 @@
  * @date   05-06-2021
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCONTROLCONSUMER_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCONTROLCONSUMER_HPP_
+#ifndef OffcenterCommonFramework_ADMIN_ADMINCONTROLCONSUMER_HPP_
+#define OffcenterCommonFramework_ADMIN_ADMINCONTROLCONSUMER_HPP_
 
 #include <memory>
 
@@ -30,10 +30,10 @@
 
 #include "easylogging++.h"
 
-#include "offcenter/amqp/SessionConsumer.hpp"
-#include "offcenter/amqp/MessageCallback.hpp"
+#include "offcenter/common/amqp/SessionConsumer.hpp"
+#include "offcenter/common/amqp/MessageCallback.hpp"
 #include "offcenter/common/framework/admin/AdminControlMessage.hpp"
-#include "offcenter/amqp/Consumer.hpp"
+#include "offcenter/common/amqp/Consumer.hpp"
 
 namespace offcenter {
 namespace common {
@@ -72,4 +72,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCONTROLCONSUMER_HPP_ */
+#endif /* OffcenterCommonFramework_ADMIN_ADMINCONTROLCONSUMER_HPP_ */

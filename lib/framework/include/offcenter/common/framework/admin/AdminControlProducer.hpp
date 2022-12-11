@@ -20,13 +20,13 @@
  * @date   05-03-2021
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCONTROLPRODUCER_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCONTROLPRODUCER_HPP_
+#ifndef OffcenterCommonFramework_ADMIN_ADMINCONTROLPRODUCER_HPP_
+#define OffcenterCommonFramework_ADMIN_ADMINCONTROLPRODUCER_HPP_
 
 #include <memory>
 #include <mutex>
 
-#include "offcenter/amqp/SessionProducerDynamicDestination.hpp"
+#include "offcenter/common/amqp/SessionProducerDynamicDestination.hpp"
 #include "offcenter/common/framework/admin/AdminControlMessage.hpp"
 
 namespace offcenter {
@@ -74,4 +74,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCONTROLPRODUCER_HPP_ */
+#endif /* OffcenterCommonFramework_ADMIN_ADMINCONTROLPRODUCER_HPP_ */

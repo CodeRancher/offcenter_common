@@ -20,48 +20,33 @@
 # @date   03-23-2021
 #
 
-#set(LIBS offcenter_common)
+include(OffcenterBuild)
 
-#include(${CMAKE_CURRENT_LIST_DIR}/../../cmake/FindAPR.cmake)
-#include(${CMAKE_CURRENT_LIST_DIR}/../../cmake/FindActiveMQcpp.cmake)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-add_compile_definitions(ELPP_THREAD_SAFE)
-
-add_library(offcenter_common_soci "")
-
+offcenter_cxx()
+offcenter_elpp()
+offcenter_lib_setup(offcenter_common_soci common_soci)
 set(version 0.0.1)
 
-set_property(TARGET offcenter_common_soci PROPERTY VERSION ${version})
-set_property(TARGET offcenter_common_soci PROPERTY SOVERSION 0)
-set_property(TARGET offcenter_common_soci PROPERTY INTERFACE_OffcenterCommonSOCI_MAJOR_VERSION 0)
-set_property(TARGET offcenter_common_soci APPEND PROPERTY COMPATIBLE_INTERFACE_STRING OffcenterCommonSOCI_MAJOR_VERSION)
+add_library(${LIB_NAME} STATIC)
 
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
-
-target_sources(offcenter_common_soci
+target_sources(${LIB_NAME}
 	PRIVATE
 		${CMAKE_CURRENT_LIST_DIR}/src/Session.cpp
 		${CMAKE_CURRENT_LIST_DIR}/src/MySQLOptions.cpp
 		${CMAKE_CURRENT_LIST_DIR}/src/Transaction.cpp
 	PUBLIC
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/soci/Session.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/soci/Session.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/soci/Session.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/soci/Session.hpp>
 		
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/soci/MySQLOptions.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/soci/MySQLOptions.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/soci/MySQLOptions.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/soci/MySQLOptions.hpp>
 		
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/soci/Transaction.hpp>
-		$<INSTALL_INTERFACE:include/offcenter/soci/Transaction.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/soci/Transaction.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/soci/Transaction.hpp>
 		
 )
 
-target_link_libraries(offcenter_common_soci
+target_link_libraries(${LIB_NAME}
 	offcenter_common_threading
 	${EASYLOGGINGPP_LIBRARY}
 	${SOCI_mysql_PLUGIN}
@@ -69,7 +54,7 @@ target_link_libraries(offcenter_common_soci
 	${MariaDBClient_LIBRARIES}
 )
 
-target_include_directories(offcenter_common_soci
+target_include_directories(${LIB_NAME}
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
@@ -78,12 +63,8 @@ target_include_directories(offcenter_common_soci
 		"$<BUILD_INTERFACE:${MariaDBClient_INCLUDE_DIRS}>"
 )
 
-#install(TARGETS offcenter_common_soci EXPORT offcenter_common_soci DESTINATION lib)
-#install (
-#	DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
-#	DESTINATION include
-#	FILES_MATCHING PATTERN "*.h*"
-#)
+include(OffcenterInstall)
+offcenter_lib_install()
 
 if(ENABLE_UNIT_TESTS)
 	add_subdirectory(test)

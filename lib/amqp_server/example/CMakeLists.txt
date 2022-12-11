@@ -20,14 +20,8 @@
 # @date   04-13-2021
 #
 
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
+offcenter_cxx()
+offcenter_elpp()
 
 set(AMQP_LIBRARIES
 	offcenter_common_framework
@@ -52,17 +46,18 @@ message(STATUS "COPY ${CMAKE_CURRENT_LIST_DIR}/config.ini DESTINATION ${CMAKE_BI
 
 ###############################################################################
 # Example Consumer
-add_executable (offcenter_amqpserver_example_consumer
+offcenter_example_constants(amqp_server_example_consumer)
+add_executable (${EXE_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/src/amqp_consumer.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/AmqpConsumerExampleApp.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/AmqpDataElement.cpp
 )
 
-target_link_libraries(offcenter_amqpserver_example_consumer
+target_link_libraries(${EXE_NAME}
 	${AMQP_LIBRARIES}
 )
 
-target_include_directories(offcenter_amqpserver_example_consumer
+target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 	SYSTEM
@@ -71,19 +66,22 @@ target_include_directories(offcenter_amqpserver_example_consumer
 		${APR_INCLUDE_DIR}
 )
 
+offcenter_example()
+
 ###############################################################################
 # Example Consumer Producer
-add_executable (offcenter_amqpserver_example_consumer_producer
+offcenter_example_constants(amqpserver_consumer_producer)
+add_executable (${EXE_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/src/amqp_consumer_producer.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/AmqpConsumerProducerExampleApp.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/AmqpDataElement.cpp
 )
 
-target_link_libraries(offcenter_amqpserver_example_consumer_producer
+target_link_libraries(${EXE_NAME}
 	${AMQP_LIBRARIES}
 )
 
-target_include_directories(offcenter_amqpserver_example_consumer_producer
+target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 	SYSTEM
@@ -92,19 +90,22 @@ target_include_directories(offcenter_amqpserver_example_consumer_producer
 		${APR_INCLUDE_DIR}
 )
 
+offcenter_example()
+
 ###############################################################################
 # Example Producer
-add_executable (offcenter_amqpserver_example_producer
+offcenter_example_constants(amqpserver_producer)
+add_executable (${EXE_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/src/amqp_producer.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/AmqpProducerExampleApp.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/AmqpDataElement.cpp
 )
 
-target_link_libraries(offcenter_amqpserver_example_producer
+target_link_libraries(${EXE_NAME}
 	${AMQP_LIBRARIES}
 )
 
-target_include_directories(offcenter_amqpserver_example_producer
+target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 	SYSTEM
@@ -112,6 +113,8 @@ target_include_directories(offcenter_amqpserver_example_producer
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${APR_INCLUDE_DIR}
 )
+
+offcenter_example()
 
 ###############################################################################
 # Example Consumer

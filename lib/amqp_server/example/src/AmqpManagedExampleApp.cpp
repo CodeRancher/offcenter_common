@@ -28,9 +28,9 @@
 #include "offcenter/common/InterruptHandler.hpp"
 using namespace offcenter::common;
 
-#include "offcenter/amqp/Listener.hpp"
-#include "offcenter/amqp/URLSchemeHost.hpp"
-#include "offcenter/amqp/ProducerMessageProducer.hpp"
+#include "offcenter/common/amqp/Listener.hpp"
+#include "offcenter/common/amqp/URLSchemeHost.hpp"
+#include "offcenter/common/amqp/ProducerMessageProducer.hpp"
 
 using namespace offcenter;
 

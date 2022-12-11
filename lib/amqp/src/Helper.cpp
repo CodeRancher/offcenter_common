@@ -21,7 +21,7 @@
 
 #include "easylogging++.h"
 
-#include "offcenter/amqp/Helper.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
 
 namespace offcenter {
 namespace amqp {

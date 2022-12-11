@@ -20,8 +20,8 @@
  * @date   05-25-2019
  */
 
-#ifndef OFFCENTER_COMMON_RUNTIMEEXCEPTION_HPP_
-#define OFFCENTER_COMMON_RUNTIMEEXCEPTION_HPP_
+#ifndef OffcenterCommon_RUNTIMEEXCEPTION_HPP_
+#define OffcenterCommon_RUNTIMEEXCEPTION_HPP_
 
 #include <stdexcept>
 
@@ -53,4 +53,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_RUNTIMEEXCEPTION_HPP_ */
+#endif /* OffcenterCommon_RUNTIMEEXCEPTION_HPP_ */

@@ -20,15 +20,9 @@
 # @date   04-11-2019
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
-
-set(EXE_NAME "${TEST_PREFIX}.${PROJECT_NAME}.common")
+offcenter_cxx()
+offcenter_elpp()
+offcenter_test_constants(common)
 
 add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
@@ -36,11 +30,6 @@ add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/date_time_test.cpp
 	${CMAKE_CURRENT_LIST_DIR}/src/date_time_interval_test.cpp
 	${CMAKE_CURRENT_LIST_DIR}/src/conversion_test.cpp
-)
-
-set_target_properties(${EXE_NAME}
-	PROPERTIES
-		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_TEST_DIR}
 )
 
 target_link_libraries(${EXE_NAME}
@@ -59,6 +48,4 @@ target_include_directories(${EXE_NAME}
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
-gtest_discover_tests(${EXE_NAME})
-
-add_test(NAME monolithic COMMAND ${EXE_NAME})
+offcenter_test()

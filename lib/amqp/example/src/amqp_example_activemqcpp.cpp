@@ -20,7 +20,7 @@
  * @date   01-05-2022
  */
 
-#include "offcenter/amqp/ActiveMQCPP.hpp"
+#include "offcenter/common/amqp/ActiveMQCPP.hpp"
 
 int main(int argc, char *argv[])
 {

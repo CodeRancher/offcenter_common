@@ -20,14 +20,14 @@
  * @date   05-03-2021
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINSTATUSPROVIDER_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINSTATUSPROVIDER_HPP_
+#ifndef OffcenterCommonFramework_ADMIN_ADMINSTATUSPROVIDER_HPP_
+#define OffcenterCommonFramework_ADMIN_ADMINSTATUSPROVIDER_HPP_
 
 #include <memory>
 #include <mutex>
 
-#include "offcenter/amqp/SessionProducer.hpp"
-#include "offcenter/amqp/Producer.hpp"
+#include "offcenter/common/amqp/SessionProducer.hpp"
+#include "offcenter/common/amqp/Producer.hpp"
 #include "offcenter/common/framework/admin/AdminStatusMessage.hpp"
 
 namespace offcenter {
@@ -76,4 +76,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINSTATUSPROVIDER_HPP_ */
+#endif /* OffcenterCommonFramework_ADMIN_ADMINSTATUSPROVIDER_HPP_ */

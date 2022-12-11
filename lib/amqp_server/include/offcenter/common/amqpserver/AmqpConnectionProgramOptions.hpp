@@ -30,7 +30,7 @@
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
 using namespace offcenter::common;
 
-#include "offcenter/amqp/ConnectionOptions.hpp"
+#include "offcenter/common/amqp/ConnectionOptions.hpp"
 
 namespace offcenter {
 namespace common {

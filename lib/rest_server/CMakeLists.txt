@@ -20,23 +20,16 @@
 # @date   05-13-2021
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+include(OffcenterBuild)
 
-add_library(offcenter_common_restserver STATIC)
-
+offcenter_cxx()
+offcenter_elpp()
+offcenter_lib_setup(offcenter_common_restserver common_restserver)
 set(version 0.0.1)
-set_property(TARGET offcenter_common_restserver PROPERTY VERSION ${version})
-set_property(TARGET offcenter_common_restserver PROPERTY SOVERSION 0)
-set_property(TARGET offcenter_common_restserver PROPERTY INTERFACE_OffcenterCommonAmqp_MAJOR_VERSION 0)
-set_property(TARGET offcenter_common_restserver APPEND PROPERTY COMPATIBLE_INTERFACE_STRING OffcenterCommonAmqp_MAJOR_VERSION)
 
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
+add_library(${LIB_NAME} STATIC)
 
-target_sources(offcenter_common_restserver
+target_sources(${LIB_NAME}
 	PRIVATE
 		${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
 		${CMAKE_CURRENT_LIST_DIR}/src/RestServerAppFoundation.cpp
@@ -46,17 +39,26 @@ target_sources(offcenter_common_restserver
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/restserver/network/Utility.hpp>
 		$<INSTALL_INTERFACE:include/offcenter/common/restserver/network/Utility.hpp>
 
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/restserver/AutoMethodHandler.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/restserver/AutoMethodHandler.hpp>
+
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/restserver/IRestServerApp.hpp>
 		$<INSTALL_INTERFACE:include/offcenter/common/restserver/IRestServerApp.hpp>
+
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/restserver/RestServerAppFoundation.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/restserver/RestServerAppFoundation.hpp>
 
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/restserver/RestServerAppManager.hpp>
 		$<INSTALL_INTERFACE:include/offcenter/common/restserver/RestServerAppManager.hpp>
 
-		#$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/restserver/RestServerAppFoundation.hpp>
-		#$<INSTALL_INTERFACE:include/offcenter/common/restserver/RestServerAppFoundation.hpp>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/restserver/RestServerOptions.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/restserver/RestServerOptions.hpp>
+
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/restserver/RestServerProgramOptions.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/restserver/RestServerProgramOptions.hpp>
 )
 
-target_link_libraries(offcenter_common_restserver
+target_link_libraries(${LIB_NAME}
 	offcenter_common_framework
 	offcenter_common
 	offcenter_common_program_options
@@ -67,26 +69,19 @@ target_link_libraries(offcenter_common_restserver
 	Threads::Threads
 )
 
-target_include_directories(offcenter_common_restserver SYSTEM
+target_include_directories(${LIB_NAME} SYSTEM
 	PRIVATE
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
-target_include_directories(offcenter_common_restserver
+target_include_directories(${LIB_NAME}
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
-
-#		"$<BUILD_INTERFACE:${ACTIVEMQCPP_INCLUDE_DIR}>"
-#		"$<BUILD_INTERFACE:${APR_INCLUDE_DIR}>"
 )
 
-#install(TARGETS offcenter_common_amqp EXPORT offcenter_common_amqp DESTINATION lib)
-#install (
-#	DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
-#	DESTINATION include
-#	FILES_MATCHING PATTERN "*.h*"
-#)
+include(OffcenterInstall)
+offcenter_lib_install()
 
 if(ENABLE_UNIT_TESTS)
 	add_subdirectory(test)

@@ -34,8 +34,8 @@ INITIALIZE_EASYLOGGINGPP
 #include "offcenter/common/framework/application/AppManager.hpp"
 #include "offcenter/common/framework/application/ManagedAppConfig.hpp"
 #include "offcenter/common/framework/application/Utility.hpp"
-#include "offcenter/soci/MySQLProgramOptions.hpp"
-#include "offcenter/soci/Session.hpp"
+#include "offcenter/common/soci/MySQLProgramOptions.hpp"
+#include "offcenter/common/soci/Session.hpp"
 using namespace offcenter::common;
 
 std::tm stringToTime(const std::string& date) {

@@ -22,7 +22,7 @@
 
 #include "easylogging++.h"
 
-#include "offcenter/amqp/Helper.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
 #include "offcenter/common/framework/admin/AdminStatusConsumer.hpp"
 
 namespace offcenter {

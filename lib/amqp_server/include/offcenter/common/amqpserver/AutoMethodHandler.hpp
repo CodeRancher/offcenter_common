@@ -19,8 +19,8 @@
  * @author Scott Brauer
  * @date   04-14-2021
  */
-#ifndef OFFCENTER_COMMON_RESTSERVER_AUTOMETHODHANDLER_HPP_
-#define OFFCENTER_COMMON_RESTSERVER_AUTOMETHODHANDLER_HPP_
+#ifndef OffcenterCommon_RESTSERVER_AUTOMETHODHANDLER_HPP_
+#define OffcenterCommon_RESTSERVER_AUTOMETHODHANDLER_HPP_
 
 #include <vector>
 #include <map>
@@ -60,4 +60,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_RESTSERVER_AUTOMETHODHANDLER_HPP_ */
+#endif /* OffcenterCommon_RESTSERVER_AUTOMETHODHANDLER_HPP_ */

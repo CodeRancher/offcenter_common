@@ -26,10 +26,10 @@
 
 INITIALIZE_EASYLOGGINGPP
 
-#include "offcenter/amqp/threading/ProcessAmqpMessageThread.hpp"
-#include "offcenter/amqp/Helper.hpp"
-#include "offcenter/amqp/ProducerMessageProducer.hpp"
-#include "offcenter/amqp/ActiveMQCPP.hpp"
+#include "offcenter/common/amqp/threading/ProcessAmqpMessageThread.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
+#include "offcenter/common/amqp/ProducerMessageProducer.hpp"
+#include "offcenter/common/amqp/ActiveMQCPP.hpp"
 
 /*
  * A thread safe print method

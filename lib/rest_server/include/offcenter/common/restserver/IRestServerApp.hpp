@@ -20,8 +20,8 @@
  * @date   04-12-2021
  */
 
-#ifndef OFFCENTER_COMMON_RESTSERVER_IRESTSERVERAPP_HPP_
-#define OFFCENTER_COMMON_RESTSERVER_IRESTSERVERAPP_HPP_
+#ifndef OffcenterCommon_RESTSERVER_IRESTSERVERAPP_HPP_
+#define OffcenterCommon_RESTSERVER_IRESTSERVERAPP_HPP_
 
 #include <string>
 
@@ -54,4 +54,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_RESTSERVER_IRESTSERVERAPP_HPP_ */
+#endif /* OffcenterCommon_RESTSERVER_IRESTSERVERAPP_HPP_ */

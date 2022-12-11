@@ -1,0 +1,5 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/offcenter_common_amqp_server-targets.cmake")
+
+check_required_components(offcenter_common_amqp_server)

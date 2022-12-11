@@ -20,8 +20,8 @@
  * @date   04-09-2021
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_APPLICATION_APPMANAGER_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_APPLICATION_APPMANAGER_HPP_
+#ifndef OffcenterCommonFramework_APPLICATION_APPMANAGER_HPP_
+#define OffcenterCommonFramework_APPLICATION_APPMANAGER_HPP_
 
 //#include "IManagedApp.hpp"
 #include "offcenter/common/program_options/ProgramOptionsManager.hpp"
@@ -127,4 +127,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_APPLICATION_APPMANAGER_HPP_ */
+#endif /* OffcenterCommonFramework_APPLICATION_APPMANAGER_HPP_ */

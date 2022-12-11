@@ -20,8 +20,8 @@
  * @date   04-15-2021
  */
 
-#ifndef OFFCENTER_COMMON_AMQPSERVER_IAMQPSERVERAPP_HPP_
-#define OFFCENTER_COMMON_AMQPSERVER_IAMQPSERVERAPP_HPP_
+#ifndef OffcenterCommon_AMQPSERVER_IAMQPSERVERAPP_HPP_
+#define OffcenterCommon_AMQPSERVER_IAMQPSERVERAPP_HPP_
 
 #include <string>
 
@@ -29,7 +29,7 @@
 #include "offcenter/common/framework/application/IApp.hpp"
 using namespace offcenter::common;
 
-#include "offcenter/amqp/Helper.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
 using namespace offcenter;
 
 namespace offcenter {
@@ -52,4 +52,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_AMQPSERVER_IAMQPSERVERAPP_HPP_ */
+#endif /* OffcenterCommon_AMQPSERVER_IAMQPSERVERAPP_HPP_ */

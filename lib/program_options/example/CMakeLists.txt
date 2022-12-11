@@ -20,36 +20,41 @@
 # @date   03-20-2021
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+offcenter_cxx()
+offcenter_elpp()
 
-add_compile_definitions(ELPP_THREAD_SAFE)
-
-add_executable(single_option_group
-	${CMAKE_CURRENT_LIST_DIR}/single_option_group.cpp
+###############################################################################
+offcenter_example_constants(single_option_group)
+add_executable(${EXE_NAME}
+	${CMAKE_CURRENT_LIST_DIR}/src/single_option_group.cpp
 )
 
-target_link_libraries(single_option_group
+target_link_libraries(${EXE_NAME}
 	Boost::program_options
 )
 
-target_include_directories(single_option_group
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/../include
 		${CMAKE_CURRENT_LIST_DIR}/../../common/include
 )
 
-add_executable(double_option_group
-	${CMAKE_CURRENT_LIST_DIR}/double_option_group.cpp
+offcenter_example()
+
+###############################################################################
+offcenter_example_constants(double_option_group)
+add_executable(${EXE_NAME}
+	${CMAKE_CURRENT_LIST_DIR}/src/double_option_group.cpp
 )
 
-target_link_libraries(double_option_group
+target_link_libraries(${EXE_NAME}
 	Boost::program_options
 )
 
-target_include_directories(double_option_group
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/../include
 		${CMAKE_CURRENT_LIST_DIR}/../../common/include
 )
+
+offcenter_example()

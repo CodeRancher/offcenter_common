@@ -20,8 +20,8 @@
  * @date   12-01-2021
  */
 
-#ifndef OFFCENTER_COMMON_IMGUI_IIMGUIAPP_HPP_
-#define OFFCENTER_COMMON_IMGUI_IIMGUIAPP_HPP_
+#ifndef OffcenterCommon_IMGUI_IIMGUIAPP_HPP_
+#define OffcenterCommon_IMGUI_IIMGUIAPP_HPP_
 
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
 
@@ -45,4 +45,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_IMGUI_IIMGUIAPP_HPP_ */
+#endif /* OffcenterCommon_IMGUI_IIMGUIAPP_HPP_ */

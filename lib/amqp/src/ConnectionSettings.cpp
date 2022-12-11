@@ -19,7 +19,7 @@
  * @author Scott Brauer
  * @date   05-06-2021
  */
-#include "offcenter/amqp/ConnectionSettings.hpp"
+#include "offcenter/common/amqp/ConnectionSettings.hpp"
 
 namespace offcenter {
 namespace amqp {

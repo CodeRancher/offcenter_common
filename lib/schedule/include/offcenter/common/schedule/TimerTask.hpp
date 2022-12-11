@@ -20,8 +20,8 @@
  * @date   02-08-2019
  */
 
-#ifndef OFFCENTER_COMMON_SCHEDULE_TIMERTASK_HPP_
-#define OFFCENTER_COMMON_SCHEDULE_TIMERTASK_HPP_
+#ifndef OffcenterCommon_SCHEDULE_TIMERTASK_HPP_
+#define OffcenterCommon_SCHEDULE_TIMERTASK_HPP_
 
 #include "offcenter/common/schedule/TaskWrapped.hpp"
 
@@ -74,4 +74,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_SCHEDULE_TIMERTASK_HPP_ */
+#endif /* OffcenterCommon_SCHEDULE_TIMERTASK_HPP_ */

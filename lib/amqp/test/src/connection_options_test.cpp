@@ -25,7 +25,7 @@
 #include <gmock/gmock.h>
 using ::testing::HasSubstr;
 
-#include "offcenter/amqp/ConnectionOptions.hpp"
+#include "offcenter/common/amqp/ConnectionOptions.hpp"
 
 TEST (ConnectionURIOptions, SocketOptions)
 {

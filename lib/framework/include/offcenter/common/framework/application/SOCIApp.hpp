@@ -20,8 +20,8 @@
  * @date   03-19-2021
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_APPLICATION_SOCIAPP_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_APPLICATION_SOCIAPP_HPP_
+#ifndef OffcenterCommonFramework_APPLICATION_SOCIAPP_HPP_
+#define OffcenterCommonFramework_APPLICATION_SOCIAPP_HPP_
 
 namespace offcenter {
 namespace common {
@@ -40,4 +40,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_APPLICATION_SOCIAPP_HPP_ */
+#endif /* OffcenterCommonFramework_APPLICATION_SOCIAPP_HPP_ */

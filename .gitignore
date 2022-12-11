@@ -39,3 +39,4 @@ Debug
 *.out
 *.app
 /build/
+/_build/

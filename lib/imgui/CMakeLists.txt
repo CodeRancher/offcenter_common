@@ -20,16 +20,19 @@
 # @date   12-01-2021
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+include(OffcenterBuild)
+
+offcenter_cxx()
+offcenter_elpp()
+offcenter_lib_setup(offcenter_common_imgui common_imgui)
+set(version 0.0.1)
 
 set(IMGUI_DIR "." CACHE STRING "ImGui source directory")
 message(STATUS "IMGUI_DIR       ${IMGUI_DIR}")
 
-add_library(offcenter_common_imgui "")
+add_library(${LIB_NAME} "")
 
-target_sources(offcenter_common_imgui
+target_sources(${LIB_NAME}
 	PRIVATE
 		${IMGUI_DIR}/imgui.cpp
 		${IMGUI_DIR}/imgui_draw.cpp
@@ -41,15 +44,7 @@ target_sources(offcenter_common_imgui
 		${IMPLOT_DIR}/implot_items.cpp
 )
 
-target_include_directories(offcenter_common_imgui
-	BEFORE PUBLIC
-		${CMAKE_CURRENT_LIST_DIR}/include
-	SYSTEM
-		${IMGUI_DIR}
-		${IMGUI_DIR}/backends
-)
-
-target_link_libraries(offcenter_common_imgui
+target_link_libraries(${LIB_NAME}
 	offcenter_common_framework
 	offcenter_common
 	offcenter_common_program_options
@@ -59,17 +54,24 @@ target_link_libraries(offcenter_common_imgui
 	Threads::Threads
 )
 
+target_include_directories(${LIB_NAME}
+	PUBLIC
+		${EASYLOGGINGPP_INCLUDE_DIR}
+		${IMGUI_DIR}
+		${IMGUI_DIR}/backends
+)
 
-#install(TARGETS offcenter_common_framework EXPORT offcenter_common_framework DESTINATION lib)
-#install (
-#	DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
-#	DESTINATION include
-#	FILES_MATCHING PATTERN "*.h*"
-#)
+target_include_directories(${LIB_NAME}
+	PUBLIC
+		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
 
-add_subdirectory(example)
+include(OffcenterInstall)
+offcenter_lib_install()
+
 if(ENABLE_UNIT_TESTS)
 #	add_subdirectory(test)
 endif()
 
-
+add_subdirectory(example)

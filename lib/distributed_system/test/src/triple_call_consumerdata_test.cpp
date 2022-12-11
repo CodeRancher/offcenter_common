@@ -23,8 +23,8 @@
 #include <memory>
 
 #include <gtest/gtest.h>
-#include "offcenter/distributedsystem/ConsumerDataListener.hpp"
-#include "offcenter/distributedsystem/ConsumerDataManager.hpp"
+#include "offcenter/common/distributedsystem/ConsumerDataListener.hpp"
+#include "offcenter/common/distributedsystem/ConsumerDataManager.hpp"
 
 #include "offcenter/common/WaitForMessage.hpp"
 #include "triple_call_test/StageOne.hpp"

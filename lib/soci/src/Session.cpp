@@ -24,8 +24,8 @@
 
 #include "easylogging++.h"
 
-#include "offcenter/soci/Session.hpp"
-#include "offcenter/soci/SOCIRuntimeException.hpp"
+#include "offcenter/common/soci/Session.hpp"
+#include "offcenter/common/soci/SOCIRuntimeException.hpp"
 
 namespace offcenter {
 namespace soci {

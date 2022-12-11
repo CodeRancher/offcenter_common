@@ -20,8 +20,8 @@
  * @date   05-25-2019
  */
 
-#ifndef OFFCENTER_COMMON_FILEEXCEPTION_HPP_
-#define OFFCENTER_COMMON_FILEEXCEPTION_HPP_
+#ifndef OffcenterCommon_FILEEXCEPTION_HPP_
+#define OffcenterCommon_FILEEXCEPTION_HPP_
 
 #include "RuntimeException.hpp"
 
@@ -53,4 +53,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FILEEXCEPTION_HPP_ */
+#endif /* OffcenterCommon_FILEEXCEPTION_HPP_ */

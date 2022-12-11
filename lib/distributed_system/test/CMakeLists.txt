@@ -20,24 +20,19 @@
 # @date   11-11-2019
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+offcenter_cxx()
+offcenter_elpp()
+offcenter_test_constants(offcenter_common_distributed_system_tests)
 
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
-
-add_executable(
-	offcenter_common_distributedsystem_tests
+add_executable(${EXE_NAME}
 	src/main.cpp
 	src/simple_consumerdata_test.cpp
 	src/SimpleConsumerDataFixture.cpp
 	src/triple_call_consumerdata_test.cpp
 )
 
-target_link_libraries(offcenter_common_distributedsystem_tests
-	offcenter_common_distributedsystem
+target_link_libraries(${EXE_NAME}
+	offcenter_common_distributed_system
 	GTest::gtest
 	${EASYLOGGINGPP_LIBRARY}
 	${ACTIVEMQCPP_LIBRARIES}
@@ -45,7 +40,7 @@ target_link_libraries(offcenter_common_distributedsystem_tests
 	Threads::Threads
 )
 
-target_include_directories(offcenter_common_distributedsystem_tests
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 		${CMAKE_CURRENT_LIST_DIR}/../include
@@ -58,6 +53,4 @@ target_include_directories(offcenter_common_distributedsystem_tests
 		
 )
 
-gtest_discover_tests(offcenter_common_distributedsystem_tests)
-
-add_test(NAME monolithic COMMAND offcenter_common_distributedsystem_tests)
+offcenter_test()

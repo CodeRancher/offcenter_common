@@ -20,24 +20,21 @@
 # @date   01-28-2022
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+offcenter_cxx()
+offcenter_elpp()
 
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
+offcenter_exe_constants(OffcenterCommon_sandbox)
 
-add_executable(offcenter_common_sandbox
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
 )
 
-target_link_libraries(offcenter_common_sandbox
+target_link_libraries(${EXE_NAME}
 	offcenter_common
 	${EASYLOGGINGPP_LIBRARY}
 )
 
-target_include_directories(offcenter_common_sandbox
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )

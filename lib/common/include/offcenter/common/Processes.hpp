@@ -20,8 +20,8 @@
  * @date   01-24-2022
  */
 
-#ifndef OFFCENTER_COMMON_PROCESSES_HPP_
-#define OFFCENTER_COMMON_PROCESSES_HPP_
+#ifndef OffcenterCommon_PROCESSES_HPP_
+#define OffcenterCommon_PROCESSES_HPP_
 
 #include <string>
 #include <vector>
@@ -167,4 +167,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_PROCESSES_HPP_ */
+#endif /* OffcenterCommon_PROCESSES_HPP_ */

@@ -20,15 +20,11 @@
 # @date   11-11-2019
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+offcenter_cxx()
+offcenter_elpp()
+offcenter_test_constants(amqp_tests)
 
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
-
-add_executable(offcenter_common_amqp_tests
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
 	#${CMAKE_CURRENT_LIST_DIR}/src/text_message_test.cpp
 	#${CMAKE_CURRENT_LIST_DIR}/src/TopicProducerFixture.cpp
@@ -39,7 +35,7 @@ add_executable(offcenter_common_amqp_tests
 	${CMAKE_CURRENT_LIST_DIR}/src/URLFailover_test.cpp
 )
 
-target_link_libraries(offcenter_common_amqp_tests
+target_link_libraries(${EXE_NAME}
 	offcenter_common_amqp
 	GTest::gtest
 	GTest::gmock
@@ -50,7 +46,7 @@ target_link_libraries(offcenter_common_amqp_tests
 	OpenSSL::SSL
 )
 
-target_include_directories(offcenter_common_amqp_tests
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 		${CMAKE_CURRENT_LIST_DIR}/../include
@@ -60,7 +56,4 @@ target_include_directories(offcenter_common_amqp_tests
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
-gtest_discover_tests(offcenter_common_amqp_tests)
-
-add_test(NAME monolithic COMMAND offcenter_common_amqp_tests)
-
+offcenter_test()

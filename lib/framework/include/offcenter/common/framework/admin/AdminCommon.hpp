@@ -20,8 +20,8 @@
  * @date   05-03-2021
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCOMMON_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCOMMON_HPP_
+#ifndef OffcenterCommonFramework_ADMIN_ADMINCOMMON_HPP_
+#define OffcenterCommonFramework_ADMIN_ADMINCOMMON_HPP_
 
 namespace offcenter {
 namespace common {
@@ -35,4 +35,4 @@ namespace admin {
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCOMMON_HPP_ */
+#endif /* OffcenterCommonFramework_ADMIN_ADMINCOMMON_HPP_ */

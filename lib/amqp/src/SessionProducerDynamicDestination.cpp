@@ -19,7 +19,7 @@
  * @author Scott Brauer
  * @date   05-05-2021
  */
-#include "offcenter/amqp/SessionProducerDynamicDestination.hpp"
+#include "offcenter/common/amqp/SessionProducerDynamicDestination.hpp"
 
 namespace offcenter {
 namespace amqp {

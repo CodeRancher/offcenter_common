@@ -20,8 +20,8 @@
  * @date   04-12-2021
  */
 
-#ifndef OFFCENTER_COMMON_INTERRUPTHANDLER_HPP_
-#define OFFCENTER_COMMON_INTERRUPTHANDLER_HPP_
+#ifndef OffcenterCommon_INTERRUPTHANDLER_HPP_
+#define OffcenterCommon_INTERRUPTHANDLER_HPP_
 
 #include <condition_variable>
 #include <mutex>
@@ -61,4 +61,4 @@ void waitForUserInterrupt() {
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_INTERRUPTHANDLER_HPP_ */
+#endif /* OffcenterCommon_INTERRUPTHANDLER_HPP_ */

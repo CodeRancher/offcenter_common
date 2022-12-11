@@ -20,19 +20,16 @@
 # @date   05-02-2019
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+include(OffcenterBuild)
 
-add_library(offcenter_common_framework "")
-
+offcenter_cxx()
+offcenter_elpp()
+offcenter_lib_setup(offcenter_common_framework common_framework)
 set(version 0.0.1)
-set_property(TARGET offcenter_common_framework PROPERTY VERSION ${version})
-set_property(TARGET offcenter_common_framework PROPERTY SOVERSION 0)
-set_property(TARGET offcenter_common_framework PROPERTY INTERFACE_OandaCommonFramework_MAJOR_VERSION 0)
-set_property(TARGET offcenter_common_framework APPEND PROPERTY COMPATIBLE_INTERFACE_STRING OandaCommonFramework_MAJOR_VERSION)
 
-target_sources(offcenter_common_framework
+add_library(${LIB_NAME} STATIC)
+
+target_sources(${LIB_NAME}
 	PRIVATE
 		#${CMAKE_CURRENT_LIST_DIR}/src/BasicAppFoundation.cpp
 		#${CMAKE_CURRENT_LIST_DIR}/src/AMQPApp.cpp
@@ -87,9 +84,11 @@ target_sources(offcenter_common_framework
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/framework/admin/AdminControlConsumer.hpp>
 		$<INSTALL_INTERFACE:include/offcenter/common/framework/admin/AdminControlConsumer.hpp>
 		
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/offcenter/common/framework/application/AppManager.hpp>
+		$<INSTALL_INTERFACE:include/offcenter/common/framework/application/AppManager.hpp>
 )
 
-target_include_directories(offcenter_common_framework
+target_include_directories(${LIB_NAME}
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../common/include>"
@@ -106,16 +105,12 @@ target_include_directories(offcenter_common_framework
 #		${APR_INCLUDE_DIR}
 )
 
-#install(TARGETS offcenter_common_framework EXPORT offcenter_common_framework DESTINATION lib)
-#install (
-#	DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
-#	DESTINATION include
-#	FILES_MATCHING PATTERN "*.h*"
-#)
+include(OffcenterInstall)
+offcenter_lib_install()
 
-add_subdirectory(example)
 if(ENABLE_UNIT_TESTS)
 	add_subdirectory(test)
 endif()
 
+add_subdirectory(example)
 

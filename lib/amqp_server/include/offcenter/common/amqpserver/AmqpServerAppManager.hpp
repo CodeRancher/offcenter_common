@@ -19,8 +19,8 @@
  * @author Scott Brauer
  * @date   04-09-2021
  */
-#ifndef OFFCENTER_COMMON_AMQPSERVER_AMQPSERVERAPP_HPP_
-#define OFFCENTER_COMMON_AMQPSERVER_AMQPSERVERAPP_HPP_
+#ifndef OffcenterCommon_AMQPSERVER_AMQPSERVERAPP_HPP_
+#define OffcenterCommon_AMQPSERVER_AMQPSERVERAPP_HPP_
 
 #include <boost/bind/bind.hpp>
 
@@ -28,7 +28,7 @@
 //#include <cpprest/http_listener.h>
 //#include <pplx/pplxtasks.h>
 
-#include "offcenter/amqp/Helper.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
 
 #include "easylogging++.h"
 
@@ -39,8 +39,8 @@
 //#include "offcenter/common/amqpserver/AmqpServerAppFoundation.hpp"
 using namespace offcenter::common;
 
-#include "offcenter/amqp/ActiveMQCPP.hpp"
-#include "offcenter/amqp/AMQPException.hpp"
+#include "offcenter/common/amqp/ActiveMQCPP.hpp"
+#include "offcenter/common/amqp/AMQPException.hpp"
 
 namespace offcenter {
 namespace common {
@@ -125,4 +125,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_AMQPSERVER_AMQPSERVERAPP_HPP_ */
+#endif /* OffcenterCommon_AMQPSERVER_AMQPSERVERAPP_HPP_ */

@@ -24,7 +24,7 @@
 #include <gmock/gmock.h>
 using ::testing::HasSubstr;
 
-#include "offcenter/soci/MySQLProgramOptions.hpp"
+#include "offcenter/common/soci/MySQLProgramOptions.hpp"
 #include "offcenter/common/program_options/ProgramOptionsManager.hpp"
 #include "offcenter/common/SimulatedCommandLine.hpp"
 using namespace offcenter::common;

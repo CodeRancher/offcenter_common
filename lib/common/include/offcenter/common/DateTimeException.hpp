@@ -20,8 +20,8 @@
  * @date   11-04-2021
  */
 
-#ifndef OFFCENTER_COMMON_DATETIMEEXCEPTION_HPP_
-#define OFFCENTER_COMMON_DATETIMEEXCEPTION_HPP_
+#ifndef OffcenterCommon_DATETIMEEXCEPTION_HPP_
+#define OffcenterCommon_DATETIMEEXCEPTION_HPP_
 
 #include "offcenter/common/RuntimeException.hpp"
 
@@ -53,4 +53,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_DATETIMEEXCEPTION_HPP_ */
+#endif /* OffcenterCommon_DATETIMEEXCEPTION_HPP_ */

@@ -20,21 +20,16 @@
 # @date   04-14-2019
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+include(OffcenterBuild)
 
-add_compile_definitions(ELPP_THREAD_SAFE)
-
-add_library(offcenter_common_program_options "")
-
+offcenter_cxx()
+offcenter_elpp()
+offcenter_lib_setup(offcenter_common_program_options common_program_options)
 set(version 0.0.1)
-set_property(TARGET offcenter_common_program_options PROPERTY VERSION ${version})
-set_property(TARGET offcenter_common_program_options PROPERTY SOVERSION 0)
-set_property(TARGET offcenter_common_program_options PROPERTY INTERFACE_OandaCommonProgramOptions_MAJOR_VERSION 0)
-set_property(TARGET offcenter_common_program_options APPEND PROPERTY COMPATIBLE_INTERFACE_STRING OandaCommonProgramOptions_MAJOR_VERSION)
 
-target_sources(offcenter_common_program_options
+add_library(${LIB_NAME} STATIC)
+
+target_sources(${LIB_NAME}
 	PRIVATE
 		${CMAKE_CURRENT_LIST_DIR}/src/offcenter_program_options.cpp
 	PUBLIC
@@ -49,22 +44,14 @@ target_sources(offcenter_common_program_options
 		
 )
 
-#install(TARGETS offcenter_common_program_options EXPORT offcenter_common_program_options DESTINATION lib)
-#install (
-#	DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
-#	DESTINATION include
-#	FILES_MATCHING PATTERN "*.h*"
-#)
-target_include_directories(offcenter_common_amqp
+target_include_directories(${LIB_NAME}
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
-
-#	SYSTEM
-#		${ACTIVEMQCPP_INCLUDE_DIR}
-#		${APR_INCLUDE_DIR}
 )
 
+include(OffcenterInstall)
+offcenter_lib_install()
 
 if(ENABLE_UNIT_TESTS)
 	add_subdirectory(test)

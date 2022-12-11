@@ -31,7 +31,7 @@ using ::testing::HasSubstr;
 
 #include "easylogging++.h"
 
-#include "offcenter/soci/Session.hpp"
+#include "offcenter/common/soci/Session.hpp"
 #include "globalvariables.hpp"
 
 TEST (SOCISession, EmptySessionPool)

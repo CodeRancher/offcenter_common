@@ -20,19 +20,16 @@
 # @date   03-29-2021
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+offcenter_cxx()
+offcenter_elpp()
 
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
-
-add_executable(soci_create_simple_db
+###############################################################################
+offcenter_example_constants(soci_create_simple_db)
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/soci_create_simple_db.cpp
 )
 
-target_link_libraries(soci_create_simple_db
+target_link_libraries(${EXE_NAME}
 	offcenter_common_framework
 	offcenter_common_soci
 	Boost::program_options
@@ -44,7 +41,7 @@ target_link_libraries(soci_create_simple_db
 	Threads::Threads
 )
 
-target_include_directories(soci_create_simple_db
+target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../include>"
@@ -58,3 +55,5 @@ target_include_directories(soci_create_simple_db
 		${MariaDBClient_INCLUDE_DIRS}
 		${SOCI_INCLUDE_DIR}/..
 )
+
+offcenter_example()

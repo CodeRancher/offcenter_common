@@ -25,7 +25,7 @@
 
 #include <memory>
 
-#include "offcenter/distributedsystem/ConsumerDataListener.hpp"
+#include "offcenter/common/distributedsystem/ConsumerDataListener.hpp"
 
 /***
  *

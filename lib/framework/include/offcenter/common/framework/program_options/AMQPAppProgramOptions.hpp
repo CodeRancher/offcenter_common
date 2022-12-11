@@ -20,8 +20,8 @@
  * @date   06-09-2019
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_APPLICATION_AMQPAPPPROGRAMOPTIONS_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_APPLICATION_AMQPAPPPROGRAMOPTIONS_HPP_
+#ifndef OffcenterCommonFramework_APPLICATION_AMQPAPPPROGRAMOPTIONS_HPP_
+#define OffcenterCommonFramework_APPLICATION_AMQPAPPPROGRAMOPTIONS_HPP_
 
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
 #include "offcenter/common/framework/application/AMQPAppConfig.hpp"
@@ -62,4 +62,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_APPLICATION_AMQPAPPPROGRAMOPTIONS_HPP_ */
+#endif /* OffcenterCommonFramework_APPLICATION_AMQPAPPPROGRAMOPTIONS_HPP_ */

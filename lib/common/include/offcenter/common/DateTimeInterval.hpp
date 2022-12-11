@@ -20,8 +20,8 @@
  * @date   11-07-2021
  */
 
-#ifndef OFFCENTER_COMMON_DATETIMEINTERVAL_HPP_
-#define OFFCENTER_COMMON_DATETIMEINTERVAL_HPP_
+#ifndef OffcenterCommon_DATETIMEINTERVAL_HPP_
+#define OffcenterCommon_DATETIMEINTERVAL_HPP_
 
 #include "offcenter/common/DateTime.hpp"
 
@@ -71,4 +71,4 @@ const DateTimeInterval DateTimeIntervalFactory() {
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_DATETIMEINTERVAL_HPP_ */
+#endif /* OffcenterCommon_DATETIMEINTERVAL_HPP_ */

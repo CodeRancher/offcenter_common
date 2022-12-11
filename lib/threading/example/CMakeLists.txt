@@ -20,82 +20,100 @@
 # @date   09-15-2021
 #
 
+offcenter_cxx()
+offcenter_elpp()
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-add_executable(offcenter_common_threading_single_thread_example
+###############################################################################
+offcenter_example_constants(offcenter_common_threading_single_thread_example)
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/single_thread_example.cpp
 )
 
-target_link_libraries(offcenter_common_threading_single_thread_example
+target_link_libraries(${EXE_NAME}
 	offcenter_common_threading
 	${EASYLOGGINGPP_LIBRARY}
 	Threads::Threads
 )
 
-target_include_directories(offcenter_common_threading_single_thread_example
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/../../include
 )
 
-add_executable(offcenter_common_threading_multi_thread_example
+offcenter_example()
+
+###############################################################################
+offcenter_example_constants(offcenter_common_threading_multi_thread_example)
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/multi_thread_example.cpp
 )
 
-target_link_libraries(offcenter_common_threading_multi_thread_example
+target_link_libraries(${EXE_NAME}
 	offcenter_common_threading
 	${EASYLOGGINGPP_LIBRARY}
 	Threads::Threads
 )
 
-target_include_directories(offcenter_common_threading_multi_thread_example
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/../../include
 )
 
-add_executable(offcenter_common_threading_thread_array_example
+offcenter_example()
+
+###############################################################################
+offcenter_example_constants(offcenter_common_threading_thread_array_example)
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/thread_array_example.cpp
 )
 
-target_link_libraries(offcenter_common_threading_thread_array_example
+target_link_libraries(${EXE_NAME}
 	offcenter_common_threading
 	${EASYLOGGINGPP_LIBRARY}
 	Threads::Threads
 )
 
-target_include_directories(offcenter_common_threading_thread_array_example
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/../../include
 )
 
-add_executable(offcenter_common_threading_blockable_thread
+offcenter_example()
+
+###############################################################################
+offcenter_example_constants(offcenter_common_threading_blockable_thread)
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/blocked_thread_example.cpp
 )
 
-target_link_libraries(offcenter_common_threading_blockable_thread
+target_link_libraries(${EXE_NAME}
 	offcenter_common_threading
 	${EASYLOGGINGPP_LIBRARY}
 	Threads::Threads
 )
 
-target_include_directories(offcenter_common_threading_blockable_thread
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/../../include
 )
 
-add_executable(offcenter_common_threading_data_monitor_thread
+offcenter_example()
+
+###############################################################################
+offcenter_example_constants(offcenter_common_threading_data_monitor_thread)
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/data_monitor_example.cpp
 )
 
-target_link_libraries(offcenter_common_threading_data_monitor_thread
+target_link_libraries(${EXE_NAME}
 	offcenter_common_threading
 	${EASYLOGGINGPP_LIBRARY}
 	Threads::Threads
 )
 
-target_include_directories(offcenter_common_threading_data_monitor_thread
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/../../include
 )
+
+offcenter_example()

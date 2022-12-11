@@ -20,7 +20,7 @@
 /// \brief Constants used by URLSchemeHost
 ///
 
-#include "offcenter/amqp/URLSchemeHost.hpp"
+#include "offcenter/common/amqp/URLSchemeHost.hpp"
 
 namespace offcenter {
 namespace amqp {

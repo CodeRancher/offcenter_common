@@ -23,7 +23,7 @@
 #include "offcenter/common/framework/program_options/AMQPAppProgramOptions.hpp"
 #include "offcenter/common/framework/application/AMQPApp.hpp"
 
-#include "offcenter/amqp/Helper.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
 
 namespace offcenter {
 namespace common {

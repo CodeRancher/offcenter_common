@@ -20,16 +20,17 @@
 # @date   04-13-2021
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+offcenter_cxx()
+offcenter_elpp()
 
-add_executable (offcenter_rest_server_example
+###############################################################################
+offcenter_example_constants(offcenter_restserver_example)
+add_executable (${EXE_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/RestServerExampleApp.cpp
 )
 
-target_link_libraries(offcenter_rest_server_example
+target_link_libraries(${EXE_NAME}
 	offcenter_common_framework
 	offcenter_common
 	offcenter_common_program_options
@@ -39,9 +40,10 @@ target_link_libraries(offcenter_rest_server_example
 	cpprestsdk::cpprest
 	nlohmann_json::nlohmann_json
 	Threads::Threads
+	OpenSSL::SSL
 )
 
-target_include_directories(offcenter_rest_server_example
+target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 		#${CMAKE_CURRENT_LIST_DIR}/../include
@@ -52,3 +54,4 @@ target_include_directories(offcenter_rest_server_example
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
+offcenter_example()

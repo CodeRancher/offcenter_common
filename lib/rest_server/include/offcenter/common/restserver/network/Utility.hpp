@@ -20,8 +20,8 @@
  * @date   04-13-2021
  */
 
-#ifndef OFFCENTER_COMMON_RESTSERVER_NETWORK_UTILITY_HPP_
-#define OFFCENTER_COMMON_RESTSERVER_NETWORK_UTILITY_HPP_
+#ifndef OffcenterCommon_RESTSERVER_NETWORK_UTILITY_HPP_
+#define OffcenterCommon_RESTSERVER_NETWORK_UTILITY_HPP_
 
 #include <string>
 
@@ -50,4 +50,4 @@ const std::string hostName();
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_RESTSERVER_NETWORK_UTILITY_HPP_ */
+#endif /* OffcenterCommon_RESTSERVER_NETWORK_UTILITY_HPP_ */

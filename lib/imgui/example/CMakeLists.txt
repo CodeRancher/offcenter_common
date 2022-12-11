@@ -20,14 +20,8 @@
 # @date   12-01-2021
 #
 
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
+offcenter_cxx()
+offcenter_elpp()
 
 ###############################################################################
 # Copy config file
@@ -48,18 +42,14 @@ message(STATUS "IMPLOT_DIR       ${IMPLOT_DIR}")
 
 ###############################################################################
 # ImGui Example
-add_executable (${EXAMPLE_PREFIX}.${PROJECT_NAME}.imgui
+offcenter_example_constants(offcenter_imgui_example)
+add_executable (${EXE_NAME} 
 	${IMGUI_DIR}/imgui_demo.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/imgui_example.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/ImGuiExampleApp.cpp
 )
 
-set_target_properties(${EXAMPLE_PREFIX}.${PROJECT_NAME}.imgui
-	PROPERTIES
-		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_EXAMPLE_DIR}
-)
-
-target_link_libraries(${EXAMPLE_PREFIX}.${PROJECT_NAME}.imgui
+target_link_libraries(${EXE_NAME} 
 	offcenter_common_imgui
 	Boost::program_options
 	${EASYLOGGINGPP_LIBRARY}
@@ -70,7 +60,7 @@ target_link_libraries(${EXAMPLE_PREFIX}.${PROJECT_NAME}.imgui
 	${CMAKE_DL_LIBS} 
 )
 
-target_include_directories(${EXAMPLE_PREFIX}.${PROJECT_NAME}.imgui
+target_include_directories(${EXE_NAME} 
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 	SYSTEM
@@ -80,21 +70,19 @@ target_include_directories(${EXAMPLE_PREFIX}.${PROJECT_NAME}.imgui
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
+offcenter_example()
+
 ###############################################################################
 # ImPlot Graph Example
-add_executable (${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_graph
+offcenter_example_constants(offcenter_implot_graph_example)
+add_executable (${EXE_NAME}
 	${IMPLOT_DIR}/implot_demo.cpp
 	${IMGUI_DIR}/imgui_demo.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/implot_graph_example.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/ImPlotGraphExampleApp.cpp
 )
 
-set_target_properties(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_graph
-	PROPERTIES
-		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_EXAMPLE_DIR}
-)
-
-target_link_libraries(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_graph
+target_link_libraries(${EXE_NAME}
 	offcenter_common_imgui
 	Boost::program_options
 	${EASYLOGGINGPP_LIBRARY}
@@ -105,7 +93,7 @@ target_link_libraries(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_graph
 	${CMAKE_DL_LIBS} 
 )
 
-target_include_directories(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_graph
+target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 	SYSTEM
@@ -115,19 +103,17 @@ target_include_directories(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_graph
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
+offcenter_example()
+
 ###############################################################################
 # ImPlot Graph Example
-add_executable (${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_line
+offcenter_example_constants(offcenter_implot_line_example)
+add_executable (${EXE_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/src/implot_line_example.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/ImPlotLineExampleApp.cpp
 )
 
-set_target_properties(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_line
-	PROPERTIES
-		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_EXAMPLE_DIR}
-)
-
-target_link_libraries(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_line
+target_link_libraries(${EXE_NAME}
 	offcenter_common_imgui
 	Boost::program_options
 	${EASYLOGGINGPP_LIBRARY}
@@ -138,7 +124,7 @@ target_link_libraries(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_line
 	${CMAKE_DL_LIBS} 
 )
 
-target_include_directories(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_line
+target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 	SYSTEM
@@ -147,3 +133,5 @@ target_include_directories(${EXAMPLE_PREFIX}.${PROJECT_NAME}.implot_line
 		${IMPLOT_DIR}
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
+
+offcenter_example()

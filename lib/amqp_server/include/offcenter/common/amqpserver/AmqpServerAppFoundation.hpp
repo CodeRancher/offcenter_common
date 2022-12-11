@@ -19,14 +19,14 @@
  * @author Scott Brauer
  * @date   04-15-2021
  */
-#ifndef OFFCENTER_COMMON_AMQPSERVER_AMQPSERVERAPPFOUNDATION_HPP_
-#define OFFCENTER_COMMON_AMQPSERVER_AMQPSERVERAPPFOUNDATION_HPP_
+#ifndef OffcenterCommon_AMQPSERVER_AMQPSERVERAPPFOUNDATION_HPP_
+#define OffcenterCommon_AMQPSERVER_AMQPSERVERAPPFOUNDATION_HPP_
 
 //#include <cpprest/http_msg.h>
 //#include <cpprest/http_listener.h>
 //#include <pplx/pplxtasks.h>
 
-#include "offcenter/amqp/Helper.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
 
 #include "offcenter/common/framework/application/BasicAppFoundation.hpp"
 using namespace offcenter::common;
@@ -50,4 +50,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_AMQPSERVER_AMQPSERVERAPPFOUNDATION_HPP_ */
+#endif /* OffcenterCommon_AMQPSERVER_AMQPSERVERAPPFOUNDATION_HPP_ */

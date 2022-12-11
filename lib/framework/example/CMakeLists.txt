@@ -20,35 +20,23 @@
 # @date   12-01-2021
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
+offcenter_cxx()
+offcenter_elpp()
 
 ###############################################################################
 # Framework Example
-set(EXE_NAME framework)
-set(EXE_VERSION 0.0.1)
-
-add_executable(${EXAMPLE_PREFIX}.${PROJECT_NAME}.${EXE_NAME}
+offcenter_example_constants(framework)
+add_executable(${EXE_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/src/framework_example.cpp
 )
 
-set_target_properties(${EXAMPLE_PREFIX}.${PROJECT_NAME}.${EXE_NAME}
-	PROPERTIES
-		RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_INSTALL_EXAMPLE_DIR}
-)
-
-target_compile_definitions(${EXAMPLE_PREFIX}.${PROJECT_NAME}.${EXE_NAME}
+target_compile_definitions(${EXE_NAME}
 	PRIVATE
 		EXE_NAME=${EXE_NAME}
 		EXE_VERSION=${EXE_VERSION}
 )
 
-target_link_libraries(${EXAMPLE_PREFIX}.${PROJECT_NAME}.${EXE_NAME}
+target_link_libraries(${EXE_NAME}
 	offcenter_common
 	offcenter_common_framework
 	Boost::program_options
@@ -56,9 +44,11 @@ target_link_libraries(${EXAMPLE_PREFIX}.${PROJECT_NAME}.${EXE_NAME}
 	Threads::Threads
 )
 
-target_include_directories(${EXAMPLE_PREFIX}.${PROJECT_NAME}.${EXE_NAME}
+target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 	SYSTEM
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
+
+offcenter_example()

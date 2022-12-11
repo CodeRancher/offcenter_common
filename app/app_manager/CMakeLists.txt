@@ -1,26 +1,29 @@
+#
+# Copyright 2021 Scott Brauer
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an  BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+#
+#
+# @file   CMakeLists.txt
+# @author Scott Brauer
+# @date   09-15-2021
+#
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+offcenter_cxx()
+offcenter_elpp()
 
-set(THREADS_PREFER_PTHREAD_FLAG ON)
-find_package(Threads REQUIRED)
-
-cmake_policy(SET CMP0074 NEW)
-
-set(OPENSSL_USE_STATIC_LIBS TRUE)
-find_package(OpenSSL REQUIRED)
-
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
-
-#find_package(Boost
-#	1.76
-#	COMPONENTS program_options atomic thread system regex filesystem random chrono serialization log
-#)
-
-set(APP_NAME app_manager)
+offcenter_exe_constants(app_manager)
 
 ###############################################################################
 # Copy config file
@@ -31,12 +34,12 @@ set(APP_NAME app_manager)
 
 ###############################################################################
 # Example Consumer
-add_executable (${APP_NAME}
+add_executable (${EXE_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/src/app_manager.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/AppManagerApp.cpp
 )
 
-target_link_libraries(${APP_NAME}
+target_link_libraries(${EXE_NAME}
 	offcenter_common_framework
 	offcenter_common
 	offcenter_common_threading
@@ -47,11 +50,11 @@ target_link_libraries(${APP_NAME}
 	OpenSSL::SSL
 )
 
-target_include_directories(${APP_NAME}
+target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 	SYSTEM
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
-
+offcenter_exe_install()

@@ -20,8 +20,8 @@
  * @date   01-25-2022
  */
 
-#ifndef OFFCENTER_COMMON_WAITFORSIGINT_WAITFORSIGINTAPP__H_
-#define OFFCENTER_COMMON_WAITFORSIGINT_WAITFORSIGINTAPP__H_
+#ifndef OffcenterCommon_WAITFORSIGINT_WAITFORSIGINTAPP__H_
+#define OffcenterCommon_WAITFORSIGINT_WAITFORSIGINTAPP__H_
 
 #include "offcenter/common/framework/application/IApp.hpp"
 #include "offcenter/common/threading/RunningThread.hpp"
@@ -71,4 +71,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_WAITFORSIGINT_WAITFORSIGINTAPP__H_ */
+#endif /* OffcenterCommon_WAITFORSIGINT_WAITFORSIGINTAPP__H_ */

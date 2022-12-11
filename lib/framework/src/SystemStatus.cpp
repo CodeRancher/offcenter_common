@@ -20,7 +20,7 @@
  * @date   03-16-2019
  */
 
-#include "offcenter/framework/system/SystemStatus.hpp"
+#include "offcenter/common/framework/system/SystemStatus.hpp"
 
 namespace offcenter {
 namespace framework {

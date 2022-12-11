@@ -1,10 +1,10 @@
-# offcenter_common
+# OffcenterCommon
 
-The offcenter_common project is a set of C++ libraries of support classes and routines for other offcenter applications and libraries.
+The OffcenterCommon project is a set of C++ libraries of support classes and routines for other offcenter applications and libraries.
 
 ## Documentation
 
-[API Reference](https://coderancher.github.io/offcenter_common/index.html)
+[API Reference](https://coderancher.github.io/OffcenterCommon/index.html)
 
 ## Installation
 This project is hosted on github under user [CodeRancher](https://github.com/CodeRancher).
@@ -12,12 +12,12 @@ This project is hosted on github under user [CodeRancher](https://github.com/Cod
 ### Clone
 To clone this repository use the git command:
 ```shell
-git clone https://github.com/CodeRancher/offcenter_common.git
+git clone https://github.com/CodeRancher/OffcenterCommon.git
 ```
 ### Build
 The most simple build, if dependencies are installed globally.
 ```shell
-cd offcenter_common
+cd OffcenterCommon
 mkdir build
 cd build
 cmake ..
@@ -26,7 +26,7 @@ make
 
 A more complicated build if the libraries are in non-standard locations.
 ```shell
-cd offcenter_common
+cd OffcenterCommon
 mkdir build
 cd build
 cmake \
@@ -61,7 +61,7 @@ Important cmake build variables.
 | [BOOST_ROOT](https://cmake.org/cmake/help/latest/module/FindBoost.html) | Boost library location. | e.g. ${HOME}/libs |
 | [EASYLOGGINGPP_ROOT](https://github.com/amrayn/easyloggingpp/blob/master/cmake/FindEASYLOGGINGPP.cmake) | Easylogging++ library location. | e.g. ${HOME}/libs |
 | [EASYLOGGINGPP_USE_STATIC_LIBS](https://github.com/amrayn/easyloggingpp/blob/master/cmake/FindEASYLOGGINGPP.cmake) | If ${EASYLOGGINGPP_USE_STATIC_LIBS} is ON then static libs are searched. | ON |
-| [APR_ALTLOCATION](https://github.com/CodeRancher/offcenter_common/blob/main/cmake/FindAPR.cmake) | Alternate location to search for libraries/executables | e.g. ${HOME}/libs |
+| [APR_ALTLOCATION](https://github.com/CodeRancher/OffcenterCommon/blob/main/cmake/FindAPR.cmake) | Alternate location to search for libraries/executables | e.g. ${HOME}/libs |
 | [GTEST_ROOT](https://cmake.org/cmake/help/latest/module/FindGTest.html) | The root directory of the Google Test installation. | e.g. ${HOME}/libs |
 
 ## Dependencies

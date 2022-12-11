@@ -20,22 +20,16 @@
 # @date   01-28-2019
 #
 
-#set(LIBS offcenter_common)
+include(OffcenterBuild)
 
-#include(${CMAKE_CURRENT_LIST_DIR}/../../cmake/FindAPR.cmake)
-#include(${CMAKE_CURRENT_LIST_DIR}/../../cmake/FindActiveMQcpp.cmake)
+offcenter_cxx()
+offcenter_elpp()
+offcenter_lib_setup(offcenter_common_threading common_threading)
+set(version 0.0.1)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_library(${LIB_NAME} STATIC)
 
-add_compile_definitions(ELPP_THREAD_SAFE)
-add_compile_definitions(ELPP_FRESH_LOG_FILE)
-add_compile_definitions(ELPP_NO_DEFAULT_LOG_FILE)
-
-add_library(offcenter_common_threading STATIC)
-
-target_sources(offcenter_common_threading
+target_sources(${LIB_NAME}
 	PRIVATE
 		${CMAKE_CURRENT_LIST_DIR}/src/RunningThread.cpp
 		${CMAKE_CURRENT_LIST_DIR}/src/RunningThreadBlockable.cpp
@@ -47,11 +41,11 @@ target_sources(offcenter_common_threading
 		$<INSTALL_INTERFACE:include/offcenter/common/threading/RunningThreadArray.hpp>
 )
 
-target_link_libraries(offcenter_common_threading
+target_link_libraries(${LIB_NAME}
 	${EASYLOGGINGPP_LIBRARY}
 )
 
-target_include_directories(offcenter_common_threading
+target_include_directories(${LIB_NAME}
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
@@ -59,17 +53,8 @@ target_include_directories(offcenter_common_threading
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
-
-#install(TARGETS offcenter_common_threading EXPORT offcenter_common_threading DESTINATION lib)
-#install (
-#	DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
-#	DESTINATION include
-#	FILES_MATCHING PATTERN "*.h*"
-#)
-
-#if(ENABLE_UNIT_TESTS)
-#	add_subdirectory(test)
-#endif()
+include(OffcenterInstall)
+offcenter_lib_install()
 
 add_subdirectory(example)
 

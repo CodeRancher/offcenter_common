@@ -20,14 +20,14 @@
  * @date   05-03-2021
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCONTROLMESSAGE_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCONTROLMESSAGE_HPP_
+#ifndef OffcenterCommonFramework_ADMIN_ADMINCONTROLMESSAGE_HPP_
+#define OffcenterCommonFramework_ADMIN_ADMINCONTROLMESSAGE_HPP_
 
 #include <string>
 
 #include "date/tz.h"
 
-#include "offcenter/amqp/Helper.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
 
 namespace offcenter {
 namespace common {
@@ -83,4 +83,4 @@ void from_cmsMessage(const AdminControlMessage::MessageType* j, AdminControlMess
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINCONTROLMESSAGE_HPP_ */
+#endif /* OffcenterCommonFramework_ADMIN_ADMINCONTROLMESSAGE_HPP_ */

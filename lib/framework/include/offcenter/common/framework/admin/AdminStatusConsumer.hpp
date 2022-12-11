@@ -20,18 +20,18 @@
  * @date   05-03-2021
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINSTATUSCONSUMER_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINSTATUSCONSUMER_HPP_
+#ifndef OffcenterCommonFramework_ADMIN_ADMINSTATUSCONSUMER_HPP_
+#define OffcenterCommonFramework_ADMIN_ADMINSTATUSCONSUMER_HPP_
 
 #include <memory>
 
 #include <cms/MessageListener.h>
 #include <cms/Message.h>
 
-#include "offcenter/amqp/SessionConsumer.hpp"
-#include "offcenter/amqp/MessageCallback.hpp"
+#include "offcenter/common/amqp/SessionConsumer.hpp"
+#include "offcenter/common/amqp/MessageCallback.hpp"
 #include "offcenter/common/framework/admin/AdminStatusMessage.hpp"
-#include "offcenter/amqp/Consumer.hpp"
+#include "offcenter/common/amqp/Consumer.hpp"
 
 namespace offcenter {
 namespace common {
@@ -111,4 +111,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_ADMIN_ADMINSTATUSCONSUMER_HPP_ */
+#endif /* OffcenterCommonFramework_ADMIN_ADMINSTATUSCONSUMER_HPP_ */

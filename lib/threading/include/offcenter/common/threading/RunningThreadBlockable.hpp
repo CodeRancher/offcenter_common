@@ -20,8 +20,8 @@
  * @date   10-14-2021
  */
 
-#ifndef OFFCENTER_COMMON_THREADING_RUNNINGTHREADBLOCKABLE_HPP_
-#define OFFCENTER_COMMON_THREADING_RUNNINGTHREADBLOCKABLE_HPP_
+#ifndef OffcenterCommon_THREADING_RUNNINGTHREADBLOCKABLE_HPP_
+#define OffcenterCommon_THREADING_RUNNINGTHREADBLOCKABLE_HPP_
 
 #include <mutex>
 #include <condition_variable>
@@ -61,4 +61,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_THREADING_RUNNINGTHREADBLOCKABLE_HPP_ */
+#endif /* OffcenterCommon_THREADING_RUNNINGTHREADBLOCKABLE_HPP_ */

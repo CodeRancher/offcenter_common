@@ -20,8 +20,8 @@
  * @date   06-12-2021
  */
 
-#ifndef OFFCENTER_COMMON_DATETIME_HPP_
-#define OFFCENTER_COMMON_DATETIME_HPP_
+#ifndef OffcenterCommon_DATETIME_HPP_
+#define OffcenterCommon_DATETIME_HPP_
 
 #include <ios>
 #include <chrono>
@@ -149,4 +149,4 @@ const unsigned long long CustomDateTimeSecondsFromEpoch(const DateTime& dt) {
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_DATETIME_HPP_ */
+#endif /* OffcenterCommon_DATETIME_HPP_ */

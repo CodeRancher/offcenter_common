@@ -20,8 +20,8 @@
  * @date   12-01-2021
  */
 
-#ifndef OFFCENTER_COMMON_IMGUI_IMGUIEXCEPTION_HPP_
-#define OFFCENTER_COMMON_IMGUI_IMGUIEXCEPTION_HPP_
+#ifndef OffcenterCommon_IMGUI_IMGUIEXCEPTION_HPP_
+#define OffcenterCommon_IMGUI_IMGUIEXCEPTION_HPP_
 
 #include "offcenter/common/RuntimeException.hpp"
 
@@ -49,4 +49,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_IMGUI_IMGUIEXCEPTION_HPP_ */
+#endif /* OffcenterCommon_IMGUI_IMGUIEXCEPTION_HPP_ */

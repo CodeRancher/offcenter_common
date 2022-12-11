@@ -19,7 +19,7 @@
  * @author Scott Brauer
  * @date   05-06-2021
  */
-#include "offcenter/amqp/SessionConsumer.hpp"
+#include "offcenter/common/amqp/SessionConsumer.hpp"
 
 namespace offcenter {
 namespace amqp {

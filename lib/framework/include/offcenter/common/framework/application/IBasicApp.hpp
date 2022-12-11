@@ -20,8 +20,8 @@
  * @date 02-27-2019
  */
 
-#ifndef OFFCENTER_COMMON_FRAMEWORK_APPLICATION_IBASICAPP_HPP_
-#define OFFCENTER_COMMON_FRAMEWORK_APPLICATION_IBASICAPP_HPP_
+#ifndef OffcenterCommonFramework_APPLICATION_IBASICAPP_HPP_
+#define OffcenterCommonFramework_APPLICATION_IBASICAPP_HPP_
 
 #include <string>
 
@@ -51,4 +51,4 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_FRAMEWORK_APPLICATION_IBASICAPP_HPP_ */
+#endif /* OffcenterCommonFramework_APPLICATION_IBASICAPP_HPP_ */

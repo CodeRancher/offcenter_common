@@ -28,8 +28,8 @@
 #include "offcenter/common/InterruptHandler.hpp"
 using namespace offcenter::common;
 
-#include "offcenter/amqp/Listener.hpp"
-#include "offcenter/amqp/URLSchemeHost.hpp"
+#include "offcenter/common/amqp/Listener.hpp"
+#include "offcenter/common/amqp/URLSchemeHost.hpp"
 using namespace offcenter;
 
 #include "AmqpConsumerExampleApp.hpp"

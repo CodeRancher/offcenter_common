@@ -19,7 +19,7 @@
  * @author Scott Brauer
  * @date   06-08-2021
  */
-#include "offcenter/soci/Transaction.hpp"
+#include "offcenter/common/soci/Transaction.hpp"
 
 namespace offcenter {
 namespace soci {

@@ -22,9 +22,9 @@
 
 #include "easylogging++.h"
 
-#include "offcenter/amqp/Helper.hpp"
-#include "offcenter/amqp/AMQPException.hpp"
-#include "offcenter/amqp/SessionProducer.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
+#include "offcenter/common/amqp/AMQPException.hpp"
+#include "offcenter/common/amqp/SessionProducer.hpp"
 
 namespace offcenter {
 namespace amqp {

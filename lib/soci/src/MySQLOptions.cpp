@@ -24,7 +24,7 @@
 #include <initializer_list>
 #include <sstream>
 
-#include "offcenter/soci/MySQLOptions.hpp"
+#include "offcenter/common/soci/MySQLOptions.hpp"
 
 namespace offcenter {
 namespace soci {

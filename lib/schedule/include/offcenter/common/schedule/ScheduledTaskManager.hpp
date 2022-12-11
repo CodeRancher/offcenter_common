@@ -20,8 +20,8 @@
  * @date   03-26-2019
  */
 
-#ifndef OFFCENTER_COMMON_SCHEDULE_SCHEDULEDTASKMANAGER_HPP_
-#define OFFCENTER_COMMON_SCHEDULE_SCHEDULEDTASKMANAGER_HPP_
+#ifndef OffcenterCommon_SCHEDULE_SCHEDULEDTASKMANAGER_HPP_
+#define OffcenterCommon_SCHEDULE_SCHEDULEDTASKMANAGER_HPP_
 
 #include <boost/asio/io_service.hpp>
 #include <boost/system/error_code.hpp>
@@ -116,5 +116,5 @@ public:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_SCHEDULE_SCHEDULEDTASKMANAGER_HPP_ */
+#endif /* OffcenterCommon_SCHEDULE_SCHEDULEDTASKMANAGER_HPP_ */
 

@@ -27,7 +27,7 @@
 #include "offcenter/common/framework/application/AMQPAppConfig.hpp"
 
 #include "offcenter/common/ScopeGuard.hpp"
-#include "offcenter/amqp/Helper.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
 
 namespace offcenter {
 namespace common {

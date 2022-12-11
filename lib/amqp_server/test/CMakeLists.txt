@@ -20,32 +20,26 @@
 # @date   04-27-2019
 #
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-add_compile_definitions(ELPP_THREAD_SAFE)
+offcenter_cxx()
+offcenter_elpp()
+offcenter_test_constants(amqpserver)
+offcenter_exe_config_file(${CMAKE_CURRENT_LIST_DIR}/config.ini)
 
 add_compile_definitions(CONFIGFILE_EMPTY="${CMAKE_CURRENT_LIST_DIR}/data/config_empty.cfg")
 add_compile_definitions(CONFIGFILE_BASIC="${CMAKE_CURRENT_LIST_DIR}/data/config_basic.cfg")
 
-###############################################################################
-# Copy config file
-file(COPY ${CMAKE_CURRENT_LIST_DIR}/config.ini DESTINATION ${CMAKE_BINARY_DIR}/bin)
-message(STATUS "COPY ${CMAKE_CURRENT_LIST_DIR}/config.ini DESTINATION ${CMAKE_BINARY_DIR}/bin")
-
-add_executable(offcenter_common_amqpserver_tests
+add_executable(${EXE_NAME}
 	${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
 	${CMAKE_CURRENT_LIST_DIR}/src/test_amqp_program_option.cpp
 	#${CMAKE_CURRENT_LIST_DIR}/src/test_auto_method_path.cpp
 	#${CMAKE_CURRENT_LIST_DIR}/src/test_auto_method_handler.cpp
 )
 
-target_link_libraries(offcenter_common_amqpserver_tests
+target_link_libraries(${EXE_NAME}
 	GTest::gtest
 	offcenter_common_framework
 	offcenter_common_amqp
-	#offcenter_common_restserver
+	#OffcenterCommon_rest_server
 	Boost::program_options
 	#cpprestsdk::cpprest
 	${ACTIVEMQCPP_LIBRARIES}
@@ -53,7 +47,7 @@ target_link_libraries(offcenter_common_amqpserver_tests
 	${Boost_LIBRARIES}
 )
 
-target_include_directories(offcenter_common_amqpserver_tests
+target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
 		${CMAKE_CURRENT_LIST_DIR}/../include
@@ -64,7 +58,4 @@ target_include_directories(offcenter_common_amqpserver_tests
 		${APR_INCLUDE_DIR}
 )
 
-gtest_discover_tests(offcenter_common_amqpserver_tests)
-
-add_test(NAME monolithic COMMAND offcenter_common_amqpserver_tests)
-
+offcenter_test()

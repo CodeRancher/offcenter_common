@@ -27,7 +27,7 @@
 
 #include <gtest/gtest.h>
 
-#include "offcenter/amqp/Helper.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
 
 class AsyncTopicProducerFixture : public ::testing::Test {
 public:

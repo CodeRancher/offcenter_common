@@ -24,7 +24,7 @@
 #include <gmock/gmock.h>
 using ::testing::HasSubstr;
 
-#include "offcenter/amqp/URLSchemeHost.hpp"
+#include "offcenter/common/amqp/URLSchemeHost.hpp"
 
 TEST (URLSchemeHost, EmptyCreationTest)
 {

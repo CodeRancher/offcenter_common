@@ -35,7 +35,7 @@
 #include <gtest/gtest.h>
 
 #include "offcenter/common/ScopeGuard.hpp"
-#include "offcenter/amqp/Helper.hpp"
+#include "offcenter/common/amqp/Helper.hpp"
 
 class TopicProducerFixture : public ::testing::Test {
 public:

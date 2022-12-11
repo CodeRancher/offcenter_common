@@ -29,7 +29,7 @@
 #include <gmock/gmock.h>
 using ::testing::HasSubstr;
 
-#include "offcenter/soci/MySQLOptions.hpp"
+#include "offcenter/common/soci/MySQLOptions.hpp"
 
 class MySQLOptionsFixture : public ::testing::Test
 {

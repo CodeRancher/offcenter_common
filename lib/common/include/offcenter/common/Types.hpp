@@ -20,8 +20,8 @@
  * @date   03-15-2022
  */
 
-#ifndef OFFCENTER_COMMON_TYPES_HPP_
-#define OFFCENTER_COMMON_TYPES_HPP_
+#ifndef OffcenterCommon_TYPES_HPP_
+#define OffcenterCommon_TYPES_HPP_
 
 namespace offcenter {
 namespace common {
@@ -37,4 +37,4 @@ using MPF_20 = boost::multiprecision::number<boost::multiprecision::mpfr_float_b
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_TYPES_HPP_ */
+#endif /* OffcenterCommon_TYPES_HPP_ */

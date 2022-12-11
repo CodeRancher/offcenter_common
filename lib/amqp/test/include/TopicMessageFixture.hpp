@@ -27,10 +27,10 @@
 
 #include "offcenter/common/ScopeGuard.hpp"
 //#include "amqp/AMQPHelper.hpp"
-#include "offcenter/amqp/Message.hpp"
-#include "offcenter/amqp/Producer.hpp"
-#include "offcenter/amqp/Consumer.hpp"
-#include "offcenter/amqp/ConnectionOptions.hpp"
+#include "offcenter/common/amqp/Message.hpp"
+#include "offcenter/common/amqp/Producer.hpp"
+#include "offcenter/common/amqp/Consumer.hpp"
+#include "offcenter/common/amqp/ConnectionOptions.hpp"
 using namespace offcenter;
 
 template <class element>

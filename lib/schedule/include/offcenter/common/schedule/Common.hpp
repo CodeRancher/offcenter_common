@@ -20,8 +20,8 @@
  * @date   02-09-2019
  */
 
-#ifndef OFFCENTER_COMMON_SCHEDULE_COMMON_HPP_
-#define OFFCENTER_COMMON_SCHEDULE_COMMON_HPP_
+#ifndef OffcenterCommon_SCHEDULE_COMMON_HPP_
+#define OffcenterCommon_SCHEDULE_COMMON_HPP_
 
 #include <memory>
 
@@ -43,4 +43,4 @@ using IOService = boost::asio::io_service;
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_SCHEDULE_COMMON_HPP_ */
+#endif /* OffcenterCommon_SCHEDULE_COMMON_HPP_ */

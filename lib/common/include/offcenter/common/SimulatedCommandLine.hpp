@@ -20,8 +20,8 @@
  * @date   04-06-2019
  */
 
-#ifndef OFFCENTER_COMMON_SIMULATEDCOMMANDLINE_HPP_
-#define OFFCENTER_COMMON_SIMULATEDCOMMANDLINE_HPP_
+#ifndef OffcenterCommon_SIMULATEDCOMMANDLINE_HPP_
+#define OffcenterCommon_SIMULATEDCOMMANDLINE_HPP_
 
 #include <vector>
 #include <initializer_list>
@@ -132,4 +132,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_SIMULATEDCOMMANDLINE_HPP_ */
+#endif /* OffcenterCommon_SIMULATEDCOMMANDLINE_HPP_ */

@@ -20,8 +20,8 @@
  * @date   03-14-2022
  */
 
-#ifndef OFFCENTER_COMMON_CONVERSIONS_HPP_
-#define OFFCENTER_COMMON_CONVERSIONS_HPP_
+#ifndef OffcenterCommon_CONVERSIONS_HPP_
+#define OffcenterCommon_CONVERSIONS_HPP_
 
 #include <boost/multiprecision/mpfr.hpp>
 
@@ -78,4 +78,4 @@ void convertTo(const MPF_20& from, std::string& to);
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_CONVERSIONS_HPP_ */
+#endif /* OffcenterCommon_CONVERSIONS_HPP_ */

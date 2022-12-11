@@ -19,8 +19,8 @@
  * @author Scott Brauer
  * @date   05-18-2021
  */
-#ifndef OFFCENTER_COMMON_RESTSERVER_RESTSERVEROPTIONS_HPP_
-#define OFFCENTER_COMMON_RESTSERVER_RESTSERVEROPTIONS_HPP_
+#ifndef OffcenterCommon_RESTSERVER_RESTSERVEROPTIONS_HPP_
+#define OffcenterCommon_RESTSERVER_RESTSERVEROPTIONS_HPP_
 
 #include <string>
 
@@ -83,4 +83,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_RESTSERVER_RESTSERVEROPTIONS_HPP_ */
+#endif /* OffcenterCommon_RESTSERVER_RESTSERVEROPTIONS_HPP_ */

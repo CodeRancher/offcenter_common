@@ -20,8 +20,8 @@
  * @date   09-14-2021
  */
 
-#ifndef OFFCENTER_COMMON_THREADING_RUNNINGTHREAD_HPP_
-#define OFFCENTER_COMMON_THREADING_RUNNINGTHREAD_HPP_
+#ifndef OffcenterCommon_THREADING_RUNNINGTHREAD_HPP_
+#define OffcenterCommon_THREADING_RUNNINGTHREAD_HPP_
 
 #include <thread>
 #include <atomic>
@@ -74,4 +74,4 @@ private:
 } /* namespace common */
 } /* namespace offcenter */
 
-#endif /* OFFCENTER_COMMON_THREADING_RUNNINGTHREAD_HPP_ */
+#endif /* OffcenterCommon_THREADING_RUNNINGTHREAD_HPP_ */
