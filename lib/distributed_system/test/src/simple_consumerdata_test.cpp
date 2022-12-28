@@ -32,7 +32,7 @@
 /***
  *
  */
-class DataElement : public offcenter::amqp::Message
+class DataElement : public offcenter::common::amqp::Message
 {
 public:
 	DataElement() :
@@ -98,11 +98,11 @@ public:
 /**
  *
  */
-class CommandListener : public offcenter::distributedsystem::ConsumerDataListener<ICommandHandler>
+class CommandListener : public offcenter::common::distributedsystem::ConsumerDataListener<ICommandHandler>
 {
 public:
 	explicit CommandListener(CLConfig const& clConfig, std::shared_ptr<ICommandHandler> handler):
-		offcenter::distributedsystem::ConsumerDataListener<ICommandHandler>(handler)
+		offcenter::common::distributedsystem::ConsumerDataListener<ICommandHandler>(handler)
 	{
 
 	}
@@ -113,7 +113,7 @@ public:
  */
 TEST (SimpleConsumerData, AddSingleConsumer)
 {
-	offcenter::distributedsystem::ConsumerDataManager rcManager;
+	offcenter::common::distributedsystem::ConsumerDataManager rcManager;
 
 	CLConfig clConfig;
 	CommandHandler::Ptr commandHandler = CommandHandler::factory();

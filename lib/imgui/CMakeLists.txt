@@ -56,15 +56,15 @@ target_link_libraries(${LIB_NAME}
 
 target_include_directories(${LIB_NAME}
 	PUBLIC
-		${EASYLOGGINGPP_INCLUDE_DIR}
-		${IMGUI_DIR}
-		${IMGUI_DIR}/backends
+		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
 target_include_directories(${LIB_NAME}
-	PUBLIC
-		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
-		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+	SYSTEM PUBLIC
+		${EASYLOGGINGPP_INCLUDE_DIR}
+		${IMGUI_DIR}
+		${IMGUI_DIR}/backends
 )
 
 include(OffcenterInstall)

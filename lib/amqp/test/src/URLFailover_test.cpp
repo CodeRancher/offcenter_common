@@ -26,25 +26,25 @@ using ::testing::HasSubstr;
 
 TEST (URLFailover, EmptyCreationTest)
 {
-	offcenter::amqp::URLFailover url;
+	offcenter::common::amqp::URLFailover url;
 	ASSERT_EQ(url.uri(), "failover://()");
 }
 
 TEST (URLFailover, AddOneElement)
 {
-	offcenter::amqp::URLSchemeHost url1(offcenter::amqp::URLSchemeHost::URLScheme::ssl, "host1", 12345);
+	offcenter::common::amqp::URLSchemeHost url1(offcenter::common::amqp::URLSchemeHost::URLScheme::ssl, "host1", 12345);
 
-	offcenter::amqp::URLFailover url;
+	offcenter::common::amqp::URLFailover url;
 	url.addHost(url1);
 	ASSERT_EQ(url.uri(), "failover://(ssl://host1:12345)");
 }
 
 TEST (URLFailover, AddTwoElements)
 {
-	offcenter::amqp::URLSchemeHost url1(offcenter::amqp::URLSchemeHost::URLScheme::ssl, "host1", 12345);
-	offcenter::amqp::URLSchemeHost url2(offcenter::amqp::URLSchemeHost::URLScheme::tcp, "host2", 54321);
+	offcenter::common::amqp::URLSchemeHost url1(offcenter::common::amqp::URLSchemeHost::URLScheme::ssl, "host1", 12345);
+	offcenter::common::amqp::URLSchemeHost url2(offcenter::common::amqp::URLSchemeHost::URLScheme::tcp, "host2", 54321);
 
-	offcenter::amqp::URLFailover url;
+	offcenter::common::amqp::URLFailover url;
 	url.addHost(url1);
 	url.addHost(url2);
 	ASSERT_EQ(url.uri(), "failover://(ssl://host1:12345,tcp://host2:54321)");
@@ -52,13 +52,13 @@ TEST (URLFailover, AddTwoElements)
 
 TEST (URLFailover, CopyTwoElements)
 {
-	offcenter::amqp::URLSchemeHost url1(offcenter::amqp::URLSchemeHost::URLScheme::ssl, "host1", 12345);
-	offcenter::amqp::URLSchemeHost url2(offcenter::amqp::URLSchemeHost::URLScheme::tcp, "host2", 54321);
+	offcenter::common::amqp::URLSchemeHost url1(offcenter::common::amqp::URLSchemeHost::URLScheme::ssl, "host1", 12345);
+	offcenter::common::amqp::URLSchemeHost url2(offcenter::common::amqp::URLSchemeHost::URLScheme::tcp, "host2", 54321);
 
-	offcenter::amqp::URLFailover url;
+	offcenter::common::amqp::URLFailover url;
 	url.addHost(url1);
 	url.addHost(url2);
-	offcenter::amqp::URLFailover urlCopy = url;
+	offcenter::common::amqp::URLFailover urlCopy = url;
 
 	ASSERT_EQ(urlCopy.uri(), "failover://(ssl://host1:12345,tcp://host2:54321)");
 }

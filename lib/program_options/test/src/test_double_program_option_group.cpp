@@ -27,7 +27,6 @@
 #include "offcenter/common/program_options/ProgramOptionsManager.hpp"
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
 #include "offcenter/common/SimulatedCommandLine.hpp"
-using namespace offcenter::common;
 
 class DoubleOptionOneConfig {
 	private:
@@ -49,7 +48,7 @@ class DoubleOptionOneConfig {
 		friend class DoubleOptionOne;
 };
 
-class DoubleOptionOne: public program_options::ProgramOptionsGroup<DoubleOptionOneConfig> {
+class DoubleOptionOne: public offcenter::common::program_options::ProgramOptionsGroup<DoubleOptionOneConfig> {
 public:
 	explicit DoubleOptionOne():
 		ProgramOptionsGroup("DoubleOption")
@@ -83,7 +82,7 @@ class DoubleOptionTwoConfig {
 		friend class DoubleOptionTwo;
 };
 
-class DoubleOptionTwo: public program_options::ProgramOptionsGroup<DoubleOptionTwoConfig> {
+class DoubleOptionTwo: public offcenter::common::program_options::ProgramOptionsGroup<DoubleOptionTwoConfig> {
 public:
 	explicit DoubleOptionTwo():
 		ProgramOptionsGroup("DoubleOption")
@@ -111,7 +110,7 @@ TEST (DoubleProgramOptionGroupTest, DoubleOptionGroupSet)
 			"--d2arg2", group2Arg2,
 			"--d2arg3", group2Arg3});
 
-	program_options::ProgramOptionsManager optManager;
+	offcenter::common::program_options::ProgramOptionsManager optManager;
 	DoubleOptionOne::ConfigPtr oneConfig = optManager.add<DoubleOptionOne>();
 	DoubleOptionTwo::ConfigPtr twoConfig = optManager.add<DoubleOptionTwo>();
 
@@ -136,7 +135,7 @@ TEST (DoubleProgramOptionGroupTest, EmptyDoubleOptionGroupSet)
 {
 	offcenter::common::SimulatedCommandLine commandLine("DoubleProgramOptionSet");
 
-	program_options::ProgramOptionsManager optManager;
+	offcenter::common::program_options::ProgramOptionsManager optManager;
 	DoubleOptionOne::ConfigPtr oneConfig = optManager.add<DoubleOptionOne>();
 	DoubleOptionTwo::ConfigPtr twoConfig = optManager.add<DoubleOptionTwo>();
 

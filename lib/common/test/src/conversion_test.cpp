@@ -43,9 +43,8 @@ TEST (Conversion, Time)
 	const std::string timeString{"2000-01-01T00:00:00.000000000Z"};
 	const offcenter::common::UTCDateTime timePoint{offcenter::common::make_UTCDateTimeFromISO8601(timeString)};
 
-	using namespace offcenter::common;
-	testConversion<std::string, UTCDateTime>(timeString, timePoint);
-	testConversion<UTCDateTime, std::string>(timePoint, timeString);
+	testConversion<std::string, offcenter::common::UTCDateTime>(timeString, timePoint);
+	testConversion<offcenter::common::UTCDateTime, std::string>(timePoint, timeString);
 }
 
 TEST (Conversion, Double)
@@ -64,9 +63,8 @@ TEST (Conversion, MPFVal)
 	const std::string strMPF{"1.1234567"};
 	const offcenter::common::MPF mpf(strMPF.c_str());
 
-	using namespace offcenter::common;
-	testConversion<std::string, MPF>(strMPF, mpf);
-	testConversion<MPF, std::string>(mpf, "1.1234567");
+	testConversion<std::string, offcenter::common::MPF>(strMPF, mpf);
+	testConversion<offcenter::common::MPF, std::string>(mpf, "1.1234567");
 }
 
 TEST (Conversion, MPF_7Val)
@@ -74,9 +72,8 @@ TEST (Conversion, MPF_7Val)
 	const std::string strMPF{"1.1234567"};
 	const offcenter::common::MPF_7 mpf(strMPF.c_str());
 
-	using namespace offcenter::common;
-	testConversion<std::string, MPF_7>(strMPF, mpf);
-	testConversion<MPF_7, std::string>(mpf, "1.123457");
+	testConversion<std::string, offcenter::common::MPF_7>(strMPF, mpf);
+	testConversion<offcenter::common::MPF_7, std::string>(mpf, "1.123457");
 }
 
 TEST (Conversion, MPF_10Val)
@@ -84,9 +81,8 @@ TEST (Conversion, MPF_10Val)
 	const std::string strMPF{"1.1234567890"};
 	const offcenter::common::MPF_10 mpf(strMPF);
 
-	using namespace offcenter::common;
-	testConversion<std::string, MPF_10>(strMPF, mpf);
-	testConversion<MPF_10, std::string>(mpf, "1.123456789");
+	testConversion<std::string, offcenter::common::MPF_10>(strMPF, mpf);
+	testConversion<offcenter::common::MPF_10, std::string>(mpf, "1.123456789");
 }
 
 TEST (Conversion, MPF_20Val)
@@ -94,8 +90,7 @@ TEST (Conversion, MPF_20Val)
 	const std::string strMPF{"1.12345678901234567890"};
 	const offcenter::common::MPF_20 mpf(strMPF);
 
-	using namespace offcenter::common;
-	testConversion<std::string, MPF_20>(strMPF, mpf);
-	testConversion<MPF_20, std::string>(mpf, "1.1234567890123456789");
+	testConversion<std::string, offcenter::common::MPF_20>(strMPF, mpf);
+	testConversion<offcenter::common::MPF_20, std::string>(mpf, "1.1234567890123456789");
 }
 

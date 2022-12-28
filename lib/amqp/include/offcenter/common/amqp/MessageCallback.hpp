@@ -32,6 +32,7 @@
 #include "offcenter/common/amqp/AMQPException.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /**
@@ -98,6 +99,7 @@ private:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_MESSAGECALLBACK_HPP_ */

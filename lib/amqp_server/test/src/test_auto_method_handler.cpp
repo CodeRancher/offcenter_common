@@ -26,7 +26,6 @@
 #include <gtest/gtest.h>
 
 #include "offcenter/common/amqpserver/AutoMethodHandler.hpp"
-using namespace offcenter::common;
 
 class AutoMethodHandlerFixture : public ::testing::Test {
 public:

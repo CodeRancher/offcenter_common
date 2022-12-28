@@ -36,8 +36,8 @@ using namespace offcenter;
 template <class element>
 class TopicMessageFixture : public ::testing::Test {
 public:
-	using Producer = offcenter::amqp::Producer<element>;
-	using Consumer = offcenter::amqp::Consumer<element>;
+	using Producer = offcenter::common::amqp::Producer<element>;
+	using Consumer = offcenter::common::amqp::Consumer<element>;
 	typename Producer::Ptr producer;
 	typename Consumer::ConsumerPtr consumer;
 

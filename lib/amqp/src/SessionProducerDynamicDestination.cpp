@@ -22,6 +22,7 @@
 #include "offcenter/common/amqp/SessionProducerDynamicDestination.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 SessionProducerDynamicDestination::SessionProducerDynamicDestination(ConnectionPtr connection, const ConnectionSettings& connectionSettings):
@@ -37,4 +38,5 @@ SessionProducerDynamicDestination::~SessionProducerDynamicDestination()
 }
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */

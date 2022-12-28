@@ -23,20 +23,6 @@
 offcenter_cxx()
 offcenter_elpp()
 
-set(AMQP_LIBRARIES
-	offcenter_common_framework
-	offcenter_common
-	offcenter_common_program_options
-	offcenter_common_amqp
-	offcenter_common_amqpserver
-	Boost::program_options
-	${EASYLOGGINGPP_LIBRARY}
-	${ACTIVEMQCPP_LIBRARIES}
-	${APR_LIBRARIES}
-	Threads::Threads
-	OpenSSL::SSL
-) 
-
 ###############################################################################
 # Copy config file
 #configure_file(${CMAKE_CURRENT_LIST_DIR}/config.ini config.ini COPYONLY)
@@ -54,13 +40,23 @@ add_executable (${EXE_NAME}
 )
 
 target_link_libraries(${EXE_NAME}
-	${AMQP_LIBRARIES}
+	offcenter_common_framework
+	offcenter_common
+	offcenter_common_program_options
+	offcenter_common_amqp
+	offcenter_common_amqpserver
+	Boost::program_options
+	${EASYLOGGINGPP_LIBRARY}
+	${ACTIVEMQCPP_LIBRARIES}
+	${APR_LIBRARIES}
+	Threads::Threads
+	OpenSSL::SSL
 )
 
 target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
-	SYSTEM
+	SYSTEM PRIVATE
 		${EASYLOGGINGPP_INCLUDE_DIR}
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${APR_INCLUDE_DIR}
@@ -78,13 +74,23 @@ add_executable (${EXE_NAME}
 )
 
 target_link_libraries(${EXE_NAME}
-	${AMQP_LIBRARIES}
+	offcenter_common_framework
+	offcenter_common
+	offcenter_common_program_options
+	offcenter_common_amqp
+	offcenter_common_amqpserver
+	Boost::program_options
+	${EASYLOGGINGPP_LIBRARY}
+	${ACTIVEMQCPP_LIBRARIES}
+	${APR_LIBRARIES}
+	Threads::Threads
+	OpenSSL::SSL
 )
 
 target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
-	SYSTEM
+	SYSTEM PRIVATE
 		${EASYLOGGINGPP_INCLUDE_DIR}
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${APR_INCLUDE_DIR}
@@ -102,13 +108,23 @@ add_executable (${EXE_NAME}
 )
 
 target_link_libraries(${EXE_NAME}
-	${AMQP_LIBRARIES}
+	offcenter_common_framework
+	offcenter_common
+	offcenter_common_program_options
+	offcenter_common_amqp
+	offcenter_common_amqpserver
+	Boost::program_options
+	${EASYLOGGINGPP_LIBRARY}
+	${ACTIVEMQCPP_LIBRARIES}
+	${APR_LIBRARIES}
+	Threads::Threads
+	OpenSSL::SSL
 )
 
 target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
-	SYSTEM
+	SYSTEM PRIVATE
 		${EASYLOGGINGPP_INCLUDE_DIR}
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${APR_INCLUDE_DIR}

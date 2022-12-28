@@ -29,6 +29,7 @@
 #include "offcenter/common/amqp/ConnectionSettings.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /**
@@ -71,7 +72,7 @@ protected:
 			case ConnectionSettings::QueueType::Topic: return helper::destinationUFactory(m_session->createTopic(fullQueueName));
 			case ConnectionSettings::QueueType::TemporaryTopic: return helper::destinationUFactory(m_session->createTemporaryTopic());
 			default:
-				throw offcenter::amqp::AMQPException("Invalid Queue Type");
+				throw offcenter::common::amqp::AMQPException("Invalid Queue Type");
 		}
 	}
 
@@ -84,6 +85,7 @@ private:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_SESSION_HPP_ */

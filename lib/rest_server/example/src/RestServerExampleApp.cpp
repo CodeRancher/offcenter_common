@@ -46,7 +46,7 @@ RestServerExampleApp::~RestServerExampleApp() {
 //{
 //}
 
-void RestServerExampleApp::onInitMethodHandlers(restserver::AutoMethodHandler &methodHandler)
+void RestServerExampleApp::onInitMethodHandlers(offcenter::common::restserver::AutoMethodHandler &methodHandler)
 {
 	methodHandler.addHandler(web::http::methods::GET,
 		"/goober/([^/]*)",

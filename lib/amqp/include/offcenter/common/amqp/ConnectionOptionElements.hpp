@@ -32,6 +32,7 @@
 #include "offcenter/common/RuntimeException.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 template<typename InputIt>
@@ -107,7 +108,7 @@ public:
 
 	virtual ~InternalElement() = default;
 
-	/// \copybrief offcenter::amqp::IInternalElement::uriText()
+	/// \copybrief offcenter::common::amqp::IInternalElement::uriText()
 	/// \return \a \<key\>=\<value\> will be returned if the value has changed from it's default value (i.e. isDirty() == true).
 	/// Otherwise an empty string will be returned.
 	const std::string uriText() const override {
@@ -129,7 +130,7 @@ public:
 		}
 	}
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	InternalElement& operator=(const T &value){
 		this->operator()(value);
 		return *this;
@@ -141,7 +142,7 @@ public:
 		return m_value;
 	}
 
-	/// \copydoc offcenter::amqp::IInternalElement::isDirty()
+	/// \copydoc offcenter::common::amqp::IInternalElement::isDirty()
 	bool isDirty() const override { return m_dirty; }
 
 	/// Value as std::string
@@ -161,7 +162,7 @@ private:
 /// Internal option element defined with an initial value used to determine when dirty
 /// \tparam T Type of value
 /// \tparam INITIAL_VALUE Initial value
-/// \note This class will work only with valid template non-type parameters. Refer to the \link offcenter::amqp::DoubleElement DoubleElement \endlink for an
+/// \note This class will work only with valid template non-type parameters. Refer to the \link offcenter::common::amqp::DoubleElement DoubleElement \endlink for an
 ///       example using an invalid template non-type parameter.
 template<typename T, T INITIAL_VALUE>
 class InternalElementWithDefault : public InternalElement<T> {
@@ -174,7 +175,7 @@ public:
 		InternalElement<T>(key, INITIAL_VALUE) {}
 	virtual ~InternalElementWithDefault() = default;
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	InternalElementWithDefault& operator=(const T &value){
 		InternalElement<T>::operator=(value);
 		return *this;
@@ -195,13 +196,13 @@ public:
 
 	virtual ~BooleanElement() = default;
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	BooleanElement& operator=(const bool &value){
 		InternalElementWithDefault<bool, INITIAL_VALUE>::operator=(value);
 		return *this;
 	}
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	BooleanElement& operator=(const BooleanElement& value){
 		InternalElementWithDefault<bool, INITIAL_VALUE>::operator=(value.value());
 		return *this;
@@ -230,13 +231,13 @@ public:
 
 	virtual ~IntegerElement() = default;
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	IntegerElement<INITIAL_VALUE>& operator=(const int &value){
 		InternalElementWithDefault<int, INITIAL_VALUE>::operator=(value);
 		return *this;
 	}
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	IntegerElement<INITIAL_VALUE>& operator=(const IntegerElement<INITIAL_VALUE>& value){
 		InternalElementWithDefault<int, INITIAL_VALUE>::operator=(value.value());
 		return *this;
@@ -256,13 +257,13 @@ public:
 
 	virtual ~DoubleElement() = default;
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	DoubleElement& operator=(const double &value){
 		InternalElement<double>::operator=(value);
 		return *this;
 	}
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	DoubleElement& operator=(const DoubleElement &value){
 		InternalElement<double>::operator=(value.value());
 		return *this;
@@ -292,19 +293,19 @@ public:
 
 	virtual ~WireFormatElement() {}
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	WireFormatElement& operator=(const WireFormatElement &value){
 		InternalElement<WireFormat>::operator=(value.value());
 		return *this;
 	}
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	WireFormatElement& operator=(const WireFormat &value){
 		InternalElement<WireFormat>::operator=(value);
 		return *this;
 	}
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	WireFormatElement& operator=(const std::string &value){
 		static std::map<std::string, WireFormat> lookup = {
 				{"stomp", WireFormat::stomp},
@@ -325,7 +326,7 @@ public:
 		return *this;
 	}
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	WireFormatElement& operator()(const std::string &value){
 		return operator=(value);
 	}
@@ -357,13 +358,13 @@ public:
 
 	virtual ~StringElement() {}
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	StringElement& operator=(const std::string &value){
 		InternalElement<std::string>::operator=(value);
 		return *this;
 	}
 
-	/// \copydoc offcenter::amqp::InternalElement::operator()(const T &value)
+	/// \copydoc offcenter::common::amqp::InternalElement::operator()(const T &value)
 	StringElement& operator=(const StringElement &value){
 		InternalElement<std::string>::operator=(value.value());
 		return *this;
@@ -371,6 +372,7 @@ public:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* LIB_AMQP_INCLUDE_OFFCENTER_AMQP_CONNECTIONOPTIONELEMENTS_HPP_ */

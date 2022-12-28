@@ -29,7 +29,7 @@ using ::testing::HasSubstr;
 
 TEST (ConnectionURIOptions, SocketOptions)
 {
-	offcenter::amqp::ConnectionURIOptions options;
+	offcenter::common::amqp::ConnectionURIOptions options;
 	options.socketOptions.inputBufferSize = 123;
 	options.socketOptions.outputBufferSize = 321;
 	options.socketOptions.soLinger = 12;
@@ -53,7 +53,7 @@ TEST (ConnectionURIOptions, SocketOptions)
 
 TEST (ConnectionURIOptions, GeneralTransportOptions)
 {
-	offcenter::amqp::ConnectionURIOptions options;
+	offcenter::common::amqp::ConnectionURIOptions options;
 	options.generalTransport.commandTracingEnabled = true;
 	options.generalTransport.tcpTracingEnabled = true;
 	options.generalTransport.useAsyncSend = true;
@@ -69,7 +69,7 @@ TEST (ConnectionURIOptions, GeneralTransportOptions)
 
 TEST (ConnectionURIOptions, FailoverTransportOptions)
 {
-	offcenter::amqp::ConnectionURIOptions options;
+	offcenter::common::amqp::ConnectionURIOptions options;
 	options.failoverTransport.initialReconnectDelay = 20;
 	options.failoverTransport.maxReconnectDelay = 2000;
 	options.failoverTransport.useExponentialBackOff = false;
@@ -95,7 +95,7 @@ TEST (ConnectionURIOptions, FailoverTransportOptions)
 
 TEST (ConnectionURIOptions, TransactionOptions)
 {
-	offcenter::amqp::ConnectionURIOptions options;
+	offcenter::common::amqp::ConnectionURIOptions options;
 	options.transaction.maxRedeliveryCount = 4;
 
 	std::string uri = options.uri();
@@ -105,7 +105,7 @@ TEST (ConnectionURIOptions, TransactionOptions)
 
 TEST (ConnectionURIOptions, ConnectionOptions)
 {
-	offcenter::amqp::ConnectionURIOptions options;
+	offcenter::common::amqp::ConnectionURIOptions options;
 	options.connection.sendTimeout = 1;
 	options.connection.producerWindowSize = 1;
 	options.connection.closeTimeout = 1600;
@@ -127,7 +127,7 @@ TEST (ConnectionURIOptions, ConnectionOptions)
 
 TEST (ConnectionURIOptions, PrefetchPolicyOptions)
 {
-	offcenter::amqp::ConnectionURIOptions options;
+	offcenter::common::amqp::ConnectionURIOptions options;
 	options.prefetchPolicy.durableTopicPrefetch = 110;
 	options.prefetchPolicy.queueBrowserPrefetch = 510;
 	options.prefetchPolicy.queuePrefetch = 1100;
@@ -143,7 +143,7 @@ TEST (ConnectionURIOptions, PrefetchPolicyOptions)
 
 TEST (ConnectionURIOptions, RedeliveryPolicyOptions)
 {
-	offcenter::amqp::ConnectionURIOptions options;
+	offcenter::common::amqp::ConnectionURIOptions options;
 	options.redeliveryPolicy.backOffMultiplier = 6.0;
 	options.redeliveryPolicy.collisionAvoidancePercent = 20;
 	options.redeliveryPolicy.initialRedeliveryDelay = 1100;
@@ -163,8 +163,8 @@ TEST (ConnectionURIOptions, RedeliveryPolicyOptions)
 
 TEST (ConnectionURIOptions, WireFormatProtocolOptions)
 {
-	offcenter::amqp::ConnectionURIOptions options;
-	options.wireFormatProtocol.wireFormat = offcenter::amqp::WireFormat::stomp;
+	offcenter::common::amqp::ConnectionURIOptions options;
+	options.wireFormatProtocol.wireFormat = offcenter::common::amqp::WireFormat::stomp;
 	options.wireFormatProtocol.stackTraceEnabled = true;
 	options.wireFormatProtocol.cacheEnabled = true;
 	options.wireFormatProtocol.tcpNoDelayEnabled = false;
@@ -187,7 +187,7 @@ TEST (ConnectionURIOptions, WireFormatProtocolOptions)
 
 TEST (ConnectionURIOptions, GeneralOptions)
 {
-	offcenter::amqp::ConnectionURIOptions options;
+	offcenter::common::amqp::ConnectionURIOptions options;
 	options.general.prefetchSize = 1100;
 	options.general.maximumPendingMessageLimit = 1;
 	options.general.noLocal = true;
@@ -211,7 +211,7 @@ TEST (ConnectionURIOptions, GeneralOptions)
 
 TEST (ConnectionURIOptions, OpenWireOnlyOptions)
 {
-	offcenter::amqp::ConnectionURIOptions options;
+	offcenter::common::amqp::ConnectionURIOptions options;
 	options.openWireOnly.browser = true;
 	options.openWireOnly.networkSubscription = true;
 	options.openWireOnly.optimizedAcknowledge = true;
@@ -229,9 +229,9 @@ TEST (ConnectionURIOptions, OpenWireOnlyOptions)
 
 TEST (ConnectionURIOptions, ProtocolDefaults)
 {
-	offcenter::amqp::ConnectionURIOptions options;
+	offcenter::common::amqp::ConnectionURIOptions options;
 	EXPECT_EQ(options.uri(), "tcp://localhost:61616");
-	options.protocol.setTransportType(offcenter::amqp::ConnectionTransportType::ssl);
+	options.protocol.setTransportType(offcenter::common::amqp::ConnectionTransportType::ssl);
 	EXPECT_EQ(options.uri(), "ssl://localhost:61616");
 	options.protocol.setTransportType("failover");
 	EXPECT_EQ(options.uri(), "failover://()");
@@ -239,7 +239,7 @@ TEST (ConnectionURIOptions, ProtocolDefaults)
 	EXPECT_EQ(options.uri(), "ssl://localhost:61616");
 	options.protocol.setTransportType("tcp");
 	EXPECT_EQ(options.uri(), "tcp://localhost:61616");
-	options.protocol = offcenter::amqp::ConnectionTransportType::ssl;
+	options.protocol = offcenter::common::amqp::ConnectionTransportType::ssl;
 	EXPECT_EQ(options.uri(), "ssl://localhost:61616");
 	options.protocol = "failover";
 	EXPECT_EQ(options.uri(), "failover://()");
@@ -247,26 +247,26 @@ TEST (ConnectionURIOptions, ProtocolDefaults)
 
 TEST (ConnectionURIOptions, ChangeProtocol)
 {
-	offcenter::amqp::ConnectionURIOptions options;
-	options.protocol = offcenter::amqp::ConnectionTransportType::ssl;
+	offcenter::common::amqp::ConnectionURIOptions options;
+	options.protocol = offcenter::common::amqp::ConnectionTransportType::ssl;
 
-	offcenter::amqp::URLSchemeHost sh1(offcenter::amqp::URLSchemeHost::URLScheme::tcp, "host1", 12345);
+	offcenter::common::amqp::URLSchemeHost sh1(offcenter::common::amqp::URLSchemeHost::URLScheme::tcp, "host1", 12345);
 	options.protocol.setTCPProtocol(sh1);
 	EXPECT_EQ(options.uri(), "tcp://host1:12345");
 
-	offcenter::amqp::URLSchemeHost sh2(offcenter::amqp::URLSchemeHost::URLScheme::ssl, "host2", 23456);
+	offcenter::common::amqp::URLSchemeHost sh2(offcenter::common::amqp::URLSchemeHost::URLScheme::ssl, "host2", 23456);
 	options.protocol.setSSLProtocol(sh2);
 	EXPECT_EQ(options.uri(), "ssl://host2:23456");
 
-	offcenter::amqp::URLSchemeHost sh3(offcenter::amqp::URLSchemeHost::URLScheme::tcp, "host3", 34567);
+	offcenter::common::amqp::URLSchemeHost sh3(offcenter::common::amqp::URLSchemeHost::URLScheme::tcp, "host3", 34567);
 	options.protocol.addFailoverProtocol(sh3);
 	EXPECT_EQ(options.uri(), "failover://(tcp://host3:34567)");
-	offcenter::amqp::URLSchemeHost sh4(offcenter::amqp::URLSchemeHost::URLScheme::ssl, "host4", 45678);
+	offcenter::common::amqp::URLSchemeHost sh4(offcenter::common::amqp::URLSchemeHost::URLScheme::ssl, "host4", 45678);
 	options.protocol.addFailoverProtocol(sh4);
 	EXPECT_EQ(options.uri(), "failover://(tcp://host3:34567,ssl://host4:45678)");
 
 	options.protocol.resetFailoverProtocol();
-	offcenter::amqp::URLSchemeHost sh5(offcenter::amqp::URLSchemeHost::URLScheme::tcp, "host5", 56789);
+	offcenter::common::amqp::URLSchemeHost sh5(offcenter::common::amqp::URLSchemeHost::URLScheme::tcp, "host5", 56789);
 	options.protocol.addFailoverProtocol(sh5);
 	EXPECT_EQ(options.uri(), "failover://(tcp://host5:56789)");
 

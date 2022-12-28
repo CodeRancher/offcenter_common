@@ -24,7 +24,6 @@
 #define AMQPPRODUCEREXAMPLEAPP_H_
 
 #include "offcenter/common/amqpserver/IAmqpServerApp.hpp"
-using namespace offcenter::common;
 
 #include "offcenter/common/amqp/ProducerMessageProducer.hpp"
 
@@ -33,15 +32,15 @@ using namespace offcenter::common;
 /**
  *
  */
-class AmqpProducerExampleApp: public amqpserver::IAmqpServerApp {
+class AmqpProducerExampleApp: public offcenter::common::amqpserver::IAmqpServerApp {
 public:
 	explicit AmqpProducerExampleApp();
 	virtual ~AmqpProducerExampleApp();
 
-	void onInitProgramOptions(program_options::ProgramOptionsManager& optionsManager) override;
+	void onInitProgramOptions(offcenter::common::program_options::ProgramOptionsManager& optionsManager) override;
 	void onSetUp() override;
-	void onInitAMQP(amqp::ConnectionURIOptions& options) override;
-	void onInitAMQPSessions(amqp::ConnectionPtr connection) override;
+	void onInitAMQP(offcenter::common::amqp::ConnectionURIOptions& options) override;
+	void onInitAMQPSessions(offcenter::common::amqp::ConnectionPtr connection) override;
 	//void onInitMethodHandlers(restserver::AutoMethodHandler& methodHandler) override;
 	//void onInitEndpoint(web::uri& uri) override;
 	void onExecute() override;
@@ -52,10 +51,10 @@ public:
 private:
 	AmqpExampleProgramOptions::ConfigPtr m_amqpOption;
 
-	offcenter::amqp::SessionPtr m_session;
-	offcenter::amqp::DestinationPtr m_destination;
-	//offcenter::amqp::MessageProducerPtr m_producer;
-	//offcenter::amqp::ProducerMessageHandler m_producer;
+	offcenter::common::amqp::SessionPtr m_session;
+	offcenter::common::amqp::DestinationPtr m_destination;
+	//offcenter::common::amqp::MessageProducerPtr m_producer;
+	//offcenter::common::amqp::ProducerMessageHandler m_producer;
 };
 
 #endif /* AMQPPRODUCEREXAMPLEAPP_H_ */

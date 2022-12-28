@@ -31,6 +31,7 @@
 #include "soci/mysql/soci-mysql.h"
 
 namespace offcenter {
+namespace common {
 namespace soci {
 
 class MySQLOptions
@@ -194,6 +195,7 @@ public:
 };
 
 } /* namespace soci */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_SOCI_MYSQLOPTIONS_HPP_ */

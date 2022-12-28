@@ -38,13 +38,13 @@ TEST (SOCISession, EmptySessionPool)
 {
 	const size_t poolSize = 4;
 
-	offcenter::soci::MySQLOptions mysqlOptions;
+	offcenter::common::soci::MySQLOptions mysqlOptions;
 	mysqlOptions.dbname(g_dbname);
 	mysqlOptions.user(g_user);
 	mysqlOptions.password(g_password);
 	mysqlOptions.host(g_host);
 
-	offcenter::soci::SessionPoolManager sessionPoolManager(mysqlOptions, poolSize);
+	offcenter::common::soci::SessionPoolManager sessionPoolManager(mysqlOptions, poolSize);
 
 	// Test that all sessions are connected
 	for (int i = 0; i < poolSize; i++ ) {
@@ -53,7 +53,7 @@ TEST (SOCISession, EmptySessionPool)
 	}
 
 	// Grab a session and make sure it is also connected
-	offcenter::soci::Session session(sessionPoolManager);
+	offcenter::common::soci::Session session(sessionPoolManager);
 	EXPECT_TRUE(session.isOpen());
 	EXPECT_TRUE(session.sql().is_connected());
 	EXPECT_TRUE(session().is_connected());
@@ -77,17 +77,17 @@ TEST (SOCISession, SimpleSelect)
 {
 	const size_t poolSize = 4;
 
-	offcenter::soci::MySQLOptions mysqlOptions;
+	offcenter::common::soci::MySQLOptions mysqlOptions;
 	mysqlOptions.dbname(g_dbname);
 	mysqlOptions.user(g_user);
 	mysqlOptions.password(g_password);
 	mysqlOptions.host(g_host);
 
-	offcenter::soci::SessionPoolManager sessionPoolManager(mysqlOptions, poolSize);
+	offcenter::common::soci::SessionPoolManager sessionPoolManager(mysqlOptions, poolSize);
 
 	std::string version;
 	for (int i = 0; i < poolSize * 2; i++ ) {
-		offcenter::soci::Session session(sessionPoolManager);
+		offcenter::common::soci::Session session(sessionPoolManager);
 		session() << "SELECT version();", ::soci::into(version);
 		EXPECT_THAT(version, HasSubstr("MariaDB"));
 		session << "SELECT version();", ::soci::into(version);
@@ -101,12 +101,12 @@ TEST (SOCISession, DatabaseDoesntExist)
 {
 	const size_t poolSize = 4;
 
-	offcenter::soci::MySQLOptions mysqlOptions;
+	offcenter::common::soci::MySQLOptions mysqlOptions;
 	mysqlOptions.dbname("DatabaseNameThatDoesntExist");
 	mysqlOptions.user(g_user);
 	mysqlOptions.password(g_password);
 	mysqlOptions.host(g_host);
 
-	offcenter::soci::SessionPoolManager sessionPoolManager(mysqlOptions, poolSize, true);
+	offcenter::common::soci::SessionPoolManager sessionPoolManager(mysqlOptions, poolSize, true);
 	sessionPoolManager.dropDB(mysqlOptions);
 }

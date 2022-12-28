@@ -48,12 +48,6 @@ target_sources(${LIB_NAME}
 		#$<INSTALL_INTERFACE:${LIB_COMMON_INC_BASE}/common/amqpserver/AmqpServerAppFoundation.hpp>
 )
 
-target_include_directories(${LIB_NAME}
-	PUBLIC
-		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
-		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
-)
-
 target_link_libraries(${LIB_NAME}
 	offcenter_common_framework
 	offcenter_common
@@ -66,7 +60,13 @@ target_link_libraries(${LIB_NAME}
 )
 
 target_include_directories(${LIB_NAME}
-	SYSTEM PRIVATE
+	PUBLIC
+		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
+
+target_include_directories(${LIB_NAME}
+	SYSTEM PUBLIC
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 

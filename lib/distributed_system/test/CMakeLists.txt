@@ -47,8 +47,8 @@ target_include_directories(${EXE_NAME}
 		${CMAKE_CURRENT_LIST_DIR}/../../amqp/include
 		${CMAKE_CURRENT_LIST_DIR}/../../common/include
 		
-		"$<BUILD_INTERFACE:${ACTIVEMQCPP_INCLUDE_DIR}>"
-
+	SYSTEM PRIVATE
+		${ACTIVEMQCPP_INCLUDE_DIR}
 		${EASYLOGGINGPP_INCLUDE_DIR}
 		
 )

@@ -26,7 +26,6 @@
 #include "easylogging++.h"
 
 #include "offcenter/common/InterruptHandler.hpp"
-using namespace offcenter::common;
 
 #include "offcenter/common/amqp/Listener.hpp"
 #include "offcenter/common/amqp/URLSchemeHost.hpp"
@@ -64,7 +63,7 @@ void AmqpManagedExampleApp::onInitAMQP(amqp::ConnectionURIOptions& options)
 void AmqpManagedExampleApp::onInitAMQPSessions(amqp::ConnectionPtr connection)
 {
 	// Create a Session
-	m_session = offcenter::amqp::helper::sessionFactory(connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
+	m_session = offcenter::common::amqp::helper::sessionFactory(connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
 
 }
 
@@ -76,18 +75,18 @@ void AmqpManagedExampleApp::onSetUp()
 void AmqpManagedExampleApp::onExecute()
 {
 	// Create the destination (Topic or Queue)
-	offcenter::amqp::DestinationPtr inputDestination = offcenter::amqp::helper::destinationFactory(m_session->createTopic("offcenter.test.input"));
-	offcenter::amqp::DestinationPtr outputDestination = offcenter::amqp::helper::destinationFactory(m_session->createTopic("offcenter.test.output"));
+	offcenter::common::amqp::DestinationPtr inputDestination = offcenter::common::amqp::helper::destinationFactory(m_session->createTopic("offcenter.test.input"));
+	offcenter::common::amqp::DestinationPtr outputDestination = offcenter::common::amqp::helper::destinationFactory(m_session->createTopic("offcenter.test.output"));
 
-	offcenter::amqp::MessageConsumerPtr consumer1 = offcenter::amqp::helper::messageConsumerFactory(m_session->createConsumer(inputDestination.get()));
-	offcenter::amqp::ProducerMessageHandler producer1(m_session, outputDestination);
+	offcenter::common::amqp::MessageConsumerPtr consumer1 = offcenter::common::amqp::helper::messageConsumerFactory(m_session->createConsumer(inputDestination.get()));
+	offcenter::common::amqp::ProducerMessageHandler producer1(m_session, outputDestination);
 	producer1()->setDeliveryMode(cms::DeliveryMode::NON_PERSISTENT);
 
-	offcenter::amqp::MessageConsumerPtr consumer2 = offcenter::amqp::helper::messageConsumerFactory(m_session->createConsumer(inputDestination.get()));
-	offcenter::amqp::ProducerMessageHandler producer2(m_session, outputDestination);
+	offcenter::common::amqp::MessageConsumerPtr consumer2 = offcenter::common::amqp::helper::messageConsumerFactory(m_session->createConsumer(inputDestination.get()));
+	offcenter::common::amqp::ProducerMessageHandler producer2(m_session, outputDestination);
 	producer2()->setDeliveryMode(cms::DeliveryMode::NON_PERSISTENT);
 
-	offcenter::amqp::Listener<AmqpDataElementInner, AmqpDataElementInner::MessageType> listener1(
+	offcenter::common::amqp::Listener<AmqpDataElementInner, AmqpDataElementInner::MessageType> listener1(
 			consumer1,
 			[&producer1](const cms::Message *cmsMessage, const AmqpDataElementInner& amqpInner) {
 				std::cout << "Receive message 1 (AmqpDataElement): "
@@ -102,7 +101,7 @@ void AmqpManagedExampleApp::onExecute()
 				producer1.send(amqpOuter);
 	});
 
-	offcenter::amqp::Listener<AmqpDataElementInner, AmqpDataElementInner::MessageType> listener2(
+	offcenter::common::amqp::Listener<AmqpDataElementInner, AmqpDataElementInner::MessageType> listener2(
 			consumer2,
 			[&producer2](const cms::Message *cmsMessage, const AmqpDataElementInner& amqpInner) {
 				std::cout << "Receive message 2 (AmqpDataElement): "

@@ -35,31 +35,31 @@ public:
 	explicit AdminStatusFixture() {
 		activemq::library::ActiveMQCPP::initializeLibrary();
 
-		offcenter::amqp::ConnectionURIOptions options;
-		offcenter::amqp::URLSchemeHost tcpHost(offcenter::amqp::URLSchemeHost::URLScheme::tcp, "rpiactivemq");
+		offcenter::common::amqp::ConnectionURIOptions options;
+		offcenter::common::amqp::URLSchemeHost tcpHost(offcenter::common::amqp::URLSchemeHost::URLScheme::tcp, "rpiactivemq");
 		options.protocol.setTCPProtocol(tcpHost);
 		options.connection.sendTimeout = 1000;
 		options.failoverTransport.timeout = 1000;
 
 		// Connect to the AMQP server
 		LOG(DEBUG) << "Open Connection Factory";
-		offcenter::amqp::ActiveMQConnectionFactoryPtr connectionFactory(offcenter::amqp::helper::activeMQConnectionFactoryFactory(options.uri()));
+		offcenter::common::amqp::ActiveMQConnectionFactoryPtr connectionFactory(offcenter::common::amqp::helper::activeMQConnectionFactoryFactory(options.uri()));
 
 	    // Create a Connection
 		LOG(DEBUG) << "Open Connection";
-		m_connection = offcenter::amqp::helper::connectionFactory(connectionFactory->createConnection());
+		m_connection = offcenter::common::amqp::helper::connectionFactory(connectionFactory->createConnection());
 
-		offcenter::amqp::ConnectionSettings connectionSettings(
+		offcenter::common::amqp::ConnectionSettings connectionSettings(
 				cms::Session::AcknowledgeMode::AUTO_ACKNOWLEDGE,
-				offcenter::amqp::ConnectionSettings::QueueType::Topic,
+				offcenter::common::amqp::ConnectionSettings::QueueType::Topic,
 				"offcenter.test.AdminControl");
 
 		m_statusProducer = offcenter::common::framework::admin::AdminStatusProducer::factory(
-				offcenter::amqp::SessionProducer::factory(m_connection, connectionSettings),
+				offcenter::common::amqp::SessionProducer::factory(m_connection, connectionSettings),
 				"test_admin_status");
 
 		m_statusConsumer = offcenter::common::framework::admin::AdminStatusConsumer::factory(
-				offcenter::amqp::SessionConsumer::factory(m_connection, connectionSettings),
+				offcenter::common::amqp::SessionConsumer::factory(m_connection, connectionSettings),
 				[&m_statusMessage=m_statusMessage, &m_waitForMessage=m_waitForMessage](const cms::Message* message, const offcenter::common::framework::admin::AdminStatusMessage& statusMessage)
 				{
 					m_statusMessage = statusMessage;
@@ -96,11 +96,11 @@ protected:
 
 	offcenter::common::framework::admin::AdminStatusMessage m_statusMessage;
 
-	offcenter::amqp::ConnectionPtr m_connection;
-	offcenter::amqp::SessionPtr m_providerSession;
-	offcenter::amqp::DestinationPtr m_providerDestination;
-	offcenter::amqp::SessionPtr m_consumerSession;
-	offcenter::amqp::DestinationPtr m_consumerDestination;
+	offcenter::common::amqp::ConnectionPtr m_connection;
+	offcenter::common::amqp::SessionPtr m_providerSession;
+	offcenter::common::amqp::DestinationPtr m_providerDestination;
+	offcenter::common::amqp::SessionPtr m_consumerSession;
+	offcenter::common::amqp::DestinationPtr m_consumerDestination;
 
 	offcenter::common::WaitForMessage m_waitForMessage;
 

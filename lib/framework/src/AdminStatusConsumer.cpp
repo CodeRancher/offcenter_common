@@ -31,7 +31,7 @@ namespace framework {
 namespace admin {
 
 /*
-AdminStatusConsumer::AdminStatusConsumer(offcenter::amqp::SessionConsumer::Ptr sessionConsumer, ICallback::Ptr adminStatusHandler):
+AdminStatusConsumer::AdminStatusConsumer(offcenter::common::amqp::SessionConsumer::Ptr sessionConsumer, ICallback::Ptr adminStatusHandler):
 	m_sessionConsumer(std::move(sessionConsumer)),
 	m_adminStatusHandler(std::move(adminStatusHandler))
 {

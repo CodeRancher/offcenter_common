@@ -29,72 +29,69 @@
 
 TEST (DateTime, parse)
 {
-	using namespace offcenter::common;
-	std::pair<std::string, std::string> parsed = parseTimestamp("0.1");
+		std::pair<std::string, std::string> parsed = offcenter::common::parseTimestamp("0.1");
 	EXPECT_EQ(parsed.first, "0");
 	EXPECT_EQ(parsed.second, "1");
 
-	parsed = parseTimestamp("2");
+	parsed = offcenter::common::parseTimestamp("2");
 	EXPECT_EQ(parsed.first, "2");
 	EXPECT_EQ(parsed.second, "");
 
-	parsed = parseTimestamp("3.");
+	parsed = offcenter::common::parseTimestamp("3.");
 	EXPECT_EQ(parsed.first, "3");
 	EXPECT_EQ(parsed.second, "");
 
 	EXPECT_THROW(
-		parsed = parseTimestamp("4k5"),
+		parsed = offcenter::common::parseTimestamp("4k5"),
 		offcenter::common::DateTimeException
 	);
 
 	EXPECT_THROW(
-		parsed = parseTimestamp("6.0a"),
+		parsed = offcenter::common::parseTimestamp("6.0a"),
 		offcenter::common::DateTimeException
 	);
 
-	parsed = parseTimestamp("0123456789.9876543210");
+	parsed = offcenter::common::parseTimestamp("0123456789.9876543210");
 	EXPECT_EQ(parsed.first, "0123456789");
 	EXPECT_EQ(parsed.second, "9876543210");
 }
 
 TEST (DateTime, UTCTime)
 {
-	using namespace offcenter::common;
-	using namespace std::chrono;
+		using namespace std::chrono;
 
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445135.000000000")), "2021-06-11T20:58:55.000000000Z");
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445135")), "2021-06-11T20:58:55.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445135.000000000")), "2021-06-11T20:58:55.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445135")), "2021-06-11T20:58:55.000000000Z");
 	EXPECT_THROW(
-			EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445135k0.0000000")), "2021-06-11T20:58:55.000000000Z"),
+			EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445135k0.0000000")), "2021-06-11T20:58:55.000000000Z"),
 			offcenter::common::DateTimeException
 	);
 
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445135.000000000")), "2021-06-11T20:58:55.000000000Z");
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445140.000000000")), "2021-06-11T20:59:00.000000000Z");
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445150.000000000")), "2021-06-11T20:59:10.000000000Z");
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445170.000000000")), "2021-06-11T20:59:30.000000000Z");
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445175.000000000")), "2021-06-11T20:59:35.000000000Z");
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445190.000000000")), "2021-06-11T20:59:50.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445135.000000000")), "2021-06-11T20:58:55.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445140.000000000")), "2021-06-11T20:59:00.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445150.000000000")), "2021-06-11T20:59:10.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445170.000000000")), "2021-06-11T20:59:30.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445175.000000000")), "2021-06-11T20:59:35.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445190.000000000")), "2021-06-11T20:59:50.000000000Z");
 }
 
 TEST (DateTime, UTCEpoch)
 {
-	using namespace offcenter::common;
-	using namespace std::chrono;
+		using namespace std::chrono;
 
-	auto timePoint = make_UTCDateTimeFromTimestamp("1623445135.000000000");
-	auto seconds =  UTCDateTimeSecondsFromEpoch(timePoint);
+	auto timePoint = offcenter::common::make_UTCDateTimeFromTimestamp("1623445135.000000000");
+	auto seconds =  offcenter::common::UTCDateTimeSecondsFromEpoch(timePoint);
 	//LOG(DEBUG) << "UTCEpoch: 1623445135.000000000:" << seconds;
-	auto timePointRT = make_UTCDateTimeFromTimestamp(seconds);
-	//LOG(DEBUG) << "UTCEpoch1: " << UTCDateTimeToISO8601(timePoint) << ":" << UTCDateTimeToISO8601(timePointRT);
+	auto timePointRT = offcenter::common::make_UTCDateTimeFromTimestamp(seconds);
+	//LOG(DEBUG) << "UTCEpoch1: " << offcenter::common::UTCDateTimeToISO8601(timePoint) << ":" << offcenter::common::UTCDateTimeToISO8601(timePointRT);
 	EXPECT_EQ(timePoint, timePointRT);
 	/*
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445135.000000000")), "2021-06-11T20:58:55.000000000Z");
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445140.000000000")), "2021-06-11T20:59:00.000000000Z");
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445150.000000000")), "2021-06-11T20:59:10.000000000Z");
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445170.000000000")), "2021-06-11T20:59:30.000000000Z");
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445175.000000000")), "2021-06-11T20:59:35.000000000Z");
-	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445190.000000000")), "2021-06-11T20:59:50.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445135.000000000")), "2021-06-11T20:58:55.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445140.000000000")), "2021-06-11T20:59:00.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445150.000000000")), "2021-06-11T20:59:10.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445170.000000000")), "2021-06-11T20:59:30.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445175.000000000")), "2021-06-11T20:59:35.000000000Z");
+	EXPECT_EQ(offcenter::common::UTCDateTimeToISO8601(offcenter::common::make_UTCDateTimeFromTimestamp("1623445190.000000000")), "2021-06-11T20:59:50.000000000Z");
 	*/
 }
 

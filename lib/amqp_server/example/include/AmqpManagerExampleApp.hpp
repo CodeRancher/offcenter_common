@@ -25,7 +25,6 @@
 
 #include "offcenter/common/amqpserver/IAmqpServerApp.hpp"
 #include "offcenter/common/framework/admin/AdminControlProducer.hpp"
-using namespace offcenter::common;
 
 #include "AmqpExampleProgramOptions.hpp"
 #include "AmqpDataElement.hpp"

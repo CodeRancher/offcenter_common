@@ -51,7 +51,7 @@ target_include_directories(${EXE_NAME}
 		${CMAKE_CURRENT_LIST_DIR}/../../program_options/include
 		${CMAKE_CURRENT_LIST_DIR}/../../common/include
 
-	SYSTEM
+	SYSTEM PRIVATE
 		${EASYLOGGINGPP_INCLUDE_DIR}
 		${MariaDBClient_INCLUDE_DIRS}
 )

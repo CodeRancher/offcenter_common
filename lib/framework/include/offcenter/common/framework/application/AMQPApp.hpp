@@ -40,8 +40,8 @@ private:
 	AMQPAppConfig m_amqpConfig;
 
 	ScopeGuard m_scopeGuard;
-	offcenter::amqp::ConnectionPtr m_connection;
-	offcenter::amqp::SessionPtr m_session;
+	offcenter::common::amqp::ConnectionPtr m_connection;
+	offcenter::common::amqp::SessionPtr m_session;
 
 
 public:

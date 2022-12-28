@@ -38,6 +38,7 @@
 #include "offcenter/common/amqp/AMQPException.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /**
@@ -770,7 +771,7 @@ public:
 
 	/// Set the transport type from a string
 	/// \param value string value to convert to a transport type
-	/// \exception offcenter::amqp::AMQPException Unable to convert \a value to \a ConnectionTransportType
+	/// \exception offcenter::common::amqp::AMQPException Unable to convert \a value to \a ConnectionTransportType
 	void setTransportType(const std::string &value) { setTransportType(ProtocolOptions::stringToTransportType(value)); }
 
 	/// Set the transport type
@@ -779,7 +780,7 @@ public:
 
 	/// Set the transport type from a string
 	/// \param value string value to convert to a transport type
-	/// \exception offcenter::amqp::AMQPException Unable to convert \a value to \a ConnectionTransportType
+	/// \exception offcenter::common::amqp::AMQPException Unable to convert \a value to \a ConnectionTransportType
 	void operator=(const std::string &value){ setTransportType(value); }
 
 	void setProtocol(const std::string &value){ setTransportType(value); }
@@ -808,7 +809,7 @@ public:
 
 	/// Set the transport type from a string
 	/// \param value string value to convert to a transport type
-	/// \exception offcenter::amqp::AMQPException Unable to convert \a value to \a ConnectionTransportType
+	/// \exception offcenter::common::amqp::AMQPException Unable to convert \a value to \a ConnectionTransportType
 	void operator()(const std::string &value){ setTransportType(value); }
 
 	/// Set the transport type to tcp and the tcp connection values
@@ -843,19 +844,19 @@ public:
 	///   - \ref tcp  - \c tcp://localhost:61616
 	///   - \ref ssl  - \c ssl://localhost:61616
 	///   - \ref failover - \c failover://(tcp://localhost:61616,tcp://anotherhost:61616)
-	/// \exception offcenter::amqp::AMQPException Invalid transport type
+	/// \exception offcenter::common::amqp::AMQPException Invalid transport type
 	const std::string uriText() const {
 		switch (m_transportType) {
 			case tcp: return m_tcpProtocol.uri();
 			case ssl: return m_sslProtocol.uri();
 			case failover: return m_failoverProtocol.uri();
 		}
-		throw offcenter::amqp::AMQPException("Invalid transport type");
+		throw offcenter::common::amqp::AMQPException("Invalid transport type");
 	}
 
 	/// Convert a string to a ConnectionTransportType
 	/// \param value string representation of ConnectionTransportType
-	/// \exception offcenter::amqp::AMQPException Unable to convert \a value to \a ConnectionTransportType
+	/// \exception offcenter::common::amqp::AMQPException Unable to convert \a value to \a ConnectionTransportType
 	static ConnectionTransportType stringToTransportType(std::string value) {
 		boost::algorithm::trim(value);
 		boost::algorithm::to_lower(value);
@@ -866,7 +867,7 @@ public:
 		} else if (value == "failover") {
 			return ConnectionTransportType::failover;
 		}
-		throw offcenter::amqp::AMQPException("Invalid transport type string (" + value + ")");
+		throw offcenter::common::amqp::AMQPException("Invalid transport type string (" + value + ")");
 	}
 
 private:
@@ -959,6 +960,7 @@ private:
 
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* LIB_AMQP_INCLUDE_OFFCENTER_AMQP_CONNECTIONOPTIONS_HPP_ */

@@ -36,7 +36,7 @@
  */
 TEST (TripleCallConsumerData, AddThreeConsumers)
 {
-	offcenter::distributedsystem::ConsumerDataManager rcManager;
+	offcenter::common::distributedsystem::ConsumerDataManager rcManager;
 	offcenter::common::WaitForMessage waitForMessage;
 
 	StageOneCLConfig stageOneCLConfig;

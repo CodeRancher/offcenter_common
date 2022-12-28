@@ -26,6 +26,7 @@
 #include "IRemoteSystemName.hpp"
 
 namespace offcenter {
+namespace common {
 namespace distributedsystem {
 
 enum RemoteSystemState {
@@ -48,6 +49,7 @@ public:
 };
 
 } /* namespace distributedsystem */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_DISTRIBUTEDSYSTEM_IREMOTESYSTEM_HPP_ */

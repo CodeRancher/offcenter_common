@@ -90,26 +90,23 @@ target_sources(${LIB_NAME}
 		$<INSTALL_INTERFACE:include/offcenter/common/amqp/AMQPException.hpp>
 )
 
-target_include_directories(${LIB_NAME}
-	PUBLIC
-		${EASYLOGGINGPP_INCLUDE_DIR}
-		${ACTIVEMQCPP_INCLUDE_DIR}
-		${APR_INCLUDE_DIR}
+target_link_libraries(${LIB_NAME}
+	offcenter_common
+	${EASYLOGGINGPP_LIBRARY}
+	${APR_LIBRARIES}
 )
 
 target_include_directories(${LIB_NAME}
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
-
-	#	"$<BUILD_INTERFACE:${ACTIVEMQCPP_INCLUDE_DIR}>"
-#		"$<BUILD_INTERFACE:${APR_INCLUDE_DIR}>"
 )
 
-target_link_libraries(${LIB_NAME}
-	offcenter_common
-	${EASYLOGGINGPP_LIBRARY}
-	${APR_LIBRARIES}
+target_include_directories(${LIB_NAME}
+	SYSTEM PUBLIC
+		${EASYLOGGINGPP_INCLUDE_DIR}
+		${ACTIVEMQCPP_INCLUDE_DIR}
+		${APR_INCLUDE_DIR}
 )
 
 include(OffcenterInstall)

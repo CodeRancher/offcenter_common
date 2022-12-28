@@ -33,7 +33,6 @@
 #include "offcenter/common/framework/application/AppManager.hpp"
 #include "offcenter/common/framework/application/ManagedAppConfig.hpp"
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
-using namespace offcenter::common;
 
 //*****************************************************************************
 class BasicAppWithConfigConfig
@@ -61,7 +60,7 @@ public:
 
 //*****************************************************************************
 class BasicAppConfigFileOptions:
-		public program_options::ProgramOptionsGroup<BasicAppWithConfigConfig>
+		public offcenter::common::program_options::ProgramOptionsGroup<BasicAppWithConfigConfig>
 {
 public:
 	BasicAppConfigFileOptions():
@@ -81,7 +80,7 @@ private:
 };
 
 //*****************************************************************************
-class BasicAppWithConfigTest: public framework::application::IApp {
+class BasicAppWithConfigTest: public offcenter::common::framework::application::IApp {
 public:
 	bool m_onExecuteCalled;
 	bool m_onVersionCalled;
@@ -100,7 +99,7 @@ public:
 	}
 	const BasicAppConfigFileOptions::ConfigPtr& config() const { return m_configFileOption; }
 
-	void onInitProgramOptions(program_options::ProgramOptionsManager& optionsManager) {
+	void onInitProgramOptions(offcenter::common::program_options::ProgramOptionsManager& optionsManager) {
 		m_configFileOption = optionsManager.add<BasicAppConfigFileOptions>();
 	}
 
@@ -137,7 +136,7 @@ protected:
 
 	// void TearDown() override {}
 
-	using App = framework::application::AppManager<BasicAppWithConfigTest>;
+	using App = offcenter::common::framework::application::AppManager<BasicAppWithConfigTest>;
 	App m_basicAppTest;
 };
 

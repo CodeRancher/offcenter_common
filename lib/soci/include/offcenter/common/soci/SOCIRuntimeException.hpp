@@ -26,6 +26,7 @@
 #include <stdexcept>
 
 namespace offcenter {
+namespace common {
 namespace soci {
 
 /**
@@ -44,6 +45,7 @@ public:
 };
 
 } /* namespace soci */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_SOCI_SOCIRUNTIMEEXCEPTION_HPP_ */

@@ -24,7 +24,6 @@
 #define AMQPCONSUMEREXAMPLEAPP_H_
 
 #include "offcenter/common/amqpserver/IAmqpServerApp.hpp"
-using namespace offcenter::common;
 
 #include "AmqpExampleProgramOptions.hpp"
 #include "AmqpDataElement.hpp"
@@ -32,15 +31,15 @@ using namespace offcenter::common;
 /**
  *
  */
-class PersistOandaForexDataToCSV: public amqpserver::IAmqpServerApp {
+class PersistOandaForexDataToCSV: public offcenter::common::amqpserver::IAmqpServerApp {
 public:
 	explicit PersistOandaForexDataToCSV();
 	virtual ~PersistOandaForexDataToCSV();
 
-	void onInitProgramOptions(program_options::ProgramOptionsManager& optionsManager) override;
+	void onInitProgramOptions(offcenter::common::program_options::ProgramOptionsManager& optionsManager) override;
 	void onSetUp() override;
-	void onInitAMQP(amqp::ConnectionURIOptions& options) override;
-	void onInitAMQPSessions(amqp::ConnectionPtr connection) override;
+	void onInitAMQP(offcenter::common::amqp::ConnectionURIOptions& options) override;
+	void onInitAMQPSessions(offcenter::common::amqp::ConnectionPtr connection) override;
 	void onExecute() override;
 	void onTearDown() override;
 	void onHelp(const std::string& help) override;
@@ -49,8 +48,8 @@ public:
 private:
 	AmqpExampleProgramOptions::ConfigPtr m_amqpOption;
 
-	offcenter::amqp::SessionPtr m_session;
-	offcenter::amqp::DestinationPtr m_destination;
+	offcenter::common::amqp::SessionPtr m_session;
+	offcenter::common::amqp::DestinationPtr m_destination;
 
 };
 

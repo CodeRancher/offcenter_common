@@ -63,7 +63,7 @@ target_link_libraries(${EXE_NAME}
 target_include_directories(${EXE_NAME} 
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
-	SYSTEM
+	SYSTEM PRIVATE
 		${IMGUI_DIR}
 		${IMGUI_DIR}/backends
 		${IMPLOT_DIR}
@@ -96,7 +96,7 @@ target_link_libraries(${EXE_NAME}
 target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
-	SYSTEM
+	SYSTEM PRIVATE
 		${IMGUI_DIR}
 		${IMGUI_DIR}/backends
 		${IMPLOT_DIR}
@@ -127,7 +127,7 @@ target_link_libraries(${EXE_NAME}
 target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
-	SYSTEM
+	SYSTEM PRIVATE
 		${IMGUI_DIR}
 		${IMGUI_DIR}/backends
 		${IMPLOT_DIR}

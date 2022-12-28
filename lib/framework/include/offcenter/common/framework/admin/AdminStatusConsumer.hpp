@@ -41,21 +41,21 @@ namespace admin {
 /**
  *
  */
-class AdminStatusConsumer : public offcenter::amqp::Consumer<AdminStatusMessage::MessageType, AdminStatusMessage>
+class AdminStatusConsumer : public offcenter::common::amqp::Consumer<AdminStatusMessage::MessageType, AdminStatusMessage>
 {
 public:
 	using Ptr = std::unique_ptr<AdminStatusConsumer>;
-	using Parent = offcenter::amqp::Consumer<AdminStatusMessage::MessageType, AdminStatusMessage>;
+	using Parent = offcenter::common::amqp::Consumer<AdminStatusMessage::MessageType, AdminStatusMessage>;
 
 	template <typename TCallback>
-	static Ptr factory(offcenter::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback) {
-		return std::make_unique<AdminStatusConsumer>(std::forward<offcenter::amqp::SessionConsumer::Ptr>(sessionConsumer), std::forward<TCallback>(callback));
+	static Ptr factory(offcenter::common::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback) {
+		return std::make_unique<AdminStatusConsumer>(std::forward<offcenter::common::amqp::SessionConsumer::Ptr>(sessionConsumer), std::forward<TCallback>(callback));
 	}
 
 public:
 	template <typename TCallback>
-	explicit AdminStatusConsumer(offcenter::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback):
-		Parent(std::forward<offcenter::amqp::SessionConsumer::Ptr>(sessionConsumer), std::forward<TCallback>(callback))
+	explicit AdminStatusConsumer(offcenter::common::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback):
+		Parent(std::forward<offcenter::common::amqp::SessionConsumer::Ptr>(sessionConsumer), std::forward<TCallback>(callback))
 	{}
 
 	virtual ~AdminStatusConsumer() = default;
@@ -69,15 +69,15 @@ public:
 //	using Ptr = std::unique_ptr<AdminStatusConsumer>;
 //
 //	template <typename TCallback>
-//	static Ptr factory(offcenter::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback) {
-//		return std::make_unique<AdminStatusConsumer>(std::forward<offcenter::amqp::SessionConsumer::Ptr>(sessionConsumer), std::forward<TCallback>(callback));
+//	static Ptr factory(offcenter::common::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback) {
+//		return std::make_unique<AdminStatusConsumer>(std::forward<offcenter::common::amqp::SessionConsumer::Ptr>(sessionConsumer), std::forward<TCallback>(callback));
 //	}
 //private:
-//	using MessageCallback = offcenter::amqp::MessageCallback<AdminStatusMessage::MessageType, AdminStatusMessage>;
+//	using MessageCallback = offcenter::common::amqp::MessageCallback<AdminStatusMessage::MessageType, AdminStatusMessage>;
 //
 //public:
 //	template <typename TCallback>
-//	explicit AdminStatusConsumer(offcenter::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback):
+//	explicit AdminStatusConsumer(offcenter::common::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback):
 //		cms::MessageListener(),
 //		m_callback(MessageCallback::factory(std::forward<TCallback>(callback))),
 //		m_sessionConsumer(std::move(sessionConsumer))
@@ -102,7 +102,7 @@ public:
 //
 //
 //private:
-//	offcenter::amqp::SessionConsumer::Ptr m_sessionConsumer;
+//	offcenter::common::amqp::SessionConsumer::Ptr m_sessionConsumer;
 //	MessageCallback m_callback;
 //};
 

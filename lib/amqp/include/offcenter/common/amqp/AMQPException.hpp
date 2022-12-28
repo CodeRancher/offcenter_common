@@ -24,6 +24,7 @@
 #include <stdexcept>
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /// \brief AMQP Exception
@@ -39,6 +40,7 @@ public:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_AMQPEXCEPTION_HPP_ */

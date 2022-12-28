@@ -29,6 +29,7 @@
 #include "offcenter/common/amqp/URLSchemeHost.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /// \brief The Failover Transport
@@ -116,6 +117,7 @@ private:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* LIB_AMQP_INCLUDE_OFFCENTER_AMQP_URLFAILOVER_HPP_ */

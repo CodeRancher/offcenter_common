@@ -26,7 +26,6 @@
 #include <string>
 
 #include "offcenter/common/program_options/ProgramOptionsManager.hpp"
-using namespace offcenter::common;
 
 namespace offcenter {
 namespace common {

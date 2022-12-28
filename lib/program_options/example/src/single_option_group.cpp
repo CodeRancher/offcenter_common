@@ -24,7 +24,6 @@
 
 #include "offcenter/common/program_options/ProgramOptionsManager.hpp"
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
-using namespace offcenter::common;
 
 class SingleOptionConfig {
 	private:
@@ -46,7 +45,7 @@ class SingleOptionConfig {
 		friend class SingleOption;
 };
 
-class SingleOption: public program_options::ProgramOptionsGroup<SingleOptionConfig> {
+class SingleOption: public offcenter::common::program_options::ProgramOptionsGroup<SingleOptionConfig> {
 public:
 	explicit SingleOption():
 		ProgramOptionsGroup("SingleOption")
@@ -64,7 +63,7 @@ public:
 int main(int argc, char **argv)
 {
 	// Declare the Program Options Manager
-	program_options::ProgramOptionsManager optManager;
+	offcenter::common::program_options::ProgramOptionsManager optManager;
 
 	// Add a Program Options Group to be processed
 	SingleOption::ConfigPtr singleOptionConfig = optManager.add<SingleOption>();

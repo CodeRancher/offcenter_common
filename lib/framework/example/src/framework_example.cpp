@@ -90,7 +90,7 @@ public:
 	/*
 	 * Initialize the program options for the application
 	 */
-	void onInitProgramOptions(program_options::ProgramOptionsManager& optionsManager) override {
+	void onInitProgramOptions(offcenter::common::program_options::ProgramOptionsManager& optionsManager) override {
 		m_programConfig = optionsManager.add<FrameworkExampleProgramOptions>();
 	}
 

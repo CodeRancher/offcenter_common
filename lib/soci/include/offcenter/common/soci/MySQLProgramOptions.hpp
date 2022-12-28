@@ -28,13 +28,13 @@
 
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
 #include "offcenter/common/soci/MySQLOptions.hpp"
-using namespace offcenter::common;
 
 namespace offcenter {
+namespace common {
 namespace soci {
 
 class MySQLProgramOptions:
-		public program_options::ProgramOptionsGroup<soci::MySQLOptions>
+		public program_options::ProgramOptionsGroup<offcenter::common::soci::MySQLOptions>
 {
 public:
 	MySQLProgramOptions():
@@ -42,31 +42,31 @@ public:
 	{
 		optionsDescription().add_options()
 				("dbname", po::value<std::string>()
-						->notifier(boost::bind(&soci::MySQLOptions::Option::operator(), &(optionConfig().dbname), boost::placeholders::_1)), "Database name")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::Option::operator(), &(optionConfig().dbname), boost::placeholders::_1)), "Database name")
 				("user", po::value<std::string>()
-						->notifier(boost::bind(&soci::MySQLOptions::Option::operator(), &(optionConfig().user), boost::placeholders::_1)), "Database user")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::Option::operator(), &(optionConfig().user), boost::placeholders::_1)), "Database user")
 				("password", po::value<std::string>()
-						->notifier(boost::bind(&soci::MySQLOptions::Option::operator(), &(optionConfig().password), boost::placeholders::_1)), "User password")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::Option::operator(), &(optionConfig().password), boost::placeholders::_1)), "User password")
 				("host", po::value<std::string>()
-						->notifier(boost::bind(&soci::MySQLOptions::Option::operator(), &(optionConfig().host), boost::placeholders::_1)), "Host containing database")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::Option::operator(), &(optionConfig().host), boost::placeholders::_1)), "Host containing database")
 				("port", po::value<std::string>()
-						->notifier(boost::bind(&soci::MySQLOptions::Option::operator(), &(optionConfig().port), boost::placeholders::_1)), "Port on host")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::Option::operator(), &(optionConfig().port), boost::placeholders::_1)), "Port on host")
 				("unix_socket", po::value<std::string>()
-						->notifier(boost::bind(&soci::MySQLOptions::Option::operator(), &(optionConfig().unix_socket), boost::placeholders::_1)), "Unix socket")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::Option::operator(), &(optionConfig().unix_socket), boost::placeholders::_1)), "Unix socket")
 				("sslca", po::value<std::string>()
-						->notifier(boost::bind(&soci::MySQLOptions::Option::operator(), &(optionConfig().sslca), boost::placeholders::_1)), "sslca")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::Option::operator(), &(optionConfig().sslca), boost::placeholders::_1)), "sslca")
 				("sslcert", po::value<std::string>()
-						->notifier(boost::bind(&soci::MySQLOptions::Option::operator(), &(optionConfig().sslcert), boost::placeholders::_1)), "sslcert")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::Option::operator(), &(optionConfig().sslcert), boost::placeholders::_1)), "sslcert")
 				("local_infile", po::value<int>()
-						->notifier(boost::bind(&soci::MySQLOptions::LocalInfile::operator(), &(optionConfig().local_infile), boost::placeholders::_1)), "Local infile")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::LocalInfile::operator(), &(optionConfig().local_infile), boost::placeholders::_1)), "Local infile")
 				("charset", po::value<std::string>()
-						->notifier(boost::bind(&soci::MySQLOptions::Option::operator(), &(optionConfig().charset), boost::placeholders::_1)), "Charset")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::Option::operator(), &(optionConfig().charset), boost::placeholders::_1)), "Charset")
 				("connect_timeout", po::value<int>()
-						->notifier(boost::bind(&soci::MySQLOptions::ConnectTimeout::operator(), &(optionConfig().connect_timeout), boost::placeholders::_1)), "Connect timeout")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::ConnectTimeout::operator(), &(optionConfig().connect_timeout), boost::placeholders::_1)), "Connect timeout")
 				("read_timeout", po::value<int>()
-						->notifier(boost::bind(&soci::MySQLOptions::ReadTimeout::operator(), &(optionConfig().read_timeout), boost::placeholders::_1)), "Read timeout")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::ReadTimeout::operator(), &(optionConfig().read_timeout), boost::placeholders::_1)), "Read timeout")
 				("write_timeout", po::value<int>()
-						->notifier(boost::bind(&soci::MySQLOptions::WriteTimeout::operator(), &(optionConfig().write_timeout), boost::placeholders::_1)), "Write timeout")
+						->notifier(boost::bind(&offcenter::common::soci::MySQLOptions::WriteTimeout::operator(), &(optionConfig().write_timeout), boost::placeholders::_1)), "Write timeout")
 				;
 	}
 
@@ -74,6 +74,7 @@ public:
 };
 
 } /* namespace soci */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_SOCI_MYSQLPROGRAMOPTIONS_HPP_ */

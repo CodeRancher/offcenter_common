@@ -33,6 +33,7 @@
 #include "offcenter/common/amqp/Helper.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /**
@@ -48,7 +49,7 @@ public:
 
 	using Ptr = std::unique_ptr<Listener<MESSAGE, MESSAGETYPE> >;
 
-	static Ptr factory(offcenter::amqp::MessageConsumerPtr consumer, CallBack callback) {
+	static Ptr factory(offcenter::common::amqp::MessageConsumerPtr consumer, CallBack callback) {
 		return std::make_unique<Listener<MESSAGE, MESSAGETYPE> >(consumer, callback);
 	}
 
@@ -58,7 +59,7 @@ public:
 	 *
 	 * @param consumer Message Consumer to connect to
 	 */
-	explicit Listener(offcenter::amqp::MessageConsumerPtr consumer, CallBack callback):
+	explicit Listener(offcenter::common::amqp::MessageConsumerPtr consumer, CallBack callback):
 			cms::MessageListener(),
 			m_callback(callback)
 	{
@@ -106,6 +107,7 @@ private:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_LISTENER_HPP_ */

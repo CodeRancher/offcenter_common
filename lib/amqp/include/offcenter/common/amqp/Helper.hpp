@@ -48,6 +48,7 @@
 #include "offcenter/common/amqp/ConnectionOptions.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 using ActiveMQConnectionFactoryPtr = std::shared_ptr<activemq::core::ActiveMQConnectionFactory>;
@@ -119,111 +120,112 @@ MESSAGEPTR cmsMessageFactory(cms::Message* message) { return MESSAGEPTR(message)
 
 //*****************************************************************************
 template <>
-inline offcenter::amqp::MessageCPtr cmsCMessageFactory<offcenter::amqp::MessageCPtr>(const cms::Message* message) {
-	return offcenter::amqp::MessageCPtr(message);
+inline offcenter::common::amqp::MessageCPtr cmsCMessageFactory<offcenter::common::amqp::MessageCPtr>(const cms::Message* message) {
+	return offcenter::common::amqp::MessageCPtr(message);
 }
 
 template <>
-offcenter::amqp::MessageCUPtr cmsCMessageFactory<offcenter::amqp::MessageCUPtr>(const cms::Message* message) {
-	return offcenter::amqp::MessageCUPtr(message);
+offcenter::common::amqp::MessageCUPtr cmsCMessageFactory<offcenter::common::amqp::MessageCUPtr>(const cms::Message* message) {
+	return offcenter::common::amqp::MessageCUPtr(message);
 }
 
 template <>
-offcenter::amqp::MessagePtr cmsMessageFactory<offcenter::amqp::MessagePtr>(cms::Message* message) {
-	return offcenter::amqp::MessagePtr(message);
+offcenter::common::amqp::MessagePtr cmsMessageFactory<offcenter::common::amqp::MessagePtr>(cms::Message* message) {
+	return offcenter::common::amqp::MessagePtr(message);
 }
 
 template <>
-offcenter::amqp::MessageUPtr cmsMessageFactory<offcenter::amqp::MessageUPtr>(cms::Message* message) {
-	return offcenter::amqp::MessageUPtr(message);
-}
-
-//*****************************************************************************
-template <>
-offcenter::amqp::BytesMessageCPtr cmsCMessageFactory<offcenter::amqp::BytesMessageCPtr>(const cms::Message* message) {
-	return offcenter::amqp::BytesMessageCPtr(dynamic_cast<const cms::BytesMessage*>(message));
-}
-
-template <>
-offcenter::amqp::BytesMessageCUPtr cmsCMessageFactory<offcenter::amqp::BytesMessageCUPtr>(const cms::Message* message) {
-	return offcenter::amqp::BytesMessageCUPtr(dynamic_cast<const cms::BytesMessage*>(message));
-}
-
-template <>
-offcenter::amqp::BytesMessagePtr cmsMessageFactory<offcenter::amqp::BytesMessagePtr>(cms::Message* message) {
-	return offcenter::amqp::BytesMessagePtr(dynamic_cast<cms::BytesMessage*>(message));
-}
-
-template <>
-offcenter::amqp::BytesMessageUPtr cmsMessageFactory<offcenter::amqp::BytesMessageUPtr>(cms::Message* message) {
-	return offcenter::amqp::BytesMessageUPtr(dynamic_cast<cms::BytesMessage*>(message));
+offcenter::common::amqp::MessageUPtr cmsMessageFactory<offcenter::common::amqp::MessageUPtr>(cms::Message* message) {
+	return offcenter::common::amqp::MessageUPtr(message);
 }
 
 //*****************************************************************************
 template <>
-offcenter::amqp::StreamMessageCPtr cmsCMessageFactory<offcenter::amqp::StreamMessageCPtr>(const cms::Message* message) {
-	return offcenter::amqp::StreamMessageCPtr(dynamic_cast<const cms::StreamMessage*>(message));
+offcenter::common::amqp::BytesMessageCPtr cmsCMessageFactory<offcenter::common::amqp::BytesMessageCPtr>(const cms::Message* message) {
+	return offcenter::common::amqp::BytesMessageCPtr(dynamic_cast<const cms::BytesMessage*>(message));
 }
 
 template <>
-offcenter::amqp::StreamMessageCUPtr cmsCMessageFactory<offcenter::amqp::StreamMessageCUPtr>(const cms::Message* message) {
-	return offcenter::amqp::StreamMessageCUPtr(dynamic_cast<const cms::StreamMessage*>(message));
+offcenter::common::amqp::BytesMessageCUPtr cmsCMessageFactory<offcenter::common::amqp::BytesMessageCUPtr>(const cms::Message* message) {
+	return offcenter::common::amqp::BytesMessageCUPtr(dynamic_cast<const cms::BytesMessage*>(message));
 }
 
 template <>
-offcenter::amqp::StreamMessagePtr cmsMessageFactory<offcenter::amqp::StreamMessagePtr>(cms::Message* message) {
-	return offcenter::amqp::StreamMessagePtr(dynamic_cast<cms::StreamMessage*>(message));
+offcenter::common::amqp::BytesMessagePtr cmsMessageFactory<offcenter::common::amqp::BytesMessagePtr>(cms::Message* message) {
+	return offcenter::common::amqp::BytesMessagePtr(dynamic_cast<cms::BytesMessage*>(message));
 }
 
 template <>
-offcenter::amqp::StreamMessageUPtr cmsMessageFactory<offcenter::amqp::StreamMessageUPtr>(cms::Message* message) {
-	return offcenter::amqp::StreamMessageUPtr(dynamic_cast<cms::StreamMessage*>(message));
-}
-
-//*****************************************************************************
-template <>
-offcenter::amqp::TextMessageCPtr cmsCMessageFactory<offcenter::amqp::TextMessageCPtr>(const cms::Message* message) {
-	return offcenter::amqp::TextMessageCPtr(dynamic_cast<const cms::TextMessage*>(message));
-}
-
-template <>
-offcenter::amqp::TextMessageCUPtr cmsCMessageFactory<offcenter::amqp::TextMessageCUPtr>(const cms::Message* message) {
-	return offcenter::amqp::TextMessageCUPtr(dynamic_cast<const cms::TextMessage*>(message));
-}
-
-template <>
-offcenter::amqp::TextMessagePtr cmsMessageFactory<offcenter::amqp::TextMessagePtr>(cms::Message* message) {
-	return offcenter::amqp::TextMessagePtr(dynamic_cast<cms::TextMessage*>(message));
-}
-
-template <>
-offcenter::amqp::TextMessageUPtr cmsMessageFactory<offcenter::amqp::TextMessageUPtr>(cms::Message* message) {
-	return offcenter::amqp::TextMessageUPtr(dynamic_cast<cms::TextMessage*>(message));
+offcenter::common::amqp::BytesMessageUPtr cmsMessageFactory<offcenter::common::amqp::BytesMessageUPtr>(cms::Message* message) {
+	return offcenter::common::amqp::BytesMessageUPtr(dynamic_cast<cms::BytesMessage*>(message));
 }
 
 //*****************************************************************************
 template <>
-offcenter::amqp::MapMessageCPtr cmsCMessageFactory<offcenter::amqp::MapMessageCPtr>(const cms::Message* message) {
-	return offcenter::amqp::MapMessageCPtr(dynamic_cast<const cms::MapMessage*>(message));
+offcenter::common::amqp::StreamMessageCPtr cmsCMessageFactory<offcenter::common::amqp::StreamMessageCPtr>(const cms::Message* message) {
+	return offcenter::common::amqp::StreamMessageCPtr(dynamic_cast<const cms::StreamMessage*>(message));
 }
 
 template <>
-offcenter::amqp::MapMessageCUPtr cmsCMessageFactory<offcenter::amqp::MapMessageCUPtr>(const cms::Message* message) {
-	return offcenter::amqp::MapMessageCUPtr(dynamic_cast<const cms::MapMessage*>(message));
+offcenter::common::amqp::StreamMessageCUPtr cmsCMessageFactory<offcenter::common::amqp::StreamMessageCUPtr>(const cms::Message* message) {
+	return offcenter::common::amqp::StreamMessageCUPtr(dynamic_cast<const cms::StreamMessage*>(message));
 }
 
 template <>
-offcenter::amqp::MapMessagePtr cmsMessageFactory<offcenter::amqp::MapMessagePtr>(cms::Message* message) {
-	return offcenter::amqp::MapMessagePtr(dynamic_cast<cms::MapMessage*>(message));
+offcenter::common::amqp::StreamMessagePtr cmsMessageFactory<offcenter::common::amqp::StreamMessagePtr>(cms::Message* message) {
+	return offcenter::common::amqp::StreamMessagePtr(dynamic_cast<cms::StreamMessage*>(message));
 }
 
 template <>
-offcenter::amqp::MapMessageUPtr cmsMessageFactory<offcenter::amqp::MapMessageUPtr>(cms::Message* message) {
-	return offcenter::amqp::MapMessageUPtr(dynamic_cast<cms::MapMessage*>(message));
+offcenter::common::amqp::StreamMessageUPtr cmsMessageFactory<offcenter::common::amqp::StreamMessageUPtr>(cms::Message* message) {
+	return offcenter::common::amqp::StreamMessageUPtr(dynamic_cast<cms::StreamMessage*>(message));
+}
+
+//*****************************************************************************
+template <>
+offcenter::common::amqp::TextMessageCPtr cmsCMessageFactory<offcenter::common::amqp::TextMessageCPtr>(const cms::Message* message) {
+	return offcenter::common::amqp::TextMessageCPtr(dynamic_cast<const cms::TextMessage*>(message));
+}
+
+template <>
+offcenter::common::amqp::TextMessageCUPtr cmsCMessageFactory<offcenter::common::amqp::TextMessageCUPtr>(const cms::Message* message) {
+	return offcenter::common::amqp::TextMessageCUPtr(dynamic_cast<const cms::TextMessage*>(message));
+}
+
+template <>
+offcenter::common::amqp::TextMessagePtr cmsMessageFactory<offcenter::common::amqp::TextMessagePtr>(cms::Message* message) {
+	return offcenter::common::amqp::TextMessagePtr(dynamic_cast<cms::TextMessage*>(message));
+}
+
+template <>
+offcenter::common::amqp::TextMessageUPtr cmsMessageFactory<offcenter::common::amqp::TextMessageUPtr>(cms::Message* message) {
+	return offcenter::common::amqp::TextMessageUPtr(dynamic_cast<cms::TextMessage*>(message));
+}
+
+//*****************************************************************************
+template <>
+offcenter::common::amqp::MapMessageCPtr cmsCMessageFactory<offcenter::common::amqp::MapMessageCPtr>(const cms::Message* message) {
+	return offcenter::common::amqp::MapMessageCPtr(dynamic_cast<const cms::MapMessage*>(message));
+}
+
+template <>
+offcenter::common::amqp::MapMessageCUPtr cmsCMessageFactory<offcenter::common::amqp::MapMessageCUPtr>(const cms::Message* message) {
+	return offcenter::common::amqp::MapMessageCUPtr(dynamic_cast<const cms::MapMessage*>(message));
+}
+
+template <>
+offcenter::common::amqp::MapMessagePtr cmsMessageFactory<offcenter::common::amqp::MapMessagePtr>(cms::Message* message) {
+	return offcenter::common::amqp::MapMessagePtr(dynamic_cast<cms::MapMessage*>(message));
+}
+
+template <>
+offcenter::common::amqp::MapMessageUPtr cmsMessageFactory<offcenter::common::amqp::MapMessageUPtr>(cms::Message* message) {
+	return offcenter::common::amqp::MapMessageUPtr(dynamic_cast<cms::MapMessage*>(message));
 }
 */
 } /* namespace Helper */
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_HELPER_HPP_ */

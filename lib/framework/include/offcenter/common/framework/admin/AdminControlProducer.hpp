@@ -42,12 +42,12 @@ class AdminControlProducer
 public:
 	using Ptr = std::unique_ptr<AdminControlProducer>;
 
-	static Ptr factory(offcenter::amqp::SessionProducerDynamicDestination::Ptr sessionProducer, const std::string& appID) {
+	static Ptr factory(offcenter::common::amqp::SessionProducerDynamicDestination::Ptr sessionProducer, const std::string& appID) {
 		return std::make_unique<AdminControlProducer>(std::move(sessionProducer), appID);
 	}
 
 public:
-	explicit AdminControlProducer(offcenter::amqp::SessionProducerDynamicDestination::Ptr sessionProducer, const std::string& appID);
+	explicit AdminControlProducer(offcenter::common::amqp::SessionProducerDynamicDestination::Ptr sessionProducer, const std::string& appID);
 	virtual ~AdminControlProducer();
 
 	void start();
@@ -63,7 +63,7 @@ private:
 	void sendMessage(const std::string& appID, const AdminControlState adminControlState);
 
 private:
-	offcenter::amqp::SessionProducerDynamicDestination::Ptr m_sessionProducer;
+	offcenter::common::amqp::SessionProducerDynamicDestination::Ptr m_sessionProducer;
 	AdminControlMessage m_lastMessage;
 	std::mutex m_sendMutex;
 

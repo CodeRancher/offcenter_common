@@ -27,12 +27,11 @@
 #include <boost/bind/bind.hpp>
 
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
-using namespace offcenter::common;
 
 #include "AmqpExampleOptions.hpp"
 
 class AmqpExampleProgramOptions:
-		public program_options::ProgramOptionsGroup<AmqpExampleOptions>
+		public offcenter::common::program_options::ProgramOptionsGroup<AmqpExampleOptions>
 {
 public:
 	AmqpExampleProgramOptions():

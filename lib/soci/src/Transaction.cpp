@@ -22,6 +22,7 @@
 #include "offcenter/common/soci/Transaction.hpp"
 
 namespace offcenter {
+namespace common {
 namespace soci {
 
 Transaction::Transaction(::soci::session& session):
@@ -40,7 +41,7 @@ Transaction::Transaction(::soci::session session):
 
 }
 
-Transaction::Transaction(offcenter::soci::Session& session):
+Transaction::Transaction(offcenter::common::soci::Session& session):
 		m_error(false),
 		m_transaction(session.sql())
 {
@@ -63,4 +64,5 @@ void Transaction::setError(bool value)
 }
 
 } /* namespace soci */
+} /* namespace common */
 } /* namespace offcenter */

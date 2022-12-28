@@ -46,26 +46,26 @@ AmqpProducerExampleApp::~AmqpProducerExampleApp() {
 	// TODO Auto-generated destructor stub
 }
 
-void AmqpProducerExampleApp::onInitProgramOptions(program_options::ProgramOptionsManager &optionsManager)
+void AmqpProducerExampleApp::onInitProgramOptions(offcenter::common::program_options::ProgramOptionsManager &optionsManager)
 {
 	m_amqpOption = optionsManager.add<AmqpExampleProgramOptions>();
 }
 
-void AmqpProducerExampleApp::onInitAMQP(amqp::ConnectionURIOptions& options) {
+void AmqpProducerExampleApp::onInitAMQP(offcenter::common::amqp::ConnectionURIOptions& options) {
 
-	amqp::URLSchemeHost tcpHost(amqp::URLSchemeHost::URLScheme::tcp, m_amqpOption->tcpHost());
+	offcenter::common::amqp::URLSchemeHost tcpHost(offcenter::common::amqp::URLSchemeHost::URLScheme::tcp, m_amqpOption->tcpHost());
 	options.protocol.setTCPProtocol(tcpHost);
 	options.connection.sendTimeout = m_amqpOption->connectionSendTimeout();
 	options.failoverTransport.timeout = m_amqpOption->failoverTransportTimeout();
 	LOG(INFO) << "AMQP URI: " << options.uri();
 }
 
-void AmqpProducerExampleApp::onInitAMQPSessions(amqp::ConnectionPtr connection) {
+void AmqpProducerExampleApp::onInitAMQPSessions(offcenter::common::amqp::ConnectionPtr connection) {
 	// Create a Session
-	m_session = offcenter::amqp::helper::sessionFactory(connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
+	m_session = offcenter::common::amqp::helper::sessionFactory(connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
 
 	// Create the destination (Topic or Queue)
-	m_destination = offcenter::amqp::helper::destinationFactory(m_session->createTopic("offcenter.test.input"));
+	m_destination = offcenter::common::amqp::helper::destinationFactory(m_session->createTopic("offcenter.test.input"));
 }
 
 
@@ -75,7 +75,7 @@ void AmqpProducerExampleApp::onSetUp()
 
 void AmqpProducerExampleApp::onExecute()
 {
-	offcenter::amqp::ProducerMessageHandler producer(m_session, m_destination);
+	offcenter::common::amqp::ProducerMessageHandler producer(m_session, m_destination);
 	producer()->setDeliveryMode(cms::DeliveryMode::NON_PERSISTENT);
 
 	for (int cnt = 1; cnt <= 100; cnt++) {

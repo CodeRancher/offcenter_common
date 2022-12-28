@@ -28,10 +28,9 @@
 #include "offcenter/common/framework/application/IApp.hpp"
 #include "offcenter/common/framework/application/AppManager.hpp"
 #include "offcenter/common/framework/application/ManagedAppConfig.hpp"
-using namespace offcenter::common;
 
 //*****************************************************************************
-class BasicAppTest: public framework::application::IApp {
+class BasicAppTest: public offcenter::common::framework::application::IApp {
 public:
 	bool m_onExecuteCalled;
 	bool m_onVersionCalled;
@@ -47,7 +46,7 @@ public:
 		m_helpText("")
 	{}
 
-	void onInitProgramOptions(program_options::ProgramOptionsManager& optionsManager) {
+	void onInitProgramOptions(offcenter::common::program_options::ProgramOptionsManager& optionsManager) {
 	}
 
 	void onSetUp() override {
@@ -81,7 +80,7 @@ protected:
 
 	// void TearDown() override {}
 
-	using App = framework::application::AppManager<BasicAppTest>;
+	using App = offcenter::common::framework::application::AppManager<BasicAppTest>;
 	App m_basicAppTest;
 };
 

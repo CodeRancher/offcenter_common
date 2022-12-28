@@ -38,7 +38,6 @@
 #include "offcenter/common/amqp/Listener.hpp"
 //#include "offcenter/common/amqpserver/network/Utility.hpp"
 //#include "offcenter/common/amqpserver/AmqpServerAppFoundation.hpp"
-using namespace offcenter::common;
 
 namespace offcenter {
 namespace common {
@@ -51,7 +50,7 @@ template <class IAMQPSERVERAPP>
 class AmqpManagedServerAppManager: public framework::application::AppManager<IAMQPSERVERAPP>
 {
 public:
-	//using Listener = offcenter::amqp::Listener<AmqpDataElementInner, AmqpDataElementInner::MessageType>;
+	//using Listener = offcenter::common::amqp::Listener<AmqpDataElementInner, AmqpDataElementInner::MessageType>;
 
 public:
 	explicit AmqpManagedServerAppManager():
@@ -88,14 +87,14 @@ public:
 
 		using namespace std::placeholders;
 
-		m_managedSession = offcenter::amqp::helper::sessionFactory(m_connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
-		m_managedAllDestination = offcenter::amqp::helper::destinationFactory(m_managedSession->createTopic("offcenter.trade.admin.all"));
-		m_managedAllConsumer = offcenter::amqp::helper::messageConsumerFactory(m_managedSession->createConsumer(m_managedAllDestination.get()));
+		m_managedSession = offcenter::common::amqp::helper::sessionFactory(m_connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
+		m_managedAllDestination = offcenter::common::amqp::helper::destinationFactory(m_managedSession->createTopic("offcenter.trade.admin.all"));
+		m_managedAllConsumer = offcenter::common::amqp::helper::messageConsumerFactory(m_managedSession->createConsumer(m_managedAllDestination.get()));
 		//m_managedAllListener = Listener::factory(m_managedAllConsumer, std::bind(&AmqpManagedServerAppManager::onProcessAdmin, this, _1, _2));
 
 
-		m_managedAppDestination = offcenter::amqp::helper::destinationFactory(m_managedSession->createTopic("offcenter.trade.admin.<app_id>"));
-		m_managedAppConsumer = offcenter::amqp::helper::messageConsumerFactory(m_managedSession->createConsumer(m_managedAppDestination.get()));
+		m_managedAppDestination = offcenter::common::amqp::helper::destinationFactory(m_managedSession->createTopic("offcenter.trade.admin.<app_id>"));
+		m_managedAppConsumer = offcenter::common::amqp::helper::messageConsumerFactory(m_managedSession->createConsumer(m_managedAppDestination.get()));
 		//m_managedAppListener = Listener::factory(m_managedAppConsumer, std::bind(&AmqpManagedServerAppManager::onProcessAdmin, this, _1, _2));
 	}
 

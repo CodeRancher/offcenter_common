@@ -26,7 +26,6 @@
 #include <gtest/gtest.h>
 
 #include "offcenter/common/amqpserver/AutoMethodPath.hpp"
-using namespace offcenter::common;
 
 TEST (AutoMethodPath, BasicPath)
 {

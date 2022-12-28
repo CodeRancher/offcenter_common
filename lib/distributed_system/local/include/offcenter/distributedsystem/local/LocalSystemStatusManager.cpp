@@ -23,6 +23,7 @@
 #include "LocalSystemStatusManager.hpp"
 
 namespace offcenter {
+namespace common {
 namespace distributedsystem {
 namespace local {
 namespace activemq {
@@ -41,4 +42,5 @@ LocalSystemStatusManager::~LocalSystemStatusManager()
 } /* namespace activemq */
 } /* namespace local */
 } /* namespace distributedsystem */
+} /* namespace common */
 } /* namespace offcenter */

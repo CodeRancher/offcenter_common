@@ -37,7 +37,6 @@
 #include "offcenter/common/amqpserver/IAmqpServerApp.hpp"
 //#include "offcenter/common/amqpserver/network/Utility.hpp"
 //#include "offcenter/common/amqpserver/AmqpServerAppFoundation.hpp"
-using namespace offcenter::common;
 
 #include "offcenter/common/amqp/ActiveMQCPP.hpp"
 #include "offcenter/common/amqp/AMQPException.hpp"
@@ -81,13 +80,13 @@ public:
 			m_connection = amqp::helper::connectionFactory(connection);
 		} catch(const cms::CMSException& e) {
 			LOG(ERROR) << e.what() << ": " << options.uri();
-			throw offcenter::amqp::AMQPException("Unable to connect to server: " + options.uri() + ": " + e.what());
+			throw offcenter::common::amqp::AMQPException("Unable to connect to server: " + options.uri() + ": " + e.what());
 		} catch (const std::exception& e) {
 			LOG(ERROR) << e.what() << ": " << options.uri();
-			throw offcenter::amqp::AMQPException("Unable to connect to server: " + options.uri() + ": " + e.what());
+			throw offcenter::common::amqp::AMQPException("Unable to connect to server: " + options.uri() + ": " + e.what());
 		} catch (...) {
 			LOG(ERROR) << "Unknown Exception: " << ": " << options.uri();
-			throw offcenter::amqp::AMQPException("Unable to connect to server: " + options.uri());
+			throw offcenter::common::amqp::AMQPException("Unable to connect to server: " + options.uri());
 		}
 
 		// Create Sesstions
@@ -116,7 +115,7 @@ public:
 	}
 
 private:
-	offcenter::amqp::ActiveMQCPP activeMQCpp;
+	offcenter::common::amqp::ActiveMQCPP activeMQCpp;
 	amqp::ConnectionPtr m_connection;
 
 };

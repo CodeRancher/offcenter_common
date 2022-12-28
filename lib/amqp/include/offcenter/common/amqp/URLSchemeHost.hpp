@@ -31,6 +31,7 @@
 #include "offcenter/common/amqp/AMQPException.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /**
@@ -83,7 +84,7 @@ public:
 		if (value == "tcp") { return URLScheme::tcp; }
 		if (value == "ssl") { return URLScheme::ssl; }
 		else {
-			throw offcenter::amqp::AMQPException("Invalid scheme");
+			throw offcenter::common::amqp::AMQPException("Invalid scheme");
 		}
 	}
 
@@ -103,7 +104,7 @@ public:
 			case tcp: return "tcp";
 			case ssl: return "ssl";
 		}
-		throw offcenter::amqp::AMQPException("Invalid scheme");
+		throw offcenter::common::amqp::AMQPException("Invalid scheme");
 	}
 
 	/**
@@ -152,6 +153,7 @@ private:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OffcenterCommon_NETWORK_URLSCHEMEHOST_HPP_ */

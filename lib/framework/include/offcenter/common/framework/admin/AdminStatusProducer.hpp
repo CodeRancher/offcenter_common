@@ -38,18 +38,18 @@ namespace admin {
 /**
  *
  */
-class AdminStatusProducer: public offcenter::amqp::Producer<AdminStatusMessage::MessageType, AdminStatusMessage>
+class AdminStatusProducer: public offcenter::common::amqp::Producer<AdminStatusMessage::MessageType, AdminStatusMessage>
 {
 public:
 	using Ptr = std::unique_ptr<AdminStatusProducer>;
-	using Parent = offcenter::amqp::Producer<AdminStatusMessage::MessageType, AdminStatusMessage>;
+	using Parent = offcenter::common::amqp::Producer<AdminStatusMessage::MessageType, AdminStatusMessage>;
 
-	static Ptr factory(offcenter::amqp::SessionProducer::Ptr&& sessionProducer, const std::string& appID) {
-		return std::make_unique<AdminStatusProducer>(std::forward<offcenter::amqp::SessionProducer::Ptr>(sessionProducer), appID);
+	static Ptr factory(offcenter::common::amqp::SessionProducer::Ptr&& sessionProducer, const std::string& appID) {
+		return std::make_unique<AdminStatusProducer>(std::forward<offcenter::common::amqp::SessionProducer::Ptr>(sessionProducer), appID);
 	}
 
 public:
-	explicit AdminStatusProducer(offcenter::amqp::SessionProducer::Ptr&& sessionProducer, const std::string& appID);
+	explicit AdminStatusProducer(offcenter::common::amqp::SessionProducer::Ptr&& sessionProducer, const std::string& appID);
 	virtual ~AdminStatusProducer();
 
 	void ready();

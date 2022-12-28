@@ -30,6 +30,7 @@
 #include "IConsumerDataListener.hpp"
 
 namespace offcenter {
+namespace common {
 namespace distributedsystem {
 
 class ConsumerDataManager {
@@ -52,6 +53,7 @@ void ConsumerDataManager::addCommandListener(Config const& clConfig, std::shared
 
 
 } /* namespace distributedsystem */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_DISTRIBUTEDSYSTEM_CONSUMERDATAMANAGER_H_ */

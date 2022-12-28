@@ -65,11 +65,11 @@ public:
 /**
  *
  */
-class StageOneCommandListener : public offcenter::distributedsystem::ConsumerDataListener<IStageOneCommandHandler>
+class StageOneCommandListener : public offcenter::common::distributedsystem::ConsumerDataListener<IStageOneCommandHandler>
 {
 public:
 	explicit StageOneCommandListener(StageOneCLConfig const& clConfig, std::shared_ptr<IStageOneCommandHandler> handler):
-		offcenter::distributedsystem::ConsumerDataListener<IStageOneCommandHandler>(handler)
+		offcenter::common::distributedsystem::ConsumerDataListener<IStageOneCommandHandler>(handler)
 	{
 
 	}

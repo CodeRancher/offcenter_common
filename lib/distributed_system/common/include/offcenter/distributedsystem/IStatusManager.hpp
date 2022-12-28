@@ -24,6 +24,7 @@
 #define OFFCENTER_DISTRIBUTEDSYSTEM_ISTATUSMANAGER_HPP_
 
 namespace offcenter {
+namespace common {
 namespace distributedsystem {
 
 class IStatusManager
@@ -34,6 +35,7 @@ public:
 };
 
 } /* namespace distributedsystem */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_DISTRIBUTEDSYSTEM_ISTATUSMANAGER_HPP_ */

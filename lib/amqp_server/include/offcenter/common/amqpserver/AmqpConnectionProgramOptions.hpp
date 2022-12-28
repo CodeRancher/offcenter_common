@@ -28,7 +28,6 @@
 #include <boost/bind/bind.hpp>
 
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
-using namespace offcenter::common;
 
 #include "offcenter/common/amqp/ConnectionOptions.hpp"
 
@@ -37,7 +36,7 @@ namespace common {
 namespace amqpserver {
 
 class AmqpConnectionProgramOptions:
-		public program_options::ProgramOptionsGroup<offcenter::amqp::ConnectionURIOptions>
+		public program_options::ProgramOptionsGroup<offcenter::common::amqp::ConnectionURIOptions>
 {
 public:
 	AmqpConnectionProgramOptions():
@@ -47,11 +46,11 @@ public:
 				( "amqp.protocol", po::value<std::string>()
 						->notifier(boost::bind<void>(boost::ref(optionConfig().protocol),boost::placeholders::_1)), "Connection protocol")
 				( "amqp.host", po::value<std::string>()
-						->notifier(boost::bind(&offcenter::amqp::ProtocolOptions::setHost, &(optionConfig().protocol), boost::placeholders::_1)), "Connection host")
+						->notifier(boost::bind(&offcenter::common::amqp::ProtocolOptions::setHost, &(optionConfig().protocol), boost::placeholders::_1)), "Connection host")
 				( "amqp.port", po::value<std::string>()
-						->notifier(boost::bind(&offcenter::amqp::ProtocolOptions::setPort, &(optionConfig().protocol),boost::placeholders::_1)), "Connection port")
+						->notifier(boost::bind(&offcenter::common::amqp::ProtocolOptions::setPort, &(optionConfig().protocol),boost::placeholders::_1)), "Connection port")
 				( "amqp.failover", po::value<std::vector<std::string>>()->multitoken()
-						->notifier(boost::bind(&offcenter::amqp::ProtocolOptions::setFailover, &(optionConfig().protocol),boost::placeholders::_1)), "Connection failover")
+						->notifier(boost::bind(&offcenter::common::amqp::ProtocolOptions::setFailover, &(optionConfig().protocol),boost::placeholders::_1)), "Connection failover")
 
 				// Socket Options
 				( "amqp.socket_options.input_buffer_size", po::value<int>()

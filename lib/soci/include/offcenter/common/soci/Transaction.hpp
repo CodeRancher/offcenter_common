@@ -28,6 +28,7 @@
 #include "offcenter/common/soci/Session.hpp"
 
 namespace offcenter {
+namespace common {
 namespace soci {
 
 /**
@@ -38,7 +39,7 @@ class Transaction
 public:
 	explicit Transaction(::soci::session& session);
 	explicit Transaction(::soci::session session);
-	explicit Transaction(offcenter::soci::Session& session);
+	explicit Transaction(offcenter::common::soci::Session& session);
 	virtual ~Transaction();
 
 	void setError(bool value);
@@ -49,6 +50,7 @@ private:
 };
 
 } /* namespace soci */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_SOCI_TRANSACTION_HPP_ */

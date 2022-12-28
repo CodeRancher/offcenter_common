@@ -23,6 +23,7 @@
 #include "offcenter/common/amqp/URLSchemeHost.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 URLSchemeHost::URLScheme URLSchemeHost::g_defaultScheme = URLSchemeHost::URLScheme::tcp;
@@ -30,4 +31,5 @@ std::string URLSchemeHost::g_defaultHost = "localhost";
 int URLSchemeHost::g_defaultPort = 61616;
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */

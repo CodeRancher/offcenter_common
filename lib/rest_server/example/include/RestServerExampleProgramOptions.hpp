@@ -29,7 +29,6 @@
 
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
 #include "offcenter/trading/createtradingdb/CreateTradingDBOptions.hpp"
-using namespace offcenter::common;
 
 namespace offcenter {
 namespace trading {

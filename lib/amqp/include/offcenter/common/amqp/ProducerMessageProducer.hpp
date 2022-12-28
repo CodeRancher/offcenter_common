@@ -31,6 +31,7 @@
 #include "offcenter/common/amqp/AMQPException.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /**
@@ -62,7 +63,7 @@ public:
 	/**
 	 *
 	 */
-	void setProducer(offcenter::amqp::SessionPtr session, DestinationPtr destination) {
+	void setProducer(offcenter::common::amqp::SessionPtr session, DestinationPtr destination) {
 		m_session = session;
 		m_destination = destination;
 		m_producer = helper::messageProducerFactory(m_session->createProducer(m_destination.get()));
@@ -74,7 +75,7 @@ public:
 		messageHandler.send(message);
 	}
 
-	offcenter::amqp::MessageProducerPtr operator()() { return m_producer; }
+	offcenter::common::amqp::MessageProducerPtr operator()() { return m_producer; }
 
 private:
 	SessionPtr m_session;
@@ -83,6 +84,7 @@ private:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_PRODUCERMESSAGEHANDLER_HPP_ */

@@ -27,6 +27,7 @@
 #include "offcenter/common/soci/MySQLOptions.hpp"
 
 namespace offcenter {
+namespace common {
 namespace soci {
 
 MySQLOptions::MySQLOptions():
@@ -139,4 +140,5 @@ const std::string MySQLOptions::loggableConnectionString() const
 }
 
 } /* namespace soci */
+} /* namespace common */
 } /* namespace offcenter */

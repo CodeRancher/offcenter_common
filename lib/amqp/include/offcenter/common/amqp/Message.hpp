@@ -32,12 +32,13 @@
 #include <cms/MapMessage.h>
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 template <class CMSMessageType>
 class MessageBase {
 public:
-	using MessageType = offcenter::amqp::MessageBase<CMSMessageType>;
+	using MessageType = offcenter::common::amqp::MessageBase<CMSMessageType>;
 	using MessagePtr = std::shared_ptr<MessageType>;
 	static MessagePtr factory() {
 		return std::make_shared<MessageType>();
@@ -73,6 +74,7 @@ using TextMessage = MessageBase<cms::TextMessage>;
 using MapMessage = MessageBase<cms::MapMessage>;
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* LIB_OFFCENTER_AMQP_SRC_MESSAGE_HPP_ */

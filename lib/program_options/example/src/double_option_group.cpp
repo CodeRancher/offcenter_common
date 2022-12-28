@@ -24,7 +24,6 @@
 
 #include "offcenter/common/program_options/ProgramOptionsManager.hpp"
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
-using namespace offcenter::common;
 
 class DoubleOptionOneConfig {
 	private:
@@ -46,7 +45,7 @@ class DoubleOptionOneConfig {
 		friend class DoubleOptionOne;
 };
 
-class DoubleOptionOne: public program_options::ProgramOptionsGroup<DoubleOptionOneConfig> {
+class DoubleOptionOne: public offcenter::common::program_options::ProgramOptionsGroup<DoubleOptionOneConfig> {
 public:
 	explicit DoubleOptionOne():
 		ProgramOptionsGroup("DoubleOption")
@@ -80,7 +79,7 @@ class DoubleOptionTwoConfig {
 		friend class DoubleOptionTwo;
 };
 
-class DoubleOptionTwo: public program_options::ProgramOptionsGroup<DoubleOptionTwoConfig> {
+class DoubleOptionTwo: public offcenter::common::program_options::ProgramOptionsGroup<DoubleOptionTwoConfig> {
 public:
 	explicit DoubleOptionTwo():
 		ProgramOptionsGroup("DoubleOption")
@@ -97,7 +96,7 @@ public:
 int main(int argc, char **argv)
 {
 	// Declare the Program Options Manager
-	program_options::ProgramOptionsManager optManager;
+	offcenter::common::program_options::ProgramOptionsManager optManager;
 
 	// Add Program Options Groups to be processed
 	DoubleOptionOne::ConfigPtr doubleOptionOneConfig = optManager.add<DoubleOptionOne>();

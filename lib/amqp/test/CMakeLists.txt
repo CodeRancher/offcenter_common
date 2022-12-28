@@ -51,7 +51,7 @@ target_include_directories(${EXE_NAME}
 		${CMAKE_CURRENT_LIST_DIR}/include
 		${CMAKE_CURRENT_LIST_DIR}/../include
 		${CMAKE_CURRENT_LIST_DIR}/../../common/include
-	SYSTEM INTERFACE
+	SYSTEM PRIVATE
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )

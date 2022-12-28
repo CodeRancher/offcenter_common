@@ -24,6 +24,7 @@
 #define OFFCENTER_DISTRIBUTEDSYSTEM_LOCAL_LOCALSYSTEMSTATUSMANAGER_HPP_
 
 namespace offcenter {
+namespace common {
 namespace distributedsystem {
 namespace local {
 namespace activemq {
@@ -38,6 +39,7 @@ public:
 } /* namespace activemq */
 } /* namespace local */
 } /* namespace distributedsystem */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_DISTRIBUTEDSYSTEM_LOCAL_LOCALSYSTEMSTATUSMANAGER_HPP_ */

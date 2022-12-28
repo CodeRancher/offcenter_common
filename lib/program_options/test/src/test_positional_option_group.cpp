@@ -27,7 +27,6 @@
 #include "offcenter/common/program_options/ProgramOptionsManager.hpp"
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
 #include "offcenter/common/SimulatedCommandLine.hpp"
-using namespace offcenter::common;
 
 /*
  * Configuration options for handling one positional option.
@@ -54,7 +53,7 @@ class PositionalOptionOneConfig {
  * Defines how the command line is parsed into the PositionalOptionOneConfig class.
  */
 class PositionalOptionOne:
-		public program_options::ProgramOptionsGroup<PositionalOptionOneConfig> {
+		public offcenter::common::program_options::ProgramOptionsGroup<PositionalOptionOneConfig> {
 public:
 	explicit PositionalOptionOne():
 		ProgramOptionsGroup("PositionalOption")
@@ -75,10 +74,10 @@ public:
 TEST (PositionalOptionGroupTest, SinglePositionalOption)
 {
 	std::string position1{"PositionalOption"};
-	SimulatedCommandLine commandLine("PositionalOptionSet", {
+	offcenter::common::SimulatedCommandLine commandLine("PositionalOptionSet", {
 			position1});
 
-	program_options::ProgramOptionsManager optManager;
+	offcenter::common::program_options::ProgramOptionsManager optManager;
 	PositionalOptionOne::ConfigPtr config = optManager.add<PositionalOptionOne>();
 
 	optManager.processCommandLine(commandLine.argc(), commandLine.argv());
@@ -114,7 +113,7 @@ class PositionalOptionTwoConfig {
  * Defines how the command line is parsed into the PositionalOptionTwoConfig class.
  */
 class PositionalOptionTwo:
-		public program_options::ProgramOptionsGroup<PositionalOptionTwoConfig> {
+		public offcenter::common::program_options::ProgramOptionsGroup<PositionalOptionTwoConfig> {
 public:
 	explicit PositionalOptionTwo():
 		ProgramOptionsGroup("PositionalOption")
@@ -138,12 +137,12 @@ TEST (PositionalOptionGroupTest, DoublePositionalOption)
 {
 	std::string position1{"PositionalOption1"};
 	std::string position2{"PositionalOption2"};
-	SimulatedCommandLine commandLine("PositionalOptionSet", {
+	offcenter::common::SimulatedCommandLine commandLine("PositionalOptionSet", {
 			position1,
 			position2
 	});
 
-	program_options::ProgramOptionsManager optManager;
+	offcenter::common::program_options::ProgramOptionsManager optManager;
 	PositionalOptionTwo::ConfigPtr config = optManager.add<PositionalOptionTwo>();
 
 	optManager.processCommandLine(commandLine.argc(), commandLine.argv());
@@ -162,17 +161,17 @@ TEST (PositionalOptionGroupTest, MultiplePositionalOptionError)
 {
 	std::string position1{"PositionalOption1"};
 	std::string position2{"PositionalOption2"};
-	SimulatedCommandLine commandLine("PositionalOptionSet", {
+	offcenter::common::SimulatedCommandLine commandLine("PositionalOptionSet", {
 			position1,
 			position2
 	});
 
-	program_options::ProgramOptionsManager optManager;
+	offcenter::common::program_options::ProgramOptionsManager optManager;
 	PositionalOptionOne::ConfigPtr config1 = optManager.add<PositionalOptionOne>();
 	PositionalOptionTwo::ConfigPtr config2 = optManager.add<PositionalOptionTwo>();
 
 	EXPECT_THROW(
 			optManager.processCommandLine(commandLine.argc(), commandLine.argv()),
-			RuntimeException
+			offcenter::common::RuntimeException
 	);
 }

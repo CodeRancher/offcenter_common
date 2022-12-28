@@ -28,7 +28,6 @@
 #include <pplx/pplxtasks.h>
 
 #include "offcenter/common/framework/application/BasicAppFoundation.hpp"
-using namespace offcenter::common;
 
 namespace offcenter {
 namespace common {

@@ -50,7 +50,7 @@ target_include_directories(${EXE_NAME}
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/../../program_options/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 
-	SYSTEM
+	SYSTEM PRIVATE
 		${EASYLOGGINGPP_INCLUDE_DIR}
 		${MariaDBClient_INCLUDE_DIRS}
 		${SOCI_INCLUDE_DIR}/..

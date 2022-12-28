@@ -27,6 +27,7 @@
 #include "offcenter/common/soci/MySQLOptions.hpp"
 
 namespace offcenter {
+namespace common {
 namespace soci {
 
 std::string parseTableName(const std::string &schema);
@@ -103,6 +104,7 @@ public:
 };
 
 } /* namespace soci */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_SOCI_SESSION_HPP_ */

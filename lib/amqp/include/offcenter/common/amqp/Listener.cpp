@@ -23,6 +23,7 @@
 #include "Listener.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 ListenerBase::ListenerBase() {
@@ -35,4 +36,5 @@ ListenerBase::~ListenerBase() {
 }
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */

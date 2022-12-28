@@ -40,6 +40,11 @@ target_include_directories(${EXE_NAME}
 		${CMAKE_CURRENT_LIST_DIR}/../../include
 )
 
+target_include_directories(${EXE_NAME}
+	SYSTEM PRIVATE
+		${EASYLOGGINGPP_INCLUDE_DIR}
+)
+
 offcenter_example()
 
 ###############################################################################
@@ -57,6 +62,11 @@ target_link_libraries(${EXE_NAME}
 target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/../../include
+)
+
+target_include_directories(${EXE_NAME}
+	SYSTEM PRIVATE
+		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
 offcenter_example()
@@ -78,6 +88,11 @@ target_include_directories(${EXE_NAME}
 		${CMAKE_CURRENT_LIST_DIR}/../../include
 )
 
+target_include_directories(${EXE_NAME}
+	SYSTEM PRIVATE
+		${EASYLOGGINGPP_INCLUDE_DIR}
+)
+
 offcenter_example()
 
 ###############################################################################
@@ -97,6 +112,11 @@ target_include_directories(${EXE_NAME}
 		${CMAKE_CURRENT_LIST_DIR}/../../include
 )
 
+target_include_directories(${EXE_NAME}
+	SYSTEM PRIVATE
+		${EASYLOGGINGPP_INCLUDE_DIR}
+)
+
 offcenter_example()
 
 ###############################################################################
@@ -114,6 +134,11 @@ target_link_libraries(${EXE_NAME}
 target_include_directories(${EXE_NAME}
 	PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/../../include
+)
+
+target_include_directories(${EXE_NAME}
+	SYSTEM PRIVATE
+		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
 offcenter_example()

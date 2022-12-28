@@ -28,9 +28,9 @@ using ::testing::HasSubstr;
 
 TEST (URLSchemeHost, EmptyCreationTest)
 {
-	offcenter::amqp::URLSchemeHost url;
+	offcenter::common::amqp::URLSchemeHost url;
 	ASSERT_EQ(url.uri(), "tcp://localhost:61616");
-	ASSERT_EQ(url.scheme(), offcenter::amqp::URLSchemeHost::URLScheme::tcp);
+	ASSERT_EQ(url.scheme(), offcenter::common::amqp::URLSchemeHost::URLScheme::tcp);
 	ASSERT_EQ(url.schemeText(), "tcp");
 	ASSERT_EQ(url.host(), "localhost");
 	ASSERT_EQ(url.port(), 61616);
@@ -38,10 +38,10 @@ TEST (URLSchemeHost, EmptyCreationTest)
 
 TEST (URLSchemeHost, CreationTest)
 {
-	offcenter::amqp::URLSchemeHost::URLScheme scheme = offcenter::amqp::URLSchemeHost::URLScheme::ssl;
+	offcenter::common::amqp::URLSchemeHost::URLScheme scheme = offcenter::common::amqp::URLSchemeHost::URLScheme::ssl;
 	std::string host("amqpserver");
 	int port = 12345;
-	offcenter::amqp::URLSchemeHost url(scheme, host, port);
+	offcenter::common::amqp::URLSchemeHost url(scheme, host, port);
 	ASSERT_EQ(url.uri(), "ssl://" + host + ":" + std::to_string(port));
 	ASSERT_EQ(url.scheme(), scheme);
 	ASSERT_EQ(url.schemeText(), "ssl");
@@ -51,11 +51,11 @@ TEST (URLSchemeHost, CreationTest)
 
 TEST (URLSchemeHost, CopyConstructory)
 {
-	offcenter::amqp::URLSchemeHost::URLScheme scheme = offcenter::amqp::URLSchemeHost::URLScheme::ssl;
+	offcenter::common::amqp::URLSchemeHost::URLScheme scheme = offcenter::common::amqp::URLSchemeHost::URLScheme::ssl;
 	std::string host("amqpserver");
 	int port = 12345;
-	offcenter::amqp::URLSchemeHost url(scheme, host, port);
-	offcenter::amqp::URLSchemeHost urlCopy;
+	offcenter::common::amqp::URLSchemeHost url(scheme, host, port);
+	offcenter::common::amqp::URLSchemeHost urlCopy;
 	urlCopy = url;
 	ASSERT_EQ(urlCopy.uri(), "ssl://" + host + ":" + std::to_string(port));
 	ASSERT_EQ(urlCopy.scheme(), scheme);

@@ -39,7 +39,7 @@ target_link_libraries(${EXE_NAME}
 )
 
 target_include_directories(${EXE_NAME}
-	SYSTEM PUBLIC
+	SYSTEM PRIVATE
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
@@ -62,7 +62,7 @@ target_link_libraries(${EXE_NAME}
 )
 
 target_include_directories(${EXE_NAME}
-	SYSTEM PUBLIC
+	SYSTEM PRIVATE
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
@@ -88,7 +88,7 @@ target_link_libraries(${EXE_NAME}
 )
 
 target_include_directories(${EXE_NAME}
-	SYSTEM PUBLIC
+	SYSTEM PRIVATE
 		${EASYLOGGINGPP_INCLUDE_DIR}
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${APR_INCLUDE_DIR}
@@ -113,7 +113,7 @@ target_link_libraries(${EXE_NAME}
 )
 
 target_include_directories(${EXE_NAME}
-	SYSTEM PUBLIC
+	SYSTEM PRIVATE
 		${ACTIVEMQCPP_INCLUDE_DIR}
 		${APR_INCLUDE_DIR}
 )

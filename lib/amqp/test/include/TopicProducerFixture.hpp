@@ -49,11 +49,11 @@ protected:
 	static void TearDownTestCase();
 
 public:
-	offcenter::amqp::ConnectionPtr connection;
-	offcenter::amqp::SessionPtr session;
-	offcenter::amqp::DestinationPtr destination;
-	offcenter::amqp::MessageProducerPtr producer;
-	offcenter::amqp::MessageConsumerPtr consumer;
+	offcenter::common::amqp::ConnectionPtr connection;
+	offcenter::common::amqp::SessionPtr session;
+	offcenter::common::amqp::DestinationPtr destination;
+	offcenter::common::amqp::MessageProducerPtr producer;
+	offcenter::common::amqp::MessageConsumerPtr consumer;
 
 };
 

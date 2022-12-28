@@ -47,7 +47,7 @@ target_link_libraries(${EXE_NAME}
 target_include_directories(${EXE_NAME}
 	BEFORE PUBLIC
 		${CMAKE_CURRENT_LIST_DIR}/include
-	SYSTEM
+	SYSTEM PRIVATE
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 

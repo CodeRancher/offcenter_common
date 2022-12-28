@@ -24,7 +24,7 @@
 
 int main(int argc, char *argv[])
 {
-	offcenter::amqp::ActiveMQCPP activeMQCpp;
+	offcenter::common::amqp::ActiveMQCPP activeMQCpp;
 
 	// ActiveMQ code goes here
 }

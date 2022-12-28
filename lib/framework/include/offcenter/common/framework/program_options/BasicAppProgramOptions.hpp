@@ -25,7 +25,6 @@
 
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
 #include "offcenter/common/framework/application/BasicAppConfig.hpp"
-using namespace offcenter::common;
 
 namespace offcenter {
 namespace common {

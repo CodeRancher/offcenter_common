@@ -29,7 +29,6 @@
 #include "offcenter/common/amqp/Helper.hpp"
 
 #include "offcenter/common/framework/application/BasicAppFoundation.hpp"
-using namespace offcenter::common;
 
 namespace offcenter {
 namespace common {

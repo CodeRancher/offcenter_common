@@ -30,6 +30,7 @@
 #include <cms/Session.h>
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /**
@@ -82,6 +83,7 @@ private:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_CONNECTIONSETTINGS_HPP_ */

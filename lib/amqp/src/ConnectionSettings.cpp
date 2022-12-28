@@ -22,6 +22,7 @@
 #include "offcenter/common/amqp/ConnectionSettings.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 ConnectionSettings::ConnectionSettings(cms::Session::AcknowledgeMode acknowledgeMode, QueueType queueType, const std::string& queueName, QueueParameters queueParameters):
@@ -40,4 +41,5 @@ ConnectionSettings::~ConnectionSettings()
 }
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */

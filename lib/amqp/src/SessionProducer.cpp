@@ -27,6 +27,7 @@
 #include "offcenter/common/amqp/SessionProducer.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 SessionProducer::SessionProducer(ConnectionPtr connection, const ConnectionSettings& connectionSettings):
@@ -46,4 +47,5 @@ SessionProducer::~SessionProducer()
 }
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */

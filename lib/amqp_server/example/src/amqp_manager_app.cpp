@@ -29,7 +29,6 @@ INITIALIZE_EASYLOGGINGPP
 #include "offcenter/common/amqpserver/AmqpServerAppManager.hpp"
 #include "offcenter/common/framework/application/BasicAppConfig.hpp"
 #include "offcenter/common/framework/application/Utility.hpp"
-using namespace offcenter::common;
 
 #include "AmqpManagerExampleApp.hpp"
 

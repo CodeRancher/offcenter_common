@@ -26,7 +26,6 @@
 #include "easylogging++.h"
 
 #include "offcenter/common/InterruptHandler.hpp"
-using namespace offcenter::common;
 
 #include "offcenter/common/amqp/Listener.hpp"
 #include "offcenter/common/amqp/URLSchemeHost.hpp"
@@ -47,27 +46,27 @@ PersistOandaForexDataToCSV::~PersistOandaForexDataToCSV() {
 }
 
 void PersistOandaForexDataToCSV::onInitProgramOptions(
-		program_options::ProgramOptionsManager &optionsManager)
+		offcenter::common::program_options::ProgramOptionsManager &optionsManager)
 {
 	m_amqpOption = optionsManager.add<AmqpExampleProgramOptions>();
 }
 
-void PersistOandaForexDataToCSV::onInitAMQP(amqp::ConnectionURIOptions& options)
+void PersistOandaForexDataToCSV::onInitAMQP(offcenter::common::amqp::ConnectionURIOptions& options)
 {
-	amqp::URLSchemeHost tcpHost(amqp::URLSchemeHost::URLScheme::tcp, m_amqpOption->tcpHost());
+	offcenter::common::amqp::URLSchemeHost tcpHost(offcenter::common::amqp::URLSchemeHost::URLScheme::tcp, m_amqpOption->tcpHost());
 	options.protocol.setTCPProtocol(tcpHost);
 	options.connection.sendTimeout = m_amqpOption->connectionSendTimeout();
 	options.failoverTransport.timeout = m_amqpOption->failoverTransportTimeout();
 	LOG(INFO) << "AMQP URI: " << options.uri();
 }
 
-void PersistOandaForexDataToCSV::onInitAMQPSessions(amqp::ConnectionPtr connection)
+void PersistOandaForexDataToCSV::onInitAMQPSessions(offcenter::common::amqp::ConnectionPtr connection)
 {
 	// Create a Session
-	m_session = offcenter::amqp::helper::sessionFactory(connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
+	m_session = offcenter::common::amqp::helper::sessionFactory(connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
 
 	// Create the destination (Topic or Queue)
-	m_destination = offcenter::amqp::helper::destinationFactory(m_session->createTopic("offcenter.test.output"));
+	m_destination = offcenter::common::amqp::helper::destinationFactory(m_session->createTopic("offcenter.test.output"));
 }
 
 
@@ -77,10 +76,10 @@ void PersistOandaForexDataToCSV::onSetUp()
 
 void PersistOandaForexDataToCSV::onExecute()
 {
-	offcenter::amqp::MessageConsumerPtr consumer1 = offcenter::amqp::helper::messageConsumerFactory(m_session->createConsumer(m_destination.get()));
+	offcenter::common::amqp::MessageConsumerPtr consumer1 = offcenter::common::amqp::helper::messageConsumerFactory(m_session->createConsumer(m_destination.get()));
 
 	/*
-	offcenter::amqp::Listener<AmqpDataElementOuter, AmqpDataElementOuter::MessageType> listener1(
+	offcenter::common::amqp::Listener<AmqpDataElementOuter, AmqpDataElementOuter::MessageType> listener1(
 			consumer1,
 			[](const cms::Message *cmsMessage, const AmqpDataElementOuter& amqpMessage) {
 				std::cout << "Receive message 1 (AmqpDataElement): "
@@ -93,9 +92,9 @@ void PersistOandaForexDataToCSV::onExecute()
 						<< std::endl;
 	});
 */
-	offcenter::amqp::MessageConsumerPtr consumer2 = offcenter::amqp::helper::messageConsumerFactory(m_session->createConsumer(m_destination.get()));
+	offcenter::common::amqp::MessageConsumerPtr consumer2 = offcenter::common::amqp::helper::messageConsumerFactory(m_session->createConsumer(m_destination.get()));
 	/*
-	offcenter::amqp::Listener<AmqpDataElementOuter, AmqpDataElementOuter::MessageType> listener2(
+	offcenter::common::amqp::Listener<AmqpDataElementOuter, AmqpDataElementOuter::MessageType> listener2(
 			consumer2,
 			[](const cms::Message *cmsMessage, const AmqpDataElementOuter& amqpMessage) {
 				std::cout << "Receive message 2 (AmqpDataElement): "

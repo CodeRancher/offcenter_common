@@ -48,11 +48,11 @@ void AMQPApp::start()
 	std::string brokerURI = "failover:(tcp://rpiactivemq:61616?connection.sendTimeout=100&timeout=100)";
 
 	// Create a ConnectionFactory
-	offcenter::amqp::ActiveMQConnectionFactoryPtr connectionFactory(
-			offcenter::amqp::Helper::activeMQConnectionFactoryFactory(brokerURI));
+	offcenter::common::amqp::ActiveMQConnectionFactoryPtr connectionFactory(
+			offcenter::common::amqp::Helper::activeMQConnectionFactoryFactory(brokerURI));
 
     // Create a Connection
-    m_connection = offcenter::amqp::Helper::connectionFactory(connectionFactory->createConnection());
+    m_connection = offcenter::common::amqp::Helper::connectionFactory(connectionFactory->createConnection());
     m_connection->start();
     m_scopeGuard += [&](){
         try {
@@ -63,7 +63,7 @@ void AMQPApp::start()
     };
 
     // Create a Session
-    m_session = offcenter::amqp::Helper::sessionFactory(m_connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
+    m_session = offcenter::common::amqp::Helper::sessionFactory(m_connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
 
     BasicApp::start();
 }

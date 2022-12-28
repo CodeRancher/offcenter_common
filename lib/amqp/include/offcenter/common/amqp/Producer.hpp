@@ -33,6 +33,7 @@
 #include "offcenter/common/amqp/Message.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 template <typename TCMSMessageType, typename TAMQPMessageType>
@@ -41,12 +42,12 @@ class Producer
 public:
 	using Ptr = std::unique_ptr<Producer>;
 
-	static Ptr factory(offcenter::amqp::SessionProducer::Ptr&& sessionProducer, const std::string& appID) {
-		return std::make_unique<Producer>(std::forward<offcenter::amqp::SessionProducer::Ptr>(sessionProducer), appID);
+	static Ptr factory(offcenter::common::amqp::SessionProducer::Ptr&& sessionProducer, const std::string& appID) {
+		return std::make_unique<Producer>(std::forward<offcenter::common::amqp::SessionProducer::Ptr>(sessionProducer), appID);
 	}
 
 public:
-	explicit Producer(offcenter::amqp::SessionProducer::Ptr&& sessionProducer, const std::string& appID):
+	explicit Producer(offcenter::common::amqp::SessionProducer::Ptr&& sessionProducer, const std::string& appID):
 			m_sessionProducer(std::move(sessionProducer)),
 			m_appID(appID)
 	{}
@@ -62,13 +63,14 @@ protected:
 	}
 
 private:
-	offcenter::amqp::SessionProducer::Ptr m_sessionProducer;
+	offcenter::common::amqp::SessionProducer::Ptr m_sessionProducer;
 	std::string m_appID;
 	std::mutex m_sendMutex;
 
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* LIB_OFFCENTER_AMQP_SRC_PRODUCER_H_ */

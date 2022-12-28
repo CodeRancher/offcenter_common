@@ -28,6 +28,7 @@
 #include "IConsumerDataListener.hpp"
 
 namespace offcenter {
+namespace common {
 namespace distributedsystem {
 
 template <typename Handler>
@@ -63,6 +64,7 @@ RemoteCommandListener::RemoteCommandListener(HandlerPtr handler)
 */
 
 } /* namespace distributedsystem */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_DISTRIBUTEDSYSTEM_CONSUMERDATALISTENER_HPP_ */

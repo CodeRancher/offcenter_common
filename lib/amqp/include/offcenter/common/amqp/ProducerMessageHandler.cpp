@@ -23,6 +23,7 @@
 #include "ProducerMessageProducer.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 ProducerMessageHandler::ProducerMessageHandler()
@@ -37,4 +38,5 @@ ProducerMessageHandler::~ProducerMessageHandler()
 }
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */

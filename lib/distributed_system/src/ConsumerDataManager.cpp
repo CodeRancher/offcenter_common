@@ -23,6 +23,7 @@
 #include "offcenter/common/distributedsystem/ConsumerDataManager.hpp"
 
 namespace offcenter {
+namespace common {
 namespace distributedsystem {
 
 ConsumerDataManager::ConsumerDataManager() {
@@ -35,4 +36,5 @@ ConsumerDataManager::~ConsumerDataManager() {
 }
 
 } /* namespace distributedsystem */
+} /* namespace common */
 } /* namespace offcenter */

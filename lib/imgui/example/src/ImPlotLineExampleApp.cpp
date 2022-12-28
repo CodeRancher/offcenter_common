@@ -54,7 +54,7 @@ ImPlotLineExampleApp::~ImPlotLineExampleApp() {
 }
 
 void ImPlotLineExampleApp::onInitProgramOptions(
-		program_options::ProgramOptionsManager &optionsManager)
+		offcenter::common::program_options::ProgramOptionsManager &optionsManager)
 {
 	m_imguiOption = optionsManager.add<ImGuiExampleProgramOptions>();
 }

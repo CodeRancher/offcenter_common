@@ -43,24 +43,24 @@ namespace admin {
 /**
  *
  */
-class AdminControlConsumer : public offcenter::amqp::Consumer<AdminControlMessage::MessageType, AdminControlMessage>
+class AdminControlConsumer : public offcenter::common::amqp::Consumer<AdminControlMessage::MessageType, AdminControlMessage>
 {
 public:
 	using Ptr = std::unique_ptr<AdminControlConsumer>;
-	using Parent = offcenter::amqp::Consumer<AdminControlMessage::MessageType, AdminControlMessage>;
+	using Parent = offcenter::common::amqp::Consumer<AdminControlMessage::MessageType, AdminControlMessage>;
 
 	template <typename TCallback>
-	static Ptr factory(offcenter::amqp::SessionConsumer::Ptr&& generalSessionConsumer, offcenter::amqp::SessionConsumer::Ptr&& specificSessionConsumer, TCallback &&callback) {
+	static Ptr factory(offcenter::common::amqp::SessionConsumer::Ptr&& generalSessionConsumer, offcenter::common::amqp::SessionConsumer::Ptr&& specificSessionConsumer, TCallback &&callback) {
 		return std::make_unique<AdminControlConsumer>(
-				std::forward<offcenter::amqp::SessionConsumer::Ptr>(generalSessionConsumer),
-				std::forward<offcenter::amqp::SessionConsumer::Ptr>(specificSessionConsumer),
+				std::forward<offcenter::common::amqp::SessionConsumer::Ptr>(generalSessionConsumer),
+				std::forward<offcenter::common::amqp::SessionConsumer::Ptr>(specificSessionConsumer),
 				std::forward<TCallback>(callback));
 	}
 
 public:
 	template <typename TCallback>
-	explicit AdminControlConsumer(offcenter::amqp::SessionConsumer::Ptr&& generalSessionConsumer, offcenter::amqp::SessionConsumer::Ptr&& specificSessionConsumer, TCallback &&callback):
-			Parent(std::forward<offcenter::amqp::SessionConsumer::Ptr>(generalSessionConsumer), std::forward<offcenter::amqp::SessionConsumer::Ptr>(specificSessionConsumer), std::forward<TCallback>(callback))
+	explicit AdminControlConsumer(offcenter::common::amqp::SessionConsumer::Ptr&& generalSessionConsumer, offcenter::common::amqp::SessionConsumer::Ptr&& specificSessionConsumer, TCallback &&callback):
+			Parent(std::forward<offcenter::common::amqp::SessionConsumer::Ptr>(generalSessionConsumer), std::forward<offcenter::common::amqp::SessionConsumer::Ptr>(specificSessionConsumer), std::forward<TCallback>(callback))
 	{}
 
 	virtual ~AdminControlConsumer() = default;

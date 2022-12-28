@@ -32,6 +32,7 @@
 #include "offcenter/common/threading/RunningThreadBlockable.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 namespace threading {
 
@@ -47,9 +48,9 @@ public:
 
 public:
 	ProcessAmqpMessageThread() = delete;
-	explicit ProcessAmqpMessageThread(offcenter::amqp::SessionPtr session, const std::string& topic):
+	explicit ProcessAmqpMessageThread(offcenter::common::amqp::SessionPtr session, const std::string& topic):
 		m_destination(session->createQueue(topic)),
-		m_consumer(offcenter::amqp::helper::messageConsumerFactory(session->createConsumer(m_destination.get()))),
+		m_consumer(offcenter::common::amqp::helper::messageConsumerFactory(session->createConsumer(m_destination.get()))),
 		m_listener(m_consumer, [&](const cms::Message *cmsMessage, const Data& data) {
 			{
 				std::lock_guard<std::mutex> l(m_protectData);
@@ -95,9 +96,9 @@ protected:
 	}
 
 private:
-	offcenter::amqp::DestinationPtr m_destination;
-	offcenter::amqp::MessageConsumerPtr m_consumer;
-	offcenter::amqp::Listener<Data, DataType> m_listener;
+	offcenter::common::amqp::DestinationPtr m_destination;
+	offcenter::common::amqp::MessageConsumerPtr m_consumer;
+	offcenter::common::amqp::Listener<Data, DataType> m_listener;
 
 	Data m_data;
 	std::mutex m_protectData;
@@ -105,6 +106,7 @@ private:
 
 } /* namespace threading */
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_THREADING_PROCESSAMQPMESSAGETHREAD_HPP_ */

@@ -28,6 +28,7 @@
 #include "offcenter/common/amqp/Helper.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 
@@ -111,6 +112,7 @@ private:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_MESSAGEPRODUCER_HPP_ */

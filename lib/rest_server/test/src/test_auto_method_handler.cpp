@@ -26,7 +26,6 @@
 #include <gtest/gtest.h>
 
 #include "offcenter/common/restserver/AutoMethodHandler.hpp"
-using namespace offcenter::common;
 
 class AutoMethodHandlerFixture : public ::testing::Test {
 public:
@@ -71,7 +70,7 @@ protected:
 	void TearDown() override {}
 
 protected:
-	restserver::AutoMethodHandler handler;
+	offcenter::common::restserver::AutoMethodHandler handler;
 	bool executed1 = false;
 	bool executed2 = false;
 	bool executed3 = false;

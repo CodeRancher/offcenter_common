@@ -24,6 +24,7 @@
 #define LIB_OFFCENTER_AMQP_SRC_MESSAGEBASE_HPP_
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 template <class messageType>
@@ -47,6 +48,7 @@ public:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* LIB_OFFCENTER_AMQP_SRC_MESSAGEBASE_HPP_ */

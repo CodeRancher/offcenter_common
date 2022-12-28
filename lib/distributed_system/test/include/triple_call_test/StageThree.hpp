@@ -65,11 +65,11 @@ public:
 /**
  *
  */
-class StageThreeCommandListener : public offcenter::distributedsystem::ConsumerDataListener<IStageThreeCommandHandler>
+class StageThreeCommandListener : public offcenter::common::distributedsystem::ConsumerDataListener<IStageThreeCommandHandler>
 {
 public:
 	explicit StageThreeCommandListener(StageThreeCLConfig const& clConfig, std::shared_ptr<IStageThreeCommandHandler> handler):
-		offcenter::distributedsystem::ConsumerDataListener<IStageThreeCommandHandler>(handler)
+		offcenter::common::distributedsystem::ConsumerDataListener<IStageThreeCommandHandler>(handler)
 	{
 
 	}

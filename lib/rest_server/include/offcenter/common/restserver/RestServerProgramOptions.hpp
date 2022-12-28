@@ -29,7 +29,6 @@
 
 #include "offcenter/common/program_options/ProgramOptionsGroup.hpp"
 #include "offcenter/common/restserver/RestServerOptions.hpp"
-using namespace offcenter::common;
 
 namespace offcenter {
 namespace common {

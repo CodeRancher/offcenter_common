@@ -62,8 +62,11 @@ target_include_directories(${LIB_NAME}
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
 
-		"$<BUILD_INTERFACE:${EASYLOGGINGPP_INCLUDE_DIR}>"
+target_include_directories(${LIB_NAME}
+	SYSTEM PUBLIC
+		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
 #link_directories(${Boost_LIBRARY_DIRS})

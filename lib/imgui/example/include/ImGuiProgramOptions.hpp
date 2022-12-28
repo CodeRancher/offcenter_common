@@ -31,7 +31,7 @@
 #include "ImGuiExampleOptions.hpp"
 
 class ImGuiExampleProgramOptions:
-		public program_options::ProgramOptionsGroup<ImGuiExampleOptions>
+		public offcenter::common::program_options::ProgramOptionsGroup<ImGuiExampleOptions>
 {
 public:
 	ImGuiExampleProgramOptions():

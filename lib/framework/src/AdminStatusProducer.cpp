@@ -32,8 +32,8 @@ namespace common {
 namespace framework {
 namespace admin {
 
-AdminStatusProducer::AdminStatusProducer(offcenter::amqp::SessionProducer::Ptr&& sessionProducer, const std::string& appID):
-		Parent(std::forward<offcenter::amqp::SessionProducer::Ptr>(sessionProducer), appID),
+AdminStatusProducer::AdminStatusProducer(offcenter::common::amqp::SessionProducer::Ptr&& sessionProducer, const std::string& appID):
+		Parent(std::forward<offcenter::common::amqp::SessionProducer::Ptr>(sessionProducer), appID),
 		m_lastMessage(appID)
 {
 

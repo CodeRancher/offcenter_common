@@ -26,6 +26,7 @@
 #include <activemq/library/ActiveMQCPP.h>
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /**
@@ -52,6 +53,7 @@ public:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_ACTIVEMQCPP_HPP_ */

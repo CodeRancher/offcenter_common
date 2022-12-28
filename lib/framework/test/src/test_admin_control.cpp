@@ -35,42 +35,42 @@ public:
 	explicit AdminControlFixture() {
 		activemq::library::ActiveMQCPP::initializeLibrary();
 
-		offcenter::amqp::ConnectionURIOptions options;
-		offcenter::amqp::URLSchemeHost tcpHost(offcenter::amqp::URLSchemeHost::URLScheme::tcp, "rpiactivemq");
+		offcenter::common::amqp::ConnectionURIOptions options;
+		offcenter::common::amqp::URLSchemeHost tcpHost(offcenter::common::amqp::URLSchemeHost::URLScheme::tcp, "rpiactivemq");
 		options.protocol.setTCPProtocol(tcpHost);
 		options.connection.sendTimeout = 1000;
 		options.failoverTransport.timeout = 1000;
 
 		// Connect to the AMQP server
 		LOG(DEBUG) << "Open AdminControlFixture Connection Factory";
-		offcenter::amqp::ActiveMQConnectionFactoryPtr connectionFactory(offcenter::amqp::helper::activeMQConnectionFactoryFactory(options.uri()));
+		offcenter::common::amqp::ActiveMQConnectionFactoryPtr connectionFactory(offcenter::common::amqp::helper::activeMQConnectionFactoryFactory(options.uri()));
 
 	    // Create a Connection
 		LOG(DEBUG) << "Open AdminControlFixture Connection";
-		m_connection = offcenter::amqp::helper::connectionFactory(connectionFactory->createConnection());
+		m_connection = offcenter::common::amqp::helper::connectionFactory(connectionFactory->createConnection());
 
-		offcenter::amqp::ConnectionSettings connectionSettings(
+		offcenter::common::amqp::ConnectionSettings connectionSettings(
 				cms::Session::AcknowledgeMode::AUTO_ACKNOWLEDGE,
-				offcenter::amqp::ConnectionSettings::QueueType::Topic,
+				offcenter::common::amqp::ConnectionSettings::QueueType::Topic,
 				"offcenter.test.AdminControl.");
 
 		m_controlProducer = offcenter::common::framework::admin::AdminControlProducer::factory(
-				std::move(offcenter::amqp::SessionProducerDynamicDestination::factory(m_connection, connectionSettings)),
+				std::move(offcenter::common::amqp::SessionProducerDynamicDestination::factory(m_connection, connectionSettings)),
 				"test_admin_control");
 
-		offcenter::amqp::ConnectionSettings generalConnectionSettings(
+		offcenter::common::amqp::ConnectionSettings generalConnectionSettings(
 				cms::Session::AcknowledgeMode::AUTO_ACKNOWLEDGE,
-				offcenter::amqp::ConnectionSettings::QueueType::Topic,
+				offcenter::common::amqp::ConnectionSettings::QueueType::Topic,
 				"offcenter.test.AdminControl.#all#");
 
-		offcenter::amqp::ConnectionSettings specificConnectionSettings(
+		offcenter::common::amqp::ConnectionSettings specificConnectionSettings(
 				cms::Session::AcknowledgeMode::AUTO_ACKNOWLEDGE,
-				offcenter::amqp::ConnectionSettings::QueueType::Topic,
+				offcenter::common::amqp::ConnectionSettings::QueueType::Topic,
 				"offcenter.test.AdminControl.app_id");
 
 		m_controlConsumer = offcenter::common::framework::admin::AdminControlConsumer::factory(
-				std::move(offcenter::amqp::SessionConsumer::factory(m_connection, generalConnectionSettings)),
-				std::move(offcenter::amqp::SessionConsumer::factory(m_connection, specificConnectionSettings)),
+				std::move(offcenter::common::amqp::SessionConsumer::factory(m_connection, generalConnectionSettings)),
+				std::move(offcenter::common::amqp::SessionConsumer::factory(m_connection, specificConnectionSettings)),
 				[this](const cms::Message* message, const offcenter::common::framework::admin::AdminControlMessage& controlMessage)
 				{
 					m_controlMessage = controlMessage;
@@ -105,7 +105,7 @@ protected:
 
 	offcenter::common::framework::admin::AdminControlMessage m_controlMessage;
 
-	offcenter::amqp::ConnectionPtr m_connection;
+	offcenter::common::amqp::ConnectionPtr m_connection;
 
 	offcenter::common::WaitForMessage m_waitForMessage;
 

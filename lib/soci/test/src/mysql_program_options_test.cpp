@@ -27,13 +27,12 @@ using ::testing::HasSubstr;
 #include "offcenter/common/soci/MySQLProgramOptions.hpp"
 #include "offcenter/common/program_options/ProgramOptionsManager.hpp"
 #include "offcenter/common/SimulatedCommandLine.hpp"
-using namespace offcenter::common;
 
 TEST (MySQLProgramOptions, OptionsFromCommandLine)
 {
-	program_options::ProgramOptionsManager optionsManager;
-	offcenter::soci::MySQLProgramOptions::ConfigPtr config;
-	config = optionsManager.add<offcenter::soci::MySQLProgramOptions>();
+	offcenter::common::program_options::ProgramOptionsManager optionsManager;
+	offcenter::common::soci::MySQLProgramOptions::ConfigPtr config;
+	config = optionsManager.add<offcenter::common::soci::MySQLProgramOptions>();
 
 	std::string dbname = "DBName";
 	std::string user = "User";
@@ -49,7 +48,7 @@ TEST (MySQLProgramOptions, OptionsFromCommandLine)
 	int read_timeout = 2345;
 	int write_timeout = 3456;
 
-	SimulatedCommandLine commandLine("MySQLProgramOptions",
+	offcenter::common::SimulatedCommandLine commandLine("MySQLProgramOptions",
 		{
 			"--dbname", dbname,
 			"--user", user,

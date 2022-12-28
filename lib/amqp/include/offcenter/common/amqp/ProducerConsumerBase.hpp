@@ -26,30 +26,31 @@
 #include "offcenter/common/amqp/Helper.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 template <class messageType>
 class ProducerConsumerBase {
 protected:
-	offcenter::amqp::ConnectionPtr m_connection;
-	offcenter::amqp::SessionPtr m_session;
-	offcenter::amqp::DestinationPtr m_destination;
+	offcenter::common::amqp::ConnectionPtr m_connection;
+	offcenter::common::amqp::SessionPtr m_session;
+	offcenter::common::amqp::DestinationPtr m_destination;
 
 public:
-	ProducerConsumerBase(offcenter::amqp::ActiveMQConnectionFactoryPtr connectionFactory) {
+	ProducerConsumerBase(offcenter::common::amqp::ActiveMQConnectionFactoryPtr connectionFactory) {
 	    // Create a Connection
 		//BOOST_LOG_TRIVIAL(trace) << "Create connection";
-	    m_connection = offcenter::amqp::helper::connectionFactory(connectionFactory->createConnection());
+	    m_connection = offcenter::common::amqp::helper::connectionFactory(connectionFactory->createConnection());
 	    //BOOST_LOG_TRIVIAL(trace) << "Start connection";
 	    m_connection->start();
 
 	    // Create a Session
 	    //BOOST_LOG_TRIVIAL(trace) << "Create session";
-	    m_session = offcenter::amqp::helper::sessionFactory(m_connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
+	    m_session = offcenter::common::amqp::helper::sessionFactory(m_connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
 
 	    // Create the destination (Topic or Queue)
 	    //BOOST_LOG_TRIVIAL(trace) << "Create session topic";
-	    m_destination = offcenter::amqp::helper::destinationFactory(m_session->createTopic("TEST.FOO"));
+	    m_destination = offcenter::common::amqp::helper::destinationFactory(m_session->createTopic("TEST.FOO"));
 	}
 
 	virtual ~ProducerConsumerBase() {
@@ -60,21 +61,22 @@ public:
 	    if (m_connection) { m_connection.reset(); }
 	}
 
-	offcenter::amqp::MessageProducerPtr getMessageProducer() const {
+	offcenter::common::amqp::MessageProducerPtr getMessageProducer() const {
 		//BOOST_LOG_TRIVIAL(trace) << "Create producer";
-		return offcenter::amqp::helper::messageProducerFactory(
+		return offcenter::common::amqp::helper::messageProducerFactory(
 				m_session->createProducer(m_destination.get()));
 	}
 
-	offcenter::amqp::MessageConsumerPtr getMessageConsumer() const {
+	offcenter::common::amqp::MessageConsumerPtr getMessageConsumer() const {
 		//BOOST_LOG_TRIVIAL(trace) << "Create consumer";
-		return offcenter::amqp::helper::messageConsumerFactory(
+		return offcenter::common::amqp::helper::messageConsumerFactory(
 				m_session->createConsumer(m_destination.get()));
 	}
 
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* LIB_OFFCENTER_AMQP_SRC_PRODUCERCONSUMERBASE_HPP_ */

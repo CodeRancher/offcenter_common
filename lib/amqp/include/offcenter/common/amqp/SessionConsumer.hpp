@@ -31,6 +31,7 @@
 #include "offcenter/common/amqp/Session.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /**
@@ -59,6 +60,7 @@ private:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_SESSIONCONSUMER_HPP_ */

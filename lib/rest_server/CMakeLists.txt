@@ -69,15 +69,15 @@ target_link_libraries(${LIB_NAME}
 	Threads::Threads
 )
 
-target_include_directories(${LIB_NAME} SYSTEM
-	PRIVATE
-		${EASYLOGGINGPP_INCLUDE_DIR}
-)
-
 target_include_directories(${LIB_NAME}
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
+
+target_include_directories(${LIB_NAME}
+	SYSTEM PUBLIC
+		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 
 include(OffcenterInstall)

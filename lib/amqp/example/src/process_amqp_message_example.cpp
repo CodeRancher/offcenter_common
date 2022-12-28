@@ -68,11 +68,11 @@ void from_cmsMessage(const ExampleData::MessageType* j, ExampleData& p) {
  * it will block until a new max is received.
  */
 class ExampleThread:
-		public offcenter::amqp::threading::ProcessAmqpMessageThread<ExampleData, ExampleData::MessageType>
+		public offcenter::common::amqp::threading::ProcessAmqpMessageThread<ExampleData, ExampleData::MessageType>
 {
 public:
 	ExampleThread() = delete;
-	explicit ExampleThread(offcenter::amqp::SessionPtr session, const std::string& topic):
+	explicit ExampleThread(offcenter::common::amqp::SessionPtr session, const std::string& topic):
 		ProcessAmqpMessageThread(session, topic),
 		m_current(0)
 	{}
@@ -136,22 +136,22 @@ int main(int argc, char* argv[])
 
 	LOG(INFO) << "--------------------------------------------------------------------------------";
 
-	offcenter::amqp::ActiveMQCPP activeMQCpp;
+	offcenter::common::amqp::ActiveMQCPP activeMQCpp;
 
 	std::string brokerURI = "tcp://rpiactivemq:61616?connection.sendTimeout=100&timeout=100";
-	offcenter::amqp::ConnectionPtr connection;
+	offcenter::common::amqp::ConnectionPtr connection;
 	{
 		// Create a ConnectionFactory
-		offcenter::amqp::ActiveMQConnectionFactoryPtr connectionFactory(offcenter::amqp::helper::activeMQConnectionFactoryFactory(brokerURI));
+		offcenter::common::amqp::ActiveMQConnectionFactoryPtr connectionFactory(offcenter::common::amqp::helper::activeMQConnectionFactoryFactory(brokerURI));
 		// Create a Connection
-		connection = offcenter::amqp::helper::connectionFactory(connectionFactory->createConnection());
+		connection = offcenter::common::amqp::helper::connectionFactory(connectionFactory->createConnection());
 	}
 
 	connection->start();
 
-	offcenter::amqp::SessionPtr session = offcenter::amqp::helper::sessionFactory(connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
-	offcenter::amqp::DestinationPtr outputDestination = offcenter::amqp::helper::destinationFactory(session->createTopic("process.amqp.message.example"));
-	offcenter::amqp::ProducerMessageHandler producer(session, outputDestination);
+	offcenter::common::amqp::SessionPtr session = offcenter::common::amqp::helper::sessionFactory(connection->createSession(cms::Session::AUTO_ACKNOWLEDGE));
+	offcenter::common::amqp::DestinationPtr outputDestination = offcenter::common::amqp::helper::destinationFactory(session->createTopic("process.amqp.message.example"));
+	offcenter::common::amqp::ProducerMessageHandler producer(session, outputDestination);
 	producer()->setDeliveryMode(cms::DeliveryMode::NON_PERSISTENT);
 
 	LOG(DEBUG) << "Starting thread";

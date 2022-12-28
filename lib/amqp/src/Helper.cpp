@@ -24,6 +24,7 @@
 #include "offcenter/common/amqp/Helper.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 namespace helper {
 
@@ -166,4 +167,5 @@ MessageConsumerUPtr messageConsumerUFactory(cms::MessageConsumer* messageConsume
 
 } /* namespace helper */
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */

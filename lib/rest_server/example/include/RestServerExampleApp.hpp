@@ -24,12 +24,11 @@
 #define RESTSERVEREXAMPLEAPP_H_
 
 #include "offcenter/common/restserver/IRestServerApp.hpp"
-using namespace offcenter::common;
 
 /**
  *
  */
-class RestServerExampleApp: public restserver::IRestServerApp
+class RestServerExampleApp: public offcenter::common::restserver::IRestServerApp
 {
 public:
 	explicit RestServerExampleApp();
@@ -37,7 +36,7 @@ public:
 
 	//void onInitProgramOptions(program_options::ProgramOptionsManager& optionsManager) override;
 	//void onSetUp() override;
-	void onInitMethodHandlers(restserver::AutoMethodHandler& methodHandler) override;
+	void onInitMethodHandlers(offcenter::common::restserver::AutoMethodHandler& methodHandler) override;
 	void onInitEndpoint(web::uri& uri) override;
 	//virtual void onExecute() = 0; override;
 	//void onTearDown() override;

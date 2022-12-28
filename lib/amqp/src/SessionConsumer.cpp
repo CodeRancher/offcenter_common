@@ -22,6 +22,7 @@
 #include "offcenter/common/amqp/SessionConsumer.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 SessionConsumer::SessionConsumer(ConnectionPtr connection, const ConnectionSettings& connectionSettings):
@@ -41,4 +42,5 @@ SessionConsumer::~SessionConsumer()
 }
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */

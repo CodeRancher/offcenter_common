@@ -31,7 +31,7 @@ namespace common {
 namespace framework {
 namespace admin {
 
-AdminControlProducer::AdminControlProducer(offcenter::amqp::SessionProducerDynamicDestination::Ptr sessionProducer, const std::string& appID):
+AdminControlProducer::AdminControlProducer(offcenter::common::amqp::SessionProducerDynamicDestination::Ptr sessionProducer, const std::string& appID):
 		m_sessionProducer(std::move(sessionProducer)),
 		m_lastMessage(appID)
 {

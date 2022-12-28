@@ -58,9 +58,12 @@ target_include_directories(${LIB_NAME}
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
-		
-		"$<BUILD_INTERFACE:${SOCI_INCLUDE_DIR}/..>"
-		"$<BUILD_INTERFACE:${MariaDBClient_INCLUDE_DIRS}>"
+)
+
+target_include_directories(${LIB_NAME}
+	SYSTEM PUBLIC
+		${SOCI_INCLUDE_DIR}/..
+		${MariaDBClient_INCLUDE_DIRS}
 )
 
 include(OffcenterInstall)

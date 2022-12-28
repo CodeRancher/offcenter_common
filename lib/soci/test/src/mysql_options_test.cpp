@@ -37,7 +37,7 @@ public:
 	MySQLOptionsFixture(): ::testing::Test() {}
 	virtual ~MySQLOptionsFixture() = default;
 protected:
-	offcenter::soci::MySQLOptions mysqlOptions;
+	offcenter::common::soci::MySQLOptions mysqlOptions;
 };
 
 TEST_F (MySQLOptionsFixture, DBName)

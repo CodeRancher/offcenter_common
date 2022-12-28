@@ -28,7 +28,6 @@ using ::testing::HasSubstr;
 
 #include "BasicAppWithConfigTest.hpp"
 #include "offcenter/common/SimulatedCommandLine.hpp"
-using namespace offcenter::common;
 
 #define mkstr(s) #s
 
@@ -36,7 +35,7 @@ const std::string g_configFile_Empty(CONFIGFILE_EMPTY);
 
 TEST_F (BasicAppWithConfigFixture, EmptyConfigFile)
 {
-	SimulatedCommandLine commandLine("BasicAppWithConfigFixture", {"--config", g_configFile_Empty});
+	offcenter::common::SimulatedCommandLine commandLine("BasicAppWithConfigFixture", {"--config", g_configFile_Empty});
 
 	//m_basicAppTest.processCommandLine(commandLine.argc(), commandLine.argv());
 	m_basicAppTest.start(commandLine.argc(), commandLine.argv());
@@ -50,7 +49,7 @@ const std::string g_configFile_Basic(CONFIGFILE_BASIC);
 
 TEST_F (BasicAppWithConfigFixture, HelpProgramOptions)
 {
-	SimulatedCommandLine commandLine("BasicAppWithConfigFixture", {"--config", g_configFile_Basic});
+	offcenter::common::SimulatedCommandLine commandLine("BasicAppWithConfigFixture", {"--config", g_configFile_Basic});
 
 	//m_basicAppTest.processCommandLine(commandLine.argc(), commandLine.argv());
 	m_basicAppTest.start(commandLine.argc(), commandLine.argv());
@@ -62,7 +61,7 @@ TEST_F (BasicAppWithConfigFixture, HelpProgramOptions)
 
 TEST_F (BasicAppWithConfigFixture, InvalidConfigFileName)
 {
-	SimulatedCommandLine commandLine("BasicAppWithConfigFixture", {"--config", "I_don't_exist"});
+	offcenter::common::SimulatedCommandLine commandLine("BasicAppWithConfigFixture", {"--config", "I_don't_exist"});
 
 	//ASSERT_THROW(
 			//m_basicAppTest.processCommandLine(commandLine.argc(), commandLine.argv()),

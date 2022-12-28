@@ -31,9 +31,9 @@ namespace framework {
 namespace admin {
 
 
-//AdminControlConsumer::AdminControlConsumer(offcenter::amqp::SessionConsumer::Ptr generalSessionConsumer, offcenter::amqp::SessionConsumer::Ptr specificSessionConsumer, TCallback callback/*, ICallback::Ptr adminControlHandler*/):
+//AdminControlConsumer::AdminControlConsumer(offcenter::common::amqp::SessionConsumer::Ptr generalSessionConsumer, offcenter::common::amqp::SessionConsumer::Ptr specificSessionConsumer, TCallback callback/*, ICallback::Ptr adminControlHandler*/):
 //		cms::MessageListener(),
-//		offcenter::amqp::MessageCallback(callback),
+//		offcenter::common::amqp::MessageCallback(callback),
 //		m_generalSessionConsumer(std::move(generalSessionConsumer)),
 //		m_specificSessionConsumer(std::move(specificSessionConsumer)),
 //		m_adminControlHandler(std::move(adminControlHandler))

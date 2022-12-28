@@ -44,7 +44,7 @@ target_link_libraries(${EXE_NAME}
 )
 
 target_include_directories(${EXE_NAME}
-	PUBLIC
+	SYSTEM PRIVATE
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 

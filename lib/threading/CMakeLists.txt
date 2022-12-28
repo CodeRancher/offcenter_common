@@ -49,7 +49,10 @@ target_include_directories(${LIB_NAME}
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
 
+target_include_directories(${LIB_NAME}
+	SYSTEM PUBLIC
 		${EASYLOGGINGPP_INCLUDE_DIR}
 )
 

@@ -36,7 +36,6 @@ INITIALIZE_EASYLOGGINGPP
 #include "offcenter/common/framework/application/Utility.hpp"
 #include "offcenter/common/soci/MySQLProgramOptions.hpp"
 #include "offcenter/common/soci/Session.hpp"
-using namespace offcenter::common;
 
 std::tm stringToTime(const std::string& date) {
 	struct std::tm tm;
@@ -361,7 +360,7 @@ static const std::vector<OrderData> g_orderData {
 
 
 //*****************************************************************************
-class SOCICreateSimpleDBApp: public framework::application::IApp {
+class SOCICreateSimpleDBApp: public offcenter::common::framework::application::IApp {
 public:
 	const static int g_sessionPoolSize = 4;
 
@@ -373,8 +372,8 @@ public:
 	{
 	}
 
-	void onInitProgramOptions(program_options::ProgramOptionsManager& optionsManager) {
-		m_mysqlConfig = optionsManager.add<offcenter::soci::MySQLProgramOptions>();
+	void onInitProgramOptions(offcenter::common::program_options::ProgramOptionsManager& optionsManager) {
+		m_mysqlConfig = optionsManager.add<offcenter::common::soci::MySQLProgramOptions>();
 	}
 
 	void onSetUp() override {
@@ -409,7 +408,7 @@ public:
 
 		// Query #1
 		{
-			offcenter::soci::Session session(m_sessionPoolManager);
+			offcenter::common::soci::Session session(m_sessionPoolManager);
 			AgentData agentData;
 			::soci::statement agentDataST = (session().prepare << "SELECT * FROM AGENTS ORDER BY AGENT_NAME", ::soci::into(agentData));
 			agentDataST.execute();
@@ -449,13 +448,13 @@ public:
 	}
 
 private:
-	offcenter::soci::MySQLProgramOptions::ConfigPtr m_mysqlConfig;
-	offcenter::soci::SessionPoolManager m_sessionPoolManager;
+	offcenter::common::soci::MySQLProgramOptions::ConfigPtr m_mysqlConfig;
+	offcenter::common::soci::SessionPoolManager m_sessionPoolManager;
 
 	template <class D>
 	void initData(const std::string& table, const std::vector<D>& dataSet, const std::string& createTable, const std::string& insertData)
 	{
-		offcenter::soci::Session session(m_sessionPoolManager);
+		offcenter::common::soci::Session session(m_sessionPoolManager);
 
 		std::cout << "Create table: '" << table << "'" << std::endl;
 		session().once << createTable;
@@ -481,9 +480,9 @@ int main(int argc, char **argv) {
 
 	LOG(INFO) << "Starting basic app thread";
 
-	using App = framework::application::AppManager<SOCICreateSimpleDBApp>;
+	using App = offcenter::common::framework::application::AppManager<SOCICreateSimpleDBApp>;
 
-	std::thread appThread = framework::application::create_basic_app_in_thread<App>(argc, argv);
+	std::thread appThread = offcenter::common::framework::application::create_basic_app_in_thread<App>(argc, argv);
 	appThread.join();
 
 }

@@ -26,7 +26,6 @@
 #include <gtest/gtest.h>
 
 #include "offcenter/common/restserver/AutoMethodPath.hpp"
-using namespace offcenter::common;
 
 TEST (AutoMethodPath, BasicPath)
 {
@@ -40,7 +39,7 @@ TEST (AutoMethodPath, BasicPath)
 		std::cout << "In action" << std::endl;
 	};
 
-	restserver::IAutoMethodPath::Ptr autoMethodPath = restserver::autoMethodPathFactory(path, description, action);
+	offcenter::common::restserver::IAutoMethodPath::Ptr autoMethodPath = offcenter::common::restserver::autoMethodPathFactory(path, description, action);
 
 	EXPECT_EQ(autoMethodPath->path(), path);
 	EXPECT_EQ(autoMethodPath->description(), description);
@@ -71,7 +70,7 @@ TEST (AutoMethodPath, MatchPath)
 		std::cout << "In action" << std::endl;
 	};
 
-	restserver::IAutoMethodPath::Ptr autoMethodPath = restserver::autoMethodPathFactory(path, description, action);
+	offcenter::common::restserver::IAutoMethodPath::Ptr autoMethodPath = offcenter::common::restserver::autoMethodPathFactory(path, description, action);
 
 	EXPECT_EQ(autoMethodPath->path(), path);
 	EXPECT_EQ(autoMethodPath->description(), description);

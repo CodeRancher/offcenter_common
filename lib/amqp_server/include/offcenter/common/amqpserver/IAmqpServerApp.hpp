@@ -27,7 +27,6 @@
 
 #include "offcenter/common/program_options/ProgramOptionsManager.hpp"
 #include "offcenter/common/framework/application/IApp.hpp"
-using namespace offcenter::common;
 
 #include "offcenter/common/amqp/Helper.hpp"
 using namespace offcenter;
@@ -44,8 +43,8 @@ class IAmqpServerApp: public framework::application::IApp
 public:
 	virtual ~IAmqpServerApp() = default;
 
-	virtual void onInitAMQP(offcenter::amqp::ConnectionURIOptions& options) = 0;
-	virtual void onInitAMQPSessions(offcenter::amqp::ConnectionPtr connection) = 0;
+	virtual void onInitAMQP(offcenter::common::amqp::ConnectionURIOptions& options) = 0;
+	virtual void onInitAMQPSessions(offcenter::common::amqp::ConnectionPtr connection) = 0;
 };
 
 } /* namespace amqpserver */

@@ -32,6 +32,7 @@
 #include "offcenter/common/amqp/MessageCallback.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /**
@@ -44,23 +45,23 @@ public:
 	using Ptr = std::unique_ptr<TAMQPMessageType>;
 
 	template <typename TCallback>
-	static Ptr factory(offcenter::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback) {
-		return std::make_unique<TAMQPMessageType>(std::forward<offcenter::amqp::SessionConsumer::Ptr>(sessionConsumer), std::forward<TCallback>(callback));
+	static Ptr factory(offcenter::common::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback) {
+		return std::make_unique<TAMQPMessageType>(std::forward<offcenter::common::amqp::SessionConsumer::Ptr>(sessionConsumer), std::forward<TCallback>(callback));
 	}
 
 	template <typename TCallback>
-	static Ptr factory(offcenter::amqp::SessionConsumer::Ptr&& sessionConsumer1, offcenter::amqp::SessionConsumer::Ptr&& sessionConsumer2, TCallback &&callback) {
+	static Ptr factory(offcenter::common::amqp::SessionConsumer::Ptr&& sessionConsumer1, offcenter::common::amqp::SessionConsumer::Ptr&& sessionConsumer2, TCallback &&callback) {
 		return std::make_unique<TAMQPMessageType>(
-				std::forward<offcenter::amqp::SessionConsumer::Ptr>(sessionConsumer1),
-				std::forward<offcenter::amqp::SessionConsumer::Ptr>(sessionConsumer2),
+				std::forward<offcenter::common::amqp::SessionConsumer::Ptr>(sessionConsumer1),
+				std::forward<offcenter::common::amqp::SessionConsumer::Ptr>(sessionConsumer2),
 				std::forward<TCallback>(callback));
 	}
 private:
-	using MessageCallback = offcenter::amqp::MessageCallback<TCMSMessageType, TAMQPMessageType>;
+	using MessageCallback = offcenter::common::amqp::MessageCallback<TCMSMessageType, TAMQPMessageType>;
 
 public:
 	template <typename TCallback>
-	explicit Consumer(offcenter::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback):
+	explicit Consumer(offcenter::common::amqp::SessionConsumer::Ptr&& sessionConsumer, TCallback &&callback):
 		cms::MessageListener(),
 		m_callback(MessageCallback::factory(std::forward<TCallback>(callback)))
 	{
@@ -69,7 +70,7 @@ public:
 	}
 
 	template <typename TCallback>
-	explicit Consumer(offcenter::amqp::SessionConsumer::Ptr&& sessionConsumer1, offcenter::amqp::SessionConsumer::Ptr&& sessionConsumer2, TCallback &&callback):
+	explicit Consumer(offcenter::common::amqp::SessionConsumer::Ptr&& sessionConsumer1, offcenter::common::amqp::SessionConsumer::Ptr&& sessionConsumer2, TCallback &&callback):
 		cms::MessageListener(),
 		m_callback(MessageCallback::factory(std::forward<TCallback>(callback)))
 	{
@@ -96,11 +97,12 @@ private:
 	}
 
 private:
-	std::vector<offcenter::amqp::SessionConsumer::Ptr> m_sessionConsumers;
+	std::vector<offcenter::common::amqp::SessionConsumer::Ptr> m_sessionConsumers;
 	MessageCallback m_callback;
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* LIB_OFFCENTER_AMQP_SRC_CONSUMER_HPP_ */

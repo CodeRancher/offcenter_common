@@ -29,8 +29,7 @@
 ///#include "offcenter/common/framework/program_options/BasicAppProgramOptions.hpp"
 
 //#include "offcenter/common/framework/application/IBasicApp.hpp"
-///using namespace offcenter::common;
-
+///
 namespace offcenter {
 namespace common {
 namespace framework {

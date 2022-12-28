@@ -26,6 +26,7 @@
 #include <memory>
 
 namespace offcenter {
+namespace common {
 namespace distributedsystem {
 
 class IConsumerDataListener {
@@ -38,6 +39,7 @@ public:
 };
 
 } /* namespace distributedsystem */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_DISTRIBUTEDSYSTEM_ICONSUMERDATALISTENER_HPP_ */

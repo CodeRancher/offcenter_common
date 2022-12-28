@@ -30,6 +30,7 @@
 #include "offcenter/common/amqp/Session.hpp"
 
 namespace offcenter {
+namespace common {
 namespace amqp {
 
 /**
@@ -62,6 +63,7 @@ public:
 };
 
 } /* namespace amqp */
+} /* namespace common */
 } /* namespace offcenter */
 
 #endif /* OFFCENTER_AMQP_SESSIONPRODUCERDYNAMICDESTINATION_HPP_ */

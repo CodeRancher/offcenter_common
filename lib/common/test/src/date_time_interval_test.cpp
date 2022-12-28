@@ -29,8 +29,7 @@
 
 TEST (DateTimeInterval, Parse)
 {
-	using namespace offcenter::common;
-	using namespace std::chrono;
+		using namespace std::chrono;
 
 	//offcenter::common::DateTimeIntervalConfig config;
 	//offcenter::common::DateTimeInterval dti;
@@ -39,8 +38,7 @@ TEST (DateTimeInterval, Parse)
 	//std::cout << UTCDateTimeToISO8601(dt);
 
 	/*
-	using namespace offcenter::common;
-	std::pair<std::string, std::string> parsed = parseTimestamp("0.1");
+		std::pair<std::string, std::string> parsed = parseTimestamp("0.1");
 	EXPECT_EQ(parsed.first, "0");
 	EXPECT_EQ(parsed.second, "1");
 
@@ -71,8 +69,7 @@ TEST (DateTimeInterval, Parse)
 TEST (DateTimeInterval, UTCTime)
 {
 	/*
-	using namespace offcenter::common;
-	using namespace std::chrono;
+		using namespace std::chrono;
 
 	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445135.000000000")), "2021-06-11T20:58:55.000000000Z");
 	EXPECT_EQ(UTCDateTimeToISO8601(make_UTCDateTimeFromTimestamp("1623445135")), "2021-06-11T20:58:55.000000000Z");
@@ -93,8 +90,7 @@ TEST (DateTimeInterval, UTCTime)
 TEST (DateTimeInterval, UTCEpoch)
 {
 	/*
-	using namespace offcenter::common;
-	using namespace std::chrono;
+		using namespace std::chrono;
 
 	auto timePoint = make_UTCDateTimeFromTimestamp("1623445135.000000000");
 	auto seconds =  UTCDateTimeSecondsFromEpoch(timePoint);

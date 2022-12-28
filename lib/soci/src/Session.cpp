@@ -28,6 +28,7 @@
 #include "offcenter/common/soci/SOCIRuntimeException.hpp"
 
 namespace offcenter {
+namespace common {
 namespace soci {
 
 //*****************************************************************************
@@ -147,7 +148,7 @@ void SessionPoolManager::close()
 void SessionPoolManager::createDB(const MySQLOptions &options)
 {
 	LOG(INFO) << "Creating database (" << options.dbname() << ") on (" << options.host() << ")";
-	offcenter::soci::MySQLOptions tmpConfig = options;
+	offcenter::common::soci::MySQLOptions tmpConfig = options;
 	tmpConfig.dbname.clear();
 
 	// Open and create db
@@ -304,4 +305,5 @@ void SessionActions::createView(const std::string &viewSchema)
 }
 
 } /* namespace soci */
+} /* namespace common */
 } /* namespace offcenter */

@@ -45,7 +45,7 @@ void framework_application_main(int argc, char **argv, const std::string& appNam
 		LOG(INFO) << appName << " App!";
 
 		using ManagedApp = AppManager;
-		std::thread appThread = framework::application::create_basic_app_in_thread<ManagedApp>(argc, argv);
+		std::thread appThread = offcenter::common::framework::application::create_basic_app_in_thread<ManagedApp>(argc, argv);
 		appThread.join();
 	} catch (const std::runtime_error& e) {
 		std::cout << "System Error: " << e.what() << std::endl;

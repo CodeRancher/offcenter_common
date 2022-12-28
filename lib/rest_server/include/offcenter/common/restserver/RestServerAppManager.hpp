@@ -36,7 +36,6 @@
 #include "offcenter/common/restserver/IRestServerApp.hpp"
 #include "offcenter/common/restserver/network/Utility.hpp"
 #include "offcenter/common/restserver/AutoMethodHandler.hpp"
-using namespace offcenter::common;
 
 namespace offcenter {
 namespace common {
